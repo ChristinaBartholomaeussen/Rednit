@@ -7,13 +7,11 @@ import java.util.List;
 
 public class MyMessage {
 
-    public List<Message> messages = new ArrayList<>();
+    public List<Message> messages;
 
     public void sendMessage() {
         //INDSÆT KODE
     }
 
-    public void saveMessage(Message message) {
-        messages.add(message);
-    }
+
 }

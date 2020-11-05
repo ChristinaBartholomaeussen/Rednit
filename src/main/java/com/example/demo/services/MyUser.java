@@ -30,6 +30,10 @@ public class MyUser {
 
  */
 
+    public void createUser() {
+        //TODO
+        //INDSÆT KODE
+    }
 
     public void addToAllUsers(User user) {
         allUsers.add(user); //Vi adder user til den fulde liste
@@ -40,7 +44,7 @@ public class MyUser {
     }
 
 
-    public void saveUserProfilChanges() {
+    public void saveUserProfileChanges() {
         //TODO
         //INDSÆT KODE
     }
@@ -62,9 +66,13 @@ public class MyUser {
 
     public boolean likeUser(User user) {
         //TODO
-        //INDSÆT KODE
+        //INDSÆT KODE OBS PÅ MyCandidate
 
         return true;
+    }
+
+    public List getAllUsers(){
+        return null;
     }
 
 

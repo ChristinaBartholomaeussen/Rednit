@@ -5,21 +5,28 @@ import java.util.List;
 
 public class Candidate {
 
-    public List<User> likedUsers = new ArrayList<>();
-    public List<User> dislikedUsers = new ArrayList<>();
-    public List<User> potentialCandidates = new ArrayList<>();
+    private List<User> likedUsers;
+    private List<User> dislikedUsers;
+    private List<User> potentialCandidates;
 
-    public void addToLikedList(User user) {
-        likedUsers.add(user); //Vi adder user til en liste over brugere, brugeren har liked
+    public Candidate(){
+
     }
 
-    public void addToDislikedList(User user) {
-        dislikedUsers.add(user);
+    public List<User> getLikedUsers() {
+        return likedUsers;
     }
 
-    public void addToPotentialCandidates(User user) {
-        potentialCandidates.add(user);
+    public List<User> getDislikedUsers() {
+        return dislikedUsers;
     }
+
+    public List<User> getPotentialCandidates() {
+        return potentialCandidates;
+    }
+
+
+
 
 
 }

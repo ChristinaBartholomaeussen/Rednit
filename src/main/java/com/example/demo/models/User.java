@@ -11,7 +11,7 @@ public class User extends Profil {
     private String lastName;
     private Date dateOfBirth;
     private int gender;
-    private int sexualPrefrerence;
+    private int sexualPreference;
     private String bio;
     private List photos;
 
@@ -26,7 +26,7 @@ public class User extends Profil {
                 this.lastName = lastName;
                 this.dateOfBirth = dateOfBirth;
                 this.gender = gender;
-                this.sexualPrefrerence = sexualPrefrerence;
+                this.sexualPreference = sexualPrefrerence;
                 this.bio = bio;
     }
 
@@ -34,10 +34,7 @@ public class User extends Profil {
        //Default constructor
     }
 
-    public void createUser() {
-        //TODO
-        //INDSÆT KODE
-    }
+
 
 
 
