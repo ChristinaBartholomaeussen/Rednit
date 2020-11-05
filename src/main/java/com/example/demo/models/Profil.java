@@ -31,4 +31,8 @@ public abstract class Profil {
 
         return true;
     }
+
+    public boolean isLoginIn(){
+        return true;
+    }
 }

@@ -1,6 +1,6 @@
 package com.example.demo.models;
 
-import com.example.demo.services.MyUser;
+
 
 import java.util.Date;
 import java.util.List;
