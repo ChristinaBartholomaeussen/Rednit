@@ -5,6 +5,8 @@ import com.example.demo.models.User;
 
 public class MessageRepository {
 
+    ConnectionRepository connection = new ConnectionRepository();
+
     public void insertMessageIntoDatabase(User user, Message message){
 
     }

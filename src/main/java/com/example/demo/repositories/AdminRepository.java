@@ -6,6 +6,8 @@ import java.util.List;
 
 public class AdminRepository {
 
+    ConnectionRepository connection = new ConnectionRepository();
+
     public void addUserToBlacklistToDatabase(User user)
     {
 

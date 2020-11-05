@@ -4,6 +4,8 @@ import com.example.demo.models.User;
 
 public class UserRepository {
 
+    ConnectionRepository connection = new ConnectionRepository();
+
     public void insertUserIntoDatabase(User user){
 
     }
@@ -21,6 +23,18 @@ public class UserRepository {
     }
 
     public void selectAllUsersFromDatabase(){
+
+    }
+
+    public void selectPhotoFromDatabase() {
+
+    }
+
+    public void addPhotoToDatabase() {
+
+    }
+
+    public void deletePhotoFromDatabase() {
 
     }
 
