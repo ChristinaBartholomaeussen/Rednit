@@ -6,7 +6,8 @@ import java.util.List;
 
 public class AdminRepository {
 
-    public void addUserToBlacklistToDatabase(User user){
+    public void addUserToBlacklistToDatabase(User user)
+    {
 
     }
 
@@ -27,7 +28,7 @@ public class AdminRepository {
         return null;
     }
 
-    public List getAllUserFromDatabase(List<User> userList){
+    public List<User> getAllUsersFromDatabase(){
         return null;
     }
 

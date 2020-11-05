@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="opdatering">
+    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="Fjernet List fra parameter i AdminRepository.java, samt ændret metode navnet i samme metode&#10;&#10;Implementeret funktionalitet i MyAdmin.java">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/AdminRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/CandidateRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MatchRepository.java" afterDir="false" />
@@ -31,7 +31,6 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyCandidate.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyMatch.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/MyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/MyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Candidate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Candidate.java" afterDir="false" />
@@ -69,6 +68,7 @@
   </component>
   <component name="ProjectId" id="1jpfFvNbUSYYsF3as2ldUWLTEv2" />
   <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -88,17 +88,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Rednit" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />

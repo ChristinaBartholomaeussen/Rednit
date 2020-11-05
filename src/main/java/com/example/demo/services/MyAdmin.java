@@ -1,30 +1,44 @@
 package com.example.demo.services;
 import com.example.demo.models.User;
+import com.example.demo.repositories.AdminRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdmin {
 
-    public List<User> blacklist = new ArrayList<User>();
+    private List<User> allUsers;
+    private List<User> blacklistedUser;
+    private AdminRepository adminRepository;
 
-
-    public void addToBlacklist(User user) {
-        blacklist.add(user);
+    public MyAdmin()
+    {
+        this.allUsers = adminRepository.getAllUsersFromDatabase();
+        this.blacklistedUser = new ArrayList<>();
+        this.adminRepository = new AdminRepository();
     }
 
-    public void restoreUser(User user) {
-        //TODO
-        //INDSÆT KODE
+    public List<User> addToBlacklist(User user)
+    {
+        blacklistedUser.add(user);
+        return blacklistedUser;
     }
 
-    public List getBlacklist() {
-        return blacklist;
+    public List<User> restoreUser(User user)
+    {
+        blacklistedUser.remove(user);
+        return blacklistedUser;
     }
 
-    public void deleteUser(User user) {
-        //TODO
-        //INDSÆT KODE
+    public List<User> getBlacklist()
+    {
+        //TODO Get List from Database
+        return null;
+    }
+
+    public void deleteUser(User user)
+    {
+
     }
 
 }
