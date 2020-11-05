@@ -31,36 +31,36 @@ public class MyUser {
  */
 
 
-    public void addToAllUsers(User user){
+    public void addToAllUsers(User user) {
         allUsers.add(user); //Vi adder user til den fulde liste
     }
 
-    public void deleteUser(User user){
+    public void deleteUser(User user) {
         //INDSÆT KODE
     }
 
 
-    public void saveUserProfilChanges(){
+    public void saveUserProfilChanges() {
         //TODO
         //INDSÆT KODE
     }
 
-    public void uploadPhoto(){
+    public void uploadPhoto() {
         //TODO
         //INDSÆT KODE
     }
 
-    public void getUser(){
+    public void getUser() {
         //TODO
         //INDSÆT KODE
     }
 
-    public void getNextUser(){
+    public void getNextUser() {
         //TODO
         //INDSÆT KODE
     }
 
-    public boolean likeUser(User user){
+    public boolean likeUser(User user) {
         //TODO
         //INDSÆT KODE
 

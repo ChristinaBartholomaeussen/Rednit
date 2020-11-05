@@ -9,15 +9,15 @@ public class Candidate {
     public List<User> dislikedUsers = new ArrayList<>();
     public List<User> potentialCandidates = new ArrayList<>();
 
-    public void addToLikedList(User user){
+    public void addToLikedList(User user) {
         likedUsers.add(user); //Vi adder user til en liste over brugere, brugeren har liked
     }
 
-    public void addToDislikedList(User user){
+    public void addToDislikedList(User user) {
         dislikedUsers.add(user);
     }
 
-    public void addToPotentialCandidates(User user){
+    public void addToPotentialCandidates(User user) {
         potentialCandidates.add(user);
     }
 

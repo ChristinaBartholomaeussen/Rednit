@@ -5,7 +5,7 @@ import com.example.demo.services.MyUser;
 import java.util.Date;
 import java.util.List;
 
-public class User extends Profil{
+public class User extends Profil {
 
     private String firstName;
     private String lastName;
@@ -34,7 +34,7 @@ public class User extends Profil{
        //Default constructor
     }
 
-    public void createUser(){
+    public void createUser() {
         //TODO
         //INDSÆT KODE
     }

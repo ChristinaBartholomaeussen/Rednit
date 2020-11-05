@@ -9,11 +9,11 @@ public class MyMessage {
 
     public List<Message> messages = new ArrayList<>();
 
-    public void sendMessage(){
+    public void sendMessage() {
         //INDSÆT KODE
     }
 
-    public void saveMessage(Message message){
+    public void saveMessage(Message message) {
         messages.add(message);
     }
 }

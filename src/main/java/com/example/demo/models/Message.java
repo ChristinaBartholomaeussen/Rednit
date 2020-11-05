@@ -16,11 +16,8 @@ public class Message {
         return message;
     }
 
-
-
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
-
 
 }

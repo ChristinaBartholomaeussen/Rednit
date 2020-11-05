@@ -9,20 +9,20 @@ public class MyAdmin {
     public List<User> blacklist = new ArrayList<User>();
 
 
-    public void addToBlacklist(User user){
+    public void addToBlacklist(User user) {
         blacklist.add(user);
     }
 
-    public void restoreUser(User user){
+    public void restoreUser(User user) {
         //TODO
         //INDSÆT KODE
     }
 
-    public List getBlacklist(){
+    public List getBlacklist() {
         return blacklist;
     }
 
-    public void deleteUser(User user){
+    public void deleteUser(User user) {
         //TODO
         //INDSÆT KODE
     }

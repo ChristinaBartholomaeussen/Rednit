@@ -2,7 +2,7 @@ package com.example.demo.models;
 
 import java.util.List;
 
-public abstract class Admin extends Profil{
+public abstract class Admin extends Profil {
     //Det vil give mening so far at lave den abstact, da vi ikke skal lave flere objekter af den.
 
     public Admin(String email, String password) {
@@ -10,6 +10,5 @@ public abstract class Admin extends Profil{
         email = "admin";
         password = "admin";
     }
-
 
 }
