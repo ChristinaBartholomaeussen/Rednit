@@ -23,16 +23,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="Fjernet List fra parameter i AdminRepository.java, samt ændret metode navnet i samme metode&#10;&#10;Implementeret funktionalitet i MyAdmin.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/ConnectionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rednit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Rednit.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/AdminRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/AdminRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/CandidateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/CandidateRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MessageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/AdminRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/CandidateRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MatchRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MessageRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyCandidate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyMatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/MyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/MyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Candidate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Candidate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Match.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Profil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Profil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyProfil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MyUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/createProfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/createProfile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/myProfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/myProfile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +62,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Users\frede\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
+        <option name="mavenHome" value="C:\Users\cmbar\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -67,18 +76,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/KEA/Projekter/RoomSjows" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../KEA/Projekter/RoomSjows" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -105,7 +107,6 @@
       <workItem from="1604505858036" duration="1089000" />
       <workItem from="1604508928883" duration="9700000" />
       <workItem from="1604574773114" duration="299000" />
-      <workItem from="1604587800358" duration="397000" />
     </task>
     <task id="LOCAL-00001" summary="Forslag til, hvordan vores design diagram bør være opbygget">
       <created>1604528369187</created>
@@ -153,10 +154,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="opdatering" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="345" y="140" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604585487188">
-      <screen x="0" y="0" width="1504" height="963" />
-    </state>
-    <state x="345" y="140" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1504.963@0.0.1504.963" timestamp="1604585487188" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1604580970432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -181,51 +178,13 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604524199990" />
-    <state width="1461" height="256" key="GridCell.Tab.0.bottom" timestamp="1604588036479">
-      <screen x="0" y="0" width="1504" height="963" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604579719328">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1461" height="256" key="GridCell.Tab.0.bottom/0.0.1504.963@0.0.1504.963" timestamp="1604588036479" />
-    <state width="1461" height="256" key="GridCell.Tab.0.center" timestamp="1604588036479">
-      <screen x="0" y="0" width="1504" height="963" />
-    </state>
-    <state width="1461" height="256" key="GridCell.Tab.0.center/0.0.1504.963@0.0.1504.963" timestamp="1604588036479" />
-    <state width="1461" height="256" key="GridCell.Tab.0.left" timestamp="1604588036479">
-      <screen x="0" y="0" width="1504" height="963" />
-    </state>
-    <state width="1461" height="256" key="GridCell.Tab.0.left/0.0.1504.963@0.0.1504.963" timestamp="1604588036479" />
-    <state width="1461" height="256" key="GridCell.Tab.0.right" timestamp="1604588036479">
-      <screen x="0" y="0" width="1504" height="963" />
-    </state>
-    <state width="1461" height="256" key="GridCell.Tab.0.right/0.0.1504.963@0.0.1504.963" timestamp="1604588036479" />
-    <state width="1461" height="256" key="GridCell.Tab.1.bottom" timestamp="1604588036480">
-      <screen x="0" y="0" width="1504" height="963" />
-    </state>
-    <state width="1461" height="256" key="GridCell.Tab.1.bottom/0.0.1504.963@0.0.1504.963" timestamp="1604588036480" />
-    <state width="1461" height="256" key="GridCell.Tab.1.center" timestamp="1604588036479">
-      <screen x="0" y="0" width="1504" height="963" />
-    </state>
-    <state width="1461" height="256" key="GridCell.Tab.1.center/0.0.1504.963@0.0.1504.963" timestamp="1604588036479" />
-    <state width="1461" height="256" key="GridCell.Tab.1.left" timestamp="1604588036479">
-      <screen x="0" y="0" width="1504" height="963" />
-    </state>
-    <state width="1461" height="256" key="GridCell.Tab.1.left/0.0.1504.963@0.0.1504.963" timestamp="1604588036479" />
-    <state width="1461" height="256" key="GridCell.Tab.1.right" timestamp="1604588036480">
-      <screen x="0" y="0" width="1504" height="963" />
-    </state>
-    <state width="1461" height="256" key="GridCell.Tab.1.right/0.0.1504.963@0.0.1504.963" timestamp="1604588036480" />
-    <state width="266" height="457" key="HiddenNamespacesPopup" timestamp="1604585533751">
-      <screen x="0" y="0" width="1504" height="963" />
-    </state>
-    <state width="266" height="457" key="HiddenNamespacesPopup/0.0.1504.963@0.0.1504.963" timestamp="1604585533751" />
-    <state x="353" y="169" key="Vcs.Push.Dialog.v2" timestamp="1604588261759">
-      <screen x="0" y="0" width="1504" height="963" />
-    </state>
-    <state x="353" y="169" key="Vcs.Push.Dialog.v2/0.0.1504.963@0.0.1504.963" timestamp="1604588261759" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604579719328" />
-    <state x="574" y="381" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604587327004">
-      <screen x="0" y="0" width="1504" height="963" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604579686163">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="381" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1504.963@0.0.1504.963" timestamp="1604587327004" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1604579686163" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1604584305245">
       <screen x="0" y="0" width="1536" height="824" />

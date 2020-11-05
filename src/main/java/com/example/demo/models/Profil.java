@@ -10,6 +10,14 @@ public abstract class Profil {
         this.password = password;
     }
 
+    public String getEmail() {
+    	return this.email;
+	}
+	
+	public String getPassword() {
+    	return this.password;
+	}
+    
 
     public Profil() {
         //Default constructor

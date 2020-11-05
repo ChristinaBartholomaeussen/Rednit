@@ -29,6 +29,8 @@ public class User extends Profil {
                 this.sexualPreference = sexualPrefrerence;
                 this.bio = bio;
     }
+    
+    /*  Mangler at sætte en liste med billeder.  */
 
     public User() {
        //Default constructor

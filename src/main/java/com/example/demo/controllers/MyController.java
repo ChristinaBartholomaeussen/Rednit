@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 
+import com.example.demo.services.MyProfile;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -18,7 +19,7 @@ public class MyController {
     }
 
     @GetMapping("/createProfile")
-    public String createProfil(){
+    public String createProfile(){
         return "createProfile";
     }
 
@@ -39,3 +40,7 @@ public class MyController {
 
 
 }
+
+
+
+
