@@ -75,5 +75,17 @@ public class UserService {
         return null;
     }
 
+    public void addToLikedList(User user) {
+
+    }
+
+    public void addToDislikedList(User user) {
+
+    }
+
+    public void addToPotentialCandidates(User user) {
+
+    }
+
 
 }

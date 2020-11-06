@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +15,36 @@ public class User extends Profil {
     private int sexualPreference;
     private String bio;
     private List photos;
+    private List likedUsers;
+    private List dislikedUsers;
+    private List potentialCandidates;
 
+
+    public User(String email, String password,
+                String firstName, String lastName,
+                Date dateOfBirth, int gender,
+                int sexualPrefrerence, String bio,
+                List photos, List likedUsers, List dislikedUsers, List potentialCandidates)
+    {
+        super(email, password);
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.dateOfBirth = dateOfBirth;
+                this.gender = gender;
+                this.sexualPreference = sexualPrefrerence;
+                this.bio = bio;
+                this.photos = new ArrayList();
+                this.likedUsers = new ArrayList();
+                this.dislikedUsers = new ArrayList();
+                this.potentialCandidates = new ArrayList();
+
+    }
+    
+    /*  Mangler at sætte en liste med billeder.  */
+
+    public User() {
+       //Default constructor
+    }
 
     public String getFirstName() {
         return firstName;
@@ -72,26 +102,17 @@ public class User extends Profil {
         this.photos = photos;
     }
 
-    public User(String email, String password,
-                String firstName, String lastName,
-                Date dateOfBirth, int gender,
-                int sexualPrefrerence, String bio)
-    {
-        super(email, password);
-                this.firstName = firstName;
-                this.lastName = lastName;
-                this.dateOfBirth = dateOfBirth;
-                this.gender = gender;
-                this.sexualPreference = sexualPrefrerence;
-                this.bio = bio;
-    }
-    
-    /*  Mangler at sætte en liste med billeder.  */
-
-    public User() {
-       //Default constructor
+    public List getLikedUsers() {
+        return likedUsers;
     }
 
+    public List getDislikedUsers() {
+        return dislikedUsers;
+    }
+
+    public List getPotentialCandidates() {
+        return potentialCandidates;
+    }
 
 
 

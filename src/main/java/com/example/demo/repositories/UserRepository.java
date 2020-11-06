@@ -2,6 +2,9 @@ package com.example.demo.repositories;
 
 import com.example.demo.models.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserRepository {
 
     ConnectionRepository connection = new ConnectionRepository();
@@ -38,5 +41,22 @@ public class UserRepository {
 
     }
 
+    public void addToLikedTableInDatabase(){
+
+    }
+
+    public void addToDislikedTableInDatabase(){
+
+    }
+
+    public List<User> getLikedListFromDatabase(User user){
+        List<User> likedList = new ArrayList<User>();
+
+        //TODO
+        //der skal på en måde findes begges brugeres lister
+
+        return likedList;
+
+    }
 
 }
