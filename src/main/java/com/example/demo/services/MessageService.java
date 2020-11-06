@@ -5,7 +5,7 @@ import com.example.demo.models.Message;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyMessage {
+public class MessageService {
 
     public List<Message> messages;
 

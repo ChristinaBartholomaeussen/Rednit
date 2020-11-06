@@ -9,11 +9,12 @@ public class Match {
     private List<User> matches;
 
     public Match(){
-        
+
     }
 
 
-    public List getMatches() {
+    public List<User> getMatches() {
+
         return matches;
 
     }

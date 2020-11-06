@@ -5,13 +5,14 @@ import com.example.demo.repositories.AdminRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyAdmin {
+
+public class AdminService {
 
     private List<User> allUsers;
     private List<User> blacklistedUser;
     private AdminRepository adminRepository;
 
-    public MyAdmin()
+    public AdminService()
     {
         this.allUsers = adminRepository.getAllUsersFromDatabase();
         this.blacklistedUser = new ArrayList<>();

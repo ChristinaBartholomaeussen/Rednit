@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 
-import com.example.demo.services.MyProfile;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 

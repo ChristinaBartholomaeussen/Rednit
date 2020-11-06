@@ -5,7 +5,7 @@ import com.example.demo.models.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyUser {
+public class UserService {
 
     public List<User> allUsers = new ArrayList<>();
 

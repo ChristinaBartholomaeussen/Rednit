@@ -4,7 +4,7 @@ import com.example.demo.models.User;
 
 import java.util.ArrayList;
 
-public class MyProfile {
+public class ProfileService {
 	
 	public ArrayList<String> testList = new ArrayList<>();
 	
