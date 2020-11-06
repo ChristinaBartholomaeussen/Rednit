@@ -16,6 +16,62 @@ public class User extends Profil {
     private List photos;
 
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public int getSexualPreference() {
+        return sexualPreference;
+    }
+
+    public void setSexualPreference(int sexualPreference) {
+        this.sexualPreference = sexualPreference;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public List getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List photos) {
+        this.photos = photos;
+    }
+
     public User(String email, String password,
                 String firstName, String lastName,
                 Date dateOfBirth, int gender,
