@@ -48,15 +48,15 @@ public class HomeController
          if(userService.doesEmailMatchPassword(useremail, userpassword)){
 
              System.out.println("godkendt");
-             return "redirect:/loginPage";
+             return "redirect:/loginpage";
          }
 
          }catch(Exception e){
              System.out.println("fejl");
-             return "redirect:/loginPage";
+             return "redirect:/loginpage";
          }
 
-        return "redirect:/createNewProfile";
+        return "redirect:/create";
 
     }
 
