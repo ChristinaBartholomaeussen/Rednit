@@ -1,9 +1,12 @@
 package com.example.demo.models;
 
+import java.util.List;
+
 public abstract class Profil {
 
     private String email;
     private String password;
+    private List profiles;
 
     public Profil(String email, String password) {
         this.email = email;
@@ -17,11 +20,16 @@ public abstract class Profil {
 	public String getPassword() {
     	return password;
 	}
-    
+
+	public List getAllProfiles(){
+        return profiles;
+    }
 
     public Profil() {
         //Default constructor
     }
+
+
 
 
 }
