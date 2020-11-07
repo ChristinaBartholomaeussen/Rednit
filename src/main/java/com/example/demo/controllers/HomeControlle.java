@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
-public class HomeControllerUdforsk {
+public class HomeControlle {
 
     User userToDisplay = new User();
 
@@ -25,7 +25,7 @@ public class HomeControllerUdforsk {
 //    }
 
     @PostMapping("/postLoginpage")
-    public boolean userEmail(WebRequest dataFromForm){
+    public boolean userLogin(WebRequest dataFromForm){
 
         ProfileService profileService = new ProfileService();
 
