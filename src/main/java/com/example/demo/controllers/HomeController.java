@@ -20,8 +20,6 @@ public class HomeController
     User userToDisplay = new User();
     UserService userServiceToDisplay = new UserService();
 
-
-
     //TODO Loginmapping bør ligge i LoginController - Home skal kun indeholde hvad vi viser i "Udforsk"
     //TODO "Udforsk" efter filnavnet er unødvendigt, det ser lidt rodet ud?
 
@@ -34,7 +32,6 @@ public class HomeController
 
       return "loginPage";
    }
-
 
     @PostMapping("/postLoginpage")
     public String userLogin(WebRequest dataFromForm){

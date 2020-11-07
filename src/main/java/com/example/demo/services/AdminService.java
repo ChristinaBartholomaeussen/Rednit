@@ -8,8 +8,8 @@ import java.util.List;
 
 public class AdminService {
 
-    private List<User> allUsers;
-    private List<User> blacklistedUser;
+    private final List<User> allUsers;
+    private final List<User> blacklistedUser;
     private AdminRepository adminRepository;
 
     public AdminService()
