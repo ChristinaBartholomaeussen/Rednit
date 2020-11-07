@@ -14,9 +14,8 @@ import java.util.Date;
 
 
 @Controller
-public class LoginController {
-
-    User userToDisplay = new User();
+public class LoginController
+{
     UserService userServiceToDisplay = new UserService();
 
     @GetMapping("/create")
@@ -63,11 +62,7 @@ public class LoginController {
 
             //TODO RBP: Opret funktionalitet som kan sætte denne bruger ind på Databasen
             User newUser = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio);
-            UserRepository userRepository = new UserRepository();
-            userRepository.insertUserIntoDatabase(newUser);
             userServiceToDisplay.allUsers.add(newUser);
-
-
         }
         catch(Exception e)
         {
@@ -81,8 +76,9 @@ public class LoginController {
     @GetMapping("/login")
     public String login(Model userModel){
 
-        //userModel.addAttribute("userToDisplay", userToDisplay);
-        //userModel.addAttribute("userServiceToDisplay", userServiceToDisplay);
+        User userToDisplay = new User();
+        userModel.addAttribute("userToDisplay", userToDisplay);
+        userModel.addAttribute("userServiceToDisplay", userServiceToDisplay);
 
         return "loginPage";
     }
@@ -101,6 +97,7 @@ public class LoginController {
                 if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
                 {
                     System.out.println("godkendt");
+                    System.out.println("Logget ind med bruger: " + user);
                     return "redirect:/loginpage";
                 }
             }
@@ -117,7 +114,8 @@ public class LoginController {
             return "redirect:/login";
         }
 
-        return "redirect:/login";
+        System.out.println("Bruger findes ikke - redirecter til /create");
+        return "redirect:/create";
 
     }
 
