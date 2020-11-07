@@ -59,4 +59,7 @@ public class ProfileService {
         return true;
     }
 
+    public boolean doesEmailMatchPassword(String password, String email){
+    	return true;
+	}
 }

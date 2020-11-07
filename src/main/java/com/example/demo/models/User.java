@@ -46,6 +46,9 @@ public class User extends Profil {
        //Default constructor
     }
 
+    public User(String email) {
+    }
+
     public String getFirstName() {
         return firstName;
     }

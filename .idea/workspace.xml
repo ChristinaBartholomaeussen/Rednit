@@ -22,17 +22,23 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="tilføjet getter/setter til alle attibutter i User">
+    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="slettet candidate klasserne og flyttet metoder over til hhv user og UserRepository, samt lavet metoder i match klasserne">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Candidate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Match.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/MyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/HomeControllerUdforsk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Profil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Profil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/CandidateRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/CandidateService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MatchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/ProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/ProfileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/createProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/createNewProfile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/loginPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/match.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/myMatches.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/myProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/myProfile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/style.css.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/style.css.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +82,10 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.demo" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cmbar\Desktop\Miniprojekt\Rednit\src\main\resources\static" />
+      <recent name="C:\Users\cmbar\Desktop\Miniprojekt\Rednit\src\main\resources\templates" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -110,7 +120,7 @@
       <workItem from="1604574773114" duration="299000" />
       <workItem from="1604665243140" duration="4000" />
       <workItem from="1604672018817" duration="95000" />
-      <workItem from="1604680488421" duration="9124000" />
+      <workItem from="1604680488421" duration="16745000" />
     </task>
     <task id="LOCAL-00001" summary="Forslag til, hvordan vores design diagram bør være opbygget">
       <created>1604528369187</created>
@@ -147,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604685906999</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="slettet candidate klasserne og flyttet metoder over til hhv user og UserRepository, samt lavet metoder i match klasserne">
+      <created>1604691208526</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1604691208526</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +188,8 @@
     <MESSAGE value="opdatering" />
     <MESSAGE value="ændret klassenavne i service pakken" />
     <MESSAGE value="tilføjet getter/setter til alle attibutter i User" />
-    <option name="LAST_COMMIT_MESSAGE" value="tilføjet getter/setter til alle attibutter i User" />
+    <MESSAGE value="slettet candidate klasserne og flyttet metoder over til hhv user og UserRepository, samt lavet metoder i match klasserne" />
+    <option name="LAST_COMMIT_MESSAGE" value="slettet candidate klasserne og flyttet metoder over til hhv user og UserRepository, samt lavet metoder i match klasserne" />
   </component>
   <component name="WindowStateProjectService">
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1604685866153">
@@ -202,21 +220,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="299" y="67" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1604607563382" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604685908871">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604696109147">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604685908871" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604685433126">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604696109147" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604696194115">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1604685433126" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1604696194115" />
     <state x="360" y="66" key="new project wizard" timestamp="1604672111621">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="360" y="66" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1604672111621" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1604584305245">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1604708948238">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604584305245" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604708948238" />
   </component>
 </project>

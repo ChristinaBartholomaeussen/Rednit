@@ -33,7 +33,7 @@ public class MatchService {
 
 
 
-    public void deleteMatch(User loggedInUser, User match ) {
+    public void deleteMatch(User match ) {
 
         //TODO
         //Skal muligvis have to parameter med sig, så den ved,

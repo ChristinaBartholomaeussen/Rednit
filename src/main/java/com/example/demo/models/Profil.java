@@ -11,11 +11,11 @@ public abstract class Profil {
     }
 
     public String getEmail() {
-    	return this.email;
+    	return email;
 	}
 	
 	public String getPassword() {
-    	return this.password;
+    	return password;
 	}
     
 

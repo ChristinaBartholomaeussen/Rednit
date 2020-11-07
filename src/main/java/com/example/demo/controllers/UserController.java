@@ -1,35 +1,19 @@
 package com.example.demo.controllers;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MyController {
-
-    @GetMapping("/")
-    public String index(){
-        return "index";
-    }
-
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
+public class UserController {
 
     @GetMapping("/createProfile")
     public String createProfile(){
-        return "createProfile";
+        return "createNewProfile";
     }
 
-    @GetMapping("/admin")
-    public String admin(){
-        return "admin";
-    }
-
-    @GetMapping("/match")
+    @GetMapping("/myMatches")
     public String match(){
-        return "match";
+        return "myMatches";
     }
 
     @GetMapping("/myProfile")
@@ -37,9 +21,4 @@ public class MyController {
         return "myProfile";
     }
 
-
 }
-
-
-
-
