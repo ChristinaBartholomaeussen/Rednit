@@ -1,10 +1,37 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>newProfile</title>
+    <link href="https://fonts.googleapis.com/css2?family=David+Libre&family=Montserrat&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Create Profile</title>
+    <style>
+
+    </style>
 </head>
 <body>
+
+    <p align="center"><b>Indtast ønskede login informationer</b></p>
+    <div class="col" align="center" >
+        <div class="emaildiv">
+            <div id="form-container">
+                <form id="login-container" action="/index" method="post">
+                    <input type="email" id="email" placeholder="Indtast email" style="text-align: center">
+                    &nbsp
+                    <input type="password" id="password1" placeholder="Indtast password" style="text-align: center">
+                    &nbsp
+                    <input type="text" id="firstName" placeholder="Indtast fornavn" style="text-align: center">
+                    &nbsp
+                    <input type="text" id="lastName" placeholder="Indtast efternavn" style="text-align: center">
+                    &nbsp
+                    <input type="number" id="age" placeholder="Indtast alder" style="text-align: center">
+                    &nbsp
+                    <input type="text" id="bio" placeholder="Indtast beskrivelse" style="text-align: center">
+                </form>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
