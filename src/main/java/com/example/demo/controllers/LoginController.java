@@ -65,6 +65,7 @@ public class LoginController {
             User newUser = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio);
             UserRepository userRepository = new UserRepository();
             userRepository.insertUserIntoDatabase(newUser);
+            userServiceToDisplay.allUsers.add(newUser);
 
 
         }
@@ -91,19 +92,27 @@ public class LoginController {
     public String userLogin(WebRequest dataFromForm){
 
         try{
-            UserService userService = new UserService();
-
             String useremail = dataFromForm.getParameter("email");
             String userpassword = dataFromForm.getParameter("password");
 
-            if(userService.doesEmailMatchPassword(useremail, userpassword)){
-
-                System.out.println("godkendt");
-                return "redirect:/loginpage";
+            for(User user : userServiceToDisplay.allUsers)
+            {
+                if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
+                {
+                    System.out.println("godkendt");
+                    return "redirect:/loginpage";
+                }
             }
 
+            //TODO RBP: Implementer Database kald, så kan tjekke om User findes på databasen
+//            if(userServiceToDisplay.doesEmailMatchPassword(useremail, userpassword)){
+//
+//                System.out.println("godkendt");
+//                return "redirect:/loginpage";
+//            }
+
         }catch(Exception e){
-            System.out.println("fejl");
+            System.out.println("fejl: " + e);
             return "redirect:/loginpage";
         }
 
