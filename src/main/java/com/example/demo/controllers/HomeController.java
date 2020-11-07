@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
-public class HomeControlle {
+public class HomeController
+{
 
     User userToDisplay = new User();
 
