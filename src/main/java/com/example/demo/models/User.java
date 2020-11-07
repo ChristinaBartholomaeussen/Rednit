@@ -17,9 +17,9 @@ public class User extends Profil {
     private int sexualPreference;
     private String bio;
     private List photos;
-    private List likedUsers;
-    private List dislikedUsers;
-    private List potentialCandidates;
+    private List<User> likedUsers;
+    private List<User> dislikedUsers;
+    private List<User> potentialCandidates;
 
 
     public User(String email, String password,
@@ -35,10 +35,10 @@ public class User extends Profil {
                 this.gender = gender;
                 this.sexualPreference = sexualPrefrerence;
                 this.bio = bio;
-                this.photos = new ArrayList();
-                this.likedUsers = new ArrayList();
-                this.dislikedUsers = new ArrayList();
-                this.potentialCandidates = new ArrayList();
+                this.photos = new ArrayList<>();
+                this.likedUsers = new ArrayList<>();
+                this.dislikedUsers = new ArrayList<>();
+                this.potentialCandidates = new ArrayList<>();
 
     }
     

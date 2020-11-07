@@ -90,7 +90,7 @@ public class LoginController
     @PostMapping("/postLogin")
     public String userLogin(WebRequest dataFromForm){
 
-        List userFromDB = userServiceToDisplay.getAllUsers();
+        List<User> userFromDB = userServiceToDisplay.getAllUsers();
 
         try{
             String useremail = dataFromForm.getParameter("email");
