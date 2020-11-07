@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=David+Libre&family=Montserrat&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Create Profile</title>
-    <style>
+    <link rel="stylesheet" href="style.css">
 
-    </style>
+<!-- RBP: Nedenstående linje er nødvendig for at vise "Lokale" ændringer, men ved Run Code kan Spring ikke se denne fil-->
+    <link rel="stylesheet" href="../static/style.css">
+
+    <title>Create Profile</title>
 </head>
 <body>
 
     <p align="center"><b>Indtast ønskede login informationer</b></p>
     <div class="col" align="center" >
-        <div class="emaildiv">
+        <div class="textField">
             <div id="form-container">
-                <form id="login-container" action="/index" method="post">
+                <form id="createProfile" action="/postCreate" method="post">
                     <input type="email" id="email" placeholder="Indtast email" style="text-align: center">
                     &nbsp
                     <input type="password" id="password1" placeholder="Indtast password" style="text-align: center">
@@ -28,6 +30,10 @@
                     <input type="number" id="age" placeholder="Indtast alder" style="text-align: center">
                     &nbsp
                     <input type="text" id="bio" placeholder="Indtast beskrivelse" style="text-align: center">
+                    &nbsp
+                    <input type="file" id="photo" value="Upload billede">
+                    &nbsp
+                    <input type="button" id="saveProfileInfo" value="Gem og Opret profil">
                 </form>
             </div>
         </div>
