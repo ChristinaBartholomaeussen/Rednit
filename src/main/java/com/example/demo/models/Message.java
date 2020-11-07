@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class Message {
 
-    private LocalDateTime timestamp = LocalDateTime.now(); //Vi får forhåbenlig altid en ny tid.
+    private final LocalDateTime timestamp = LocalDateTime.now(); //Vi får forhåbenlig altid en ny tid.
     private String message;
 
 

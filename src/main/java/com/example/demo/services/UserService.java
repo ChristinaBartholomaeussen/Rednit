@@ -100,11 +100,7 @@ public class UserService extends ProfileService{
          *  Tilføj password securities.
          *  */
 
-        if (password.length() > 4 && password.length() < 20) {
-            return true;
-        }
-
-        return false;
+        return password.length() > 4 && password.length() < 20;
     }
 
     public boolean checkEmail(String email) {
@@ -113,12 +109,7 @@ public class UserService extends ProfileService{
         if (email == null || email.isBlank()) {
 
             return false;
-        } else if (email.length() > 4 && email.indexOf('@') > 0 && email.indexOf('.') > email.indexOf('@')) {
-
-            return true;
-        }
-
-        return false;
+        } else return email.length() > 4 && email.indexOf('@') > 0 && email.indexOf('.') > email.indexOf('@');
     }
 
     AdminRepository adminRepository = new AdminRepository();

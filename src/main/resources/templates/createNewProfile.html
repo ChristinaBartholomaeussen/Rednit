@@ -10,8 +10,11 @@
 <!-- RBP: Nedenstående linje er nødvendig for at vise "Lokale" ændringer, men ved Run Code kan Spring ikke se denne fil-->
     <link href="../static/style.css" rel="stylesheet">
 
+
+
     <title>Create Profile</title>
 </head>
+
 <body>
 
     <p align="center"><b>Indtast ønskede login informationer</b></p>
@@ -21,23 +24,36 @@
                 <form action="/postCreate" id="createProfile" method="post">
                     <input id="email" name="email" placeholder="Indtast email" style="text-align: center" type="email">
                     &nbsp
+
                     <input name="password1" placeholder="Indtast password" style="text-align: center" type="password">
                     &nbsp
                     <input name="password2" placeholder="Indtast password igen" style="text-align: center" type="password">
                     &nbsp
+
                     <input name="firstName" placeholder="Indtast fornavn" style="text-align: center" type="text">
                     &nbsp
                     <input name="lastName" placeholder="Indtast efternavn" style="text-align: center" type="text">
-                    &nbsp
+                    &nbsp<br>
+
+                    <label>Køn:</label>
                     <select id="gender" name="gender">
                         <option value="male">Mand</option>
                         <option value="female">Kvinde</option>
                     </select>
                     &nbsp
-                    <input name="age" placeholder="Indtast fødselsdato" style="text-align: center" type="date" value="2002-01-01">
+
+                    <label>Hvad er du interesseret i? </label>
+                    <select name="sexualPreference">
+                        <option value="male">Kvinder</option>
+                        <option value="female">Mænd</option>
+                        <option value="both">Begge</option>
+                    </select>
+                    &nbsp
+                    <input name="dateOfBirth" placeholder="Indtast fødselsdato" style="text-align: center" type="date" value="2002-01-01">
                     &nbsp
                     <input name="bio" placeholder="Indtast beskrivelse" style="text-align: center" type="text">
                     &nbsp
+                    <label>Upload profilbillede</label>
                     <input name="photo" type="file" value="Upload billede">
                     &nbsp
                     <input id="saveProfileInfo" type="submit" value="Gem og Opret profil">
@@ -48,3 +64,5 @@
 
 </body>
 </html>
+
+

@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.User;
 import com.example.demo.services.UserService;
+import com.example.demo.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,24 +43,30 @@ public class LoginController {
 
             String firstName = dataFromForm.getParameter("firstName");
             String lastName = dataFromForm.getParameter("lastName");
+
             int gender;
             if(dataFromForm.getParameter("gender").equals("male"))
-            {
                 gender = 1;
-            }
             else
-            {
                 gender = 0;
-            }
 
+            int sexualPreference;
+            if(dataFromForm.getParameter("sexualPreference").equals("female"))
+                sexualPreference = 0;
+            else if(dataFromForm.getParameter("sexualPreference").equals("male"))
+                sexualPreference = 1;
+            else
+                sexualPreference = 3;
 
-
-            Date age = new SimpleDateFormat("dd/MM/yyyy").parse(dataFromForm.getParameter("age"));
+            Date dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(dataFromForm.getParameter("dateOfBirth"));
             String bio = dataFromForm.getParameter("bio");
 
-            System.out.println(age);
+            //TODO RBP: Opret funktionalitet som kan sætte denne bruger ind på Databasen
+            User newUser = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio);
+            UserRepository userRepository = new UserRepository();
+            userRepository.insertUserIntoDatabase(newUser);
+            userServiceToDisplay.allUsers.add(newUser);
 
-//            User newUser = new User(email,password1,firstName,lastName,age,bio,age);
 
         }
         catch(Exception e)
@@ -68,7 +75,7 @@ public class LoginController {
             return "redirect:/create";
         }
 
-        return "redirect:/create";
+        return "redirect:/loginpage";
     }
 
     @GetMapping("/login")
@@ -86,24 +93,27 @@ public class LoginController {
     public String userLogin(WebRequest dataFromForm){
 
         try{
-            UserService userService = new UserService();
-
             String useremail = dataFromForm.getParameter("email");
             String userpassword = dataFromForm.getParameter("password");
 
-            if(useremail.equals("admin@admin.dk") && userpassword.equals("admin")){
-                System.out.println("admin godkendt");
-                return "redirect:/admin";
-
+            for(User user : userServiceToDisplay.allUsers)
+            {
+                if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
+                {
+                    System.out.println("godkendt");
+                    return "redirect:/loginpage";
+                }
             }
-            else if(userService.doesEmailMatchPassword(useremail, userpassword)){
 
-                System.out.println("godkendt");
-                return "redirect:/home";
-            }
+            //TODO RBP: Implementer Database kald, så kan tjekke om User findes på databasen
+//            if(userServiceToDisplay.doesEmailMatchPassword(useremail, userpassword)){
+//
+//                System.out.println("godkendt");
+//                return "redirect:/loginpage";
+//            }
 
         }catch(Exception e){
-            System.out.println("fejl");
+            System.out.println("fejl: " + e);
             return "redirect:/login";
         }
 

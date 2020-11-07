@@ -44,6 +44,17 @@ public class User extends Profil {
     
     /*  Mangler at sætte en liste med billeder.  */
 
+    public User(String email, String password, String firstName, String lastName, Date dateOfBirth, int gender, int sexualPreference, String bio)
+    {
+        super(email, password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.sexualPreference = sexualPreference;
+        this.bio = bio;
+    }
+
     public User() {
        //Default constructor
     }
@@ -119,17 +130,9 @@ public class User extends Profil {
         return potentialCandidates;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public String toString()
+    {
+        return "User{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + ", sexualPreference=" + sexualPreference + ", bio='" + bio + '\'' + '}';
+    }
 }
