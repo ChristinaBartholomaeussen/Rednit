@@ -2,6 +2,8 @@ package com.example.demo.models;
 
 
 
+import com.example.demo.repositories.AdminRepository;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -116,6 +118,10 @@ public class User extends Profil {
     public List getPotentialCandidates() {
         return potentialCandidates;
     }
+
+
+
+
 
 
 

@@ -6,6 +6,9 @@
     <link href="https://fonts.googleapis.com/css2?family=David+Libre&family=Montserrat&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>login</title>
+
+
+
 <style>
     .emaildiv{
         width: 60px;
@@ -20,15 +23,19 @@
 <div class="col" align="center" >
     <div class="emaildiv">
         <div id="form-container">
-            <form id="login-container" action="/index" method="post">
-                <input type="text" id="email" value="email" style="text-align: center">
-                <input type="text" id="password" value="password" style="text-align: center">
-                <input type="button" id="login" value="login" style="text-align: center">
-<!--                <span th:text="${""}"></span>-->
+            <form id="login-container" action="/postLoginpage" method="post">
+                <input type="email" id="email" name="email" placeholder="email" style="text-align: center">
+                <input type="password" id="password" name="password" placeholder="password" style="text-align: center">
+                <input type="submit" id="login" value="login" style="text-align: center">
+
             </form>
         </div>
     </div>
 </div>
+
+
+
+
 
 <!-- TODO: Alternativ til 5 <br> tags i træk? -->
 <br><br><br><br><br>

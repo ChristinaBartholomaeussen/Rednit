@@ -22,9 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="home controller">
+    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="flytter rundt på nogle metoder, samt tilføjet flere metoder vi skal bruge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/HomeControlle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/HomeControlle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/loginPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/loginPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +61,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -109,7 +115,7 @@
       <workItem from="1604574773114" duration="299000" />
       <workItem from="1604665243140" duration="4000" />
       <workItem from="1604672018817" duration="95000" />
-      <workItem from="1604680488421" duration="20328000" />
+      <workItem from="1604680488421" duration="28062000" />
     </task>
     <task id="LOCAL-00001" summary="Forslag til, hvordan vores design diagram bør være opbygget">
       <created>1604528369187</created>
@@ -167,7 +173,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604755514656</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="...">
+      <created>1604758159745</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1604758159745</updated>
+    </task>
+    <task id="LOCAL-00010" summary="flytter rundt på nogle metoder, samt tilføjet flere metoder vi skal bruge">
+      <created>1604763860925</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1604763860925</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +214,9 @@
     <MESSAGE value="slettet candidate klasserne og flyttet metoder over til hhv user og UserRepository, samt lavet metoder i match klasserne" />
     <MESSAGE value="påbegyndt controller samt html for login siden&#10;&#10;Oprettet controller til hvert emne, så vi ikke har én controller, der håndterer alt" />
     <MESSAGE value="home controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="home controller" />
+    <MESSAGE value="..." />
+    <MESSAGE value="flytter rundt på nogle metoder, samt tilføjet flere metoder vi skal bruge" />
+    <option name="LAST_COMMIT_MESSAGE" value="flytter rundt på nogle metoder, samt tilføjet flere metoder vi skal bruge" />
   </component>
   <component name="WindowStateProjectService">
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1604685866153">
@@ -217,10 +239,58 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="346" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1604581940129" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1604672109164">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1604758389806">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604672109164" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604758389806" />
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1604765913884">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604765913884" />
+    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1604765913884">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604765913884" />
+    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1604765913884">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604765913884" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1604765913884">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604765913884" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1604765930530">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604765930530" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1604765930529">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1604765930529" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1604765930529">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1604765930529" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1604765930530">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1604765930530" />
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom" timestamp="1604765913721">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604765913721" />
+    <state width="1493" height="261" key="GridCell.Tab.2.center" timestamp="1604765913721">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1604765913721" />
+    <state width="1493" height="261" key="GridCell.Tab.2.left" timestamp="1604765913721">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1604765913721" />
+    <state width="1493" height="261" key="GridCell.Tab.2.right" timestamp="1604765913721">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1604765913721" />
     <state x="299" y="67" key="Maven.ArtifactSearchDialog" timestamp="1604607563382">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -229,14 +299,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1604755486809" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604755516390">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604763873487">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604755516390" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604758140683">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604763873487" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604763865569">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1604758140683" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1604763865569" />
     <state x="360" y="66" key="new project wizard" timestamp="1604672111621">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -245,5 +315,20 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604708948238" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1604761355221">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1604761355221" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controllers/HomeController.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

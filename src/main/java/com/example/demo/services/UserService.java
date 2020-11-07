@@ -1,11 +1,13 @@
 package com.example.demo.services;
 
 import com.example.demo.models.User;
+import com.example.demo.repositories.AdminRepository;
+import com.example.demo.repositories.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserService {
+public class UserService extends ProfileService{
 
     public List<User> allUsers = new ArrayList<>();
 
@@ -75,6 +77,10 @@ public class UserService {
         return null;
     }
 
+    public User getSingleUser(String email){
+        //TODO
+        return null;
+    }
     public void addToLikedList(User user) {
 
     }
@@ -85,6 +91,71 @@ public class UserService {
 
     public void addToPotentialCandidates(User user) {
 
+    }
+
+    public boolean checkPassword(String password) {
+
+        //ToDo
+        /*
+         *  Tilføj password securities.
+         *  */
+
+        if (password.length() > 4 && password.length() < 20) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean checkEmail(String email) {
+        //INDSÆT kode, der laver op til vores email krav og om den allerede er i brug.
+
+        if (email == null || email.isBlank()) {
+
+            return false;
+        } else if (email.length() > 4 && email.indexOf('@') > 0 && email.indexOf('.') > email.indexOf('@')) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+    AdminRepository adminRepository = new AdminRepository();
+
+    //Tjekker om vores email og password passer til det i vores database
+    public boolean doesEmailMatchPassword(String email, String password) {
+
+
+        List<User> usersFromDatabase = adminRepository.getAllUsersFromDatabase(); //Gemmer oplysningerne fra databasen i listen
+
+        if (password.equalsIgnoreCase("admin") && email.equalsIgnoreCase("admin@admin.dk")) {
+            return true;
+        } else
+            {
+            for (User u : usersFromDatabase) {
+                if (email.equalsIgnoreCase(u.getPassword()) && password.equals(u.getPassword())) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    //Skal returnere den bruger fra databasen, som har det matchende password + email.
+    public User isLoggedIn(String email, String password){
+
+        UserRepository userRepository = new UserRepository();
+
+        User user = null;
+
+        if(doesEmailMatchPassword(email, password))
+        {
+            user = userRepository.getSingleUserFromDatabase();
+        }
+
+        return user;
     }
 
 

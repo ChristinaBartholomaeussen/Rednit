@@ -42,4 +42,9 @@ public class AdminService {
 
     }
 
+    public User getSingleUser(){
+        //TODO
+        return null;
+    }
+
 }

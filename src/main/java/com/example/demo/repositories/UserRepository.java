@@ -57,6 +57,14 @@ public class UserRepository {
 
         return likedList;
 
+
     }
+
+    public User getSingleUserFromDatabase(){
+        //TODO
+        return null;
+    }
+
+
 
 }

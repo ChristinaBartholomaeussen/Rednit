@@ -30,6 +30,12 @@ public class AdminRepository {
         return null;
     }
 
+    public User getSinleUserFromDatabase(){
+
+        //TODO
+        return null;
+    }
+
     public List<User> getAllUsersFromDatabase(){
         return null;
     }
