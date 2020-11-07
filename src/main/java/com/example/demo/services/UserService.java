@@ -129,16 +129,11 @@ public class UserService extends ProfileService{
 
         List<User> usersFromDatabase = adminRepository.getAllUsersFromDatabase(); //Gemmer oplysningerne fra databasen i listen
 
-        if (password.equalsIgnoreCase("admin") && email.equalsIgnoreCase("admin@admin.dk")) {
-            return true;
-        } else
-            {
             for (User u : usersFromDatabase) {
                 if (email.equalsIgnoreCase(u.getPassword()) && password.equals(u.getPassword())) {
                     return true;
                 }
             }
-        }
 
         return false;
     }

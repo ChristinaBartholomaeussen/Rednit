@@ -17,9 +17,10 @@ import org.springframework.web.context.request.WebRequest;
 public class HomeController
 {
 
-    User userToDisplay = new User();
-
-
+@GetMapping("/home")
+    public String home(){
+    return "udforsk";
+}
 
 
     //TODO Loginmapping bør ligge i LoginController - Home skal kun indeholde hvad vi viser i "Udforsk"

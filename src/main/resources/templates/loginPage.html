@@ -10,27 +10,46 @@
 
 
 <style>
-    .emaildiv{
-        width: 60px;
-        height: 30px;
+    .userInfoDiv{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 50vh;
+        width: 400px;
+        height: 100px;
 
+    }
+
+    .forgottenPassword{
+        font-size: 12px;
+    }
+
+    .contactform1:hover{
+        font-style: ;
     }
 </style>
 </head>
 <body>
-
-<p align="center"><b>Indtast dine login oplysninger</b></p>
 <div class="col" align="center" >
-    <div class="emaildiv">
-        <div id="form-container">
-            <form id="login-container" action="/postLoginpage" method="post">
-                <input type="email" id="email" name="email" placeholder="email" style="text-align: center">
-                <input type="password" id="password" name="password" placeholder="password" style="text-align: center">
-                <input type="submit" id="login" value="login" style="text-align: center">
 
+<div class="userInfoDiv">
+        <div id="form-container">
+            <form id="login-container" action="/postLogin" method="post">
+                <label style="text-align: center"><b>Login</b></label><br><br>
+
+                <input name="email" type="email" id="email"  placeholder="email" style="text-align: center"><br><br>
+                <input name="password" type="password" id="password"  placeholder="password" style="text-align: center">
+
+                <div class="forgottenPassword">
+                    Glemt password?
+                </div>
+                <br>
+                <input type="submit" id="login" value="login" style="text-align: center">
             </form>
+            </div>
         </div>
-    </div>
 </div>
 
 

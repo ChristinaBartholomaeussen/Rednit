@@ -71,17 +71,18 @@ public class LoginController {
         return "redirect:/create";
     }
 
-    @GetMapping("/loginpage")
+    @GetMapping("/login")
     public String login(Model userModel){
 
-        userModel.addAttribute("userToDisplay", userToDisplay);
-        userModel.addAttribute("userServiceToDisplay", userServiceToDisplay);
+        //userModel.addAttribute("userToDisplay", userToDisplay);
+        //userModel.addAttribute("userServiceToDisplay", userServiceToDisplay);
 
         return "loginPage";
     }
 
 
-    @PostMapping("/postLoginpage")
+    //Postmapping til login - henter email og password fra html
+    @PostMapping("/postLogin")
     public String userLogin(WebRequest dataFromForm){
 
         try{
@@ -90,18 +91,23 @@ public class LoginController {
             String useremail = dataFromForm.getParameter("email");
             String userpassword = dataFromForm.getParameter("password");
 
-            if(userService.doesEmailMatchPassword(useremail, userpassword)){
+            if(useremail.equals("admin@admin.dk") && userpassword.equals("admin")){
+                System.out.println("admin godkendt");
+                return "redirect:/admin";
+
+            }
+            else if(userService.doesEmailMatchPassword(useremail, userpassword)){
 
                 System.out.println("godkendt");
-                return "redirect:/loginpage";
+                return "redirect:/home";
             }
 
         }catch(Exception e){
             System.out.println("fejl");
-            return "redirect:/loginpage";
+            return "redirect:/login";
         }
 
-        return "redirect:/create";
+        return "redirect:/login";
 
     }
 
