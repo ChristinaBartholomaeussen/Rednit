@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.User;
+import com.example.demo.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import java.util.Date;
 public class LoginController {
 
     User userToDisplay = new User();
+    UserService userServiceToDisplay = new UserService();
 
     @GetMapping("/create")
     public String index(Model userModel)
@@ -67,6 +69,40 @@ public class LoginController {
         }
 
         return "redirect:/create";
+    }
+
+    @GetMapping("/loginpage")
+    public String login(Model userModel){
+
+        userModel.addAttribute("userToDisplay", userToDisplay);
+        userModel.addAttribute("userServiceToDisplay", userServiceToDisplay);
+
+        return "loginPage";
+    }
+
+
+    @PostMapping("/postLoginpage")
+    public String userLogin(WebRequest dataFromForm){
+
+        try{
+            UserService userService = new UserService();
+
+            String useremail = dataFromForm.getParameter("email");
+            String userpassword = dataFromForm.getParameter("password");
+
+            if(userService.doesEmailMatchPassword(useremail, userpassword)){
+
+                System.out.println("godkendt");
+                return "redirect:/loginpage";
+            }
+
+        }catch(Exception e){
+            System.out.println("fejl");
+            return "redirect:/loginpage";
+        }
+
+        return "redirect:/create";
+
     }
 
 }
