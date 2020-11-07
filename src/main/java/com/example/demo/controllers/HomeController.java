@@ -32,25 +32,31 @@ public class HomeController
         userModel.addAttribute("userToDisplay", userToDisplay);
         userModel.addAttribute("userServiceToDisplay", userServiceToDisplay);
 
-
       return "loginPage";
    }
 
 
     @PostMapping("/postLoginpage")
-    public boolean userLogin(WebRequest dataFromForm){
+    public String userLogin(WebRequest dataFromForm){
 
-        UserService userService = new UserService();
+     try{
+         UserService userService = new UserService();
 
-        String useremail = dataFromForm.getParameter("email");
-        String userpassword = dataFromForm.getParameter("password");
+         String useremail = dataFromForm.getParameter("email");
+         String userpassword = dataFromForm.getParameter("password");
 
-        if(userService.doesEmailMatchPassword(useremail, userpassword)){
-            return true;
-        }
-        else {
-            return false;
-        }
+         if(userService.doesEmailMatchPassword(useremail, userpassword)){
+
+             System.out.println("godkendt");
+             return "redirect:/loginPage";
+         }
+
+         }catch(Exception e){
+             System.out.println("fejl");
+             return "redirect:/loginPage";
+         }
+
+        return "redirect:/createNewProfile";
 
     }
 
