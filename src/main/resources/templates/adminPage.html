@@ -1,23 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
 </head>
 <body>
 
-<label>Brugernavne</label>
-<br>
-<select name="users" size="10" multiple="multiple" style="width: 150px;">
-    <option value="username"> Username1 </option>
-    <option value="username"> Username2 </option>
-    <option value="username"> Username3 </option>
-    <option value="username"> Username4 </option>
-    <option value="username"> Username5 </option>
-    <option value="username"> Username6 </option>
-    <option value="username"> Username7 </option>
-    <option value="username"> Username8 </option>
-</select>
+<form>
+    <label>Brugernavne</label>
+    <br>
+    <select name="users" size="10" style="width: 150px;">
+        <option value="username"> Username1 </option>
+        <option value="username"> Username2 </option>
+        <option value="username"> Username3 </option>
+        <option value="username"> Username4 </option>
+        <option value="username"> Username5 </option>
+        <option value="username"> Username6 </option>
+        <option value="username"> Username7 </option>
+        <option value="username"> Username8 </option>
+    </select>
+
+    <br><br>
+    <label>Valgt bruger: </label><br>
+
+    <label>Email:</label>
+    <input type="text" name="email" value="email"><br>
+
+    <label>Fornavn:</label>
+    <input type="text" name="firstName" value="fornavn"><br>
+
+    <label>Efternavn:</label>
+    <input type="text" name="lastName" value="Efternavn"><br>
+
+    <label>Alder</label>
+    <input type="text" name="age" value="Alder"><br>
+
+    <label>Bio</label>
+    <input type="text" name="bio" value="bio"><br>
+
+    <input type="text" name="photo" value="photo (Not yet implemented)">
+
+    <br><br>
+    <input type="submit" value="Blacklist">
+    <input type="submit" value="Genaktiver">
+    <input type="submit" value="Slet profil">
+</form>
+
+<br><br><br><br><br>
+
+<div class="form-group blu-margin">
+    <select class="form-control" th:field="${users}" id="dropOperator">
+        <option value="0">Vælg bruger: </option>
+        <option th:each="user : ${users}"
+                th:value="${user.lastName}"
+                th:text="${user.firstName}">
+        </option>
+    </select>
+</div>
 
 </body>
 </html>
