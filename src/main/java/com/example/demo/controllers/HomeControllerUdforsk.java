@@ -15,12 +15,14 @@ public class HomeControllerUdforsk {
 
     User userToDisplay = new User();
 
-    @GetMapping("/loginpage")
-    public String login(Model userModel){
-
-        userModel.addAttribute("userToDisplay", userToDisplay);
-        return "loginPage";
-    }
+    //TODO Loginmapping bør ligge i LoginController - Home skal kun indeholde hvad vi viser i "Udforsk"
+    //TODO "Udforsk" efter filnavnet er unødvendigt, det ser lidt rodet ud?
+//    @GetMapping("/loginpage")
+//    public String login(Model userModel){
+//
+//        userModel.addAttribute("userToDisplay", userToDisplay);
+//        return "loginPage";
+//    }
 
     @PostMapping("/postLoginpage")
     public boolean userEmail(WebRequest dataFromForm){

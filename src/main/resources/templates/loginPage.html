@@ -16,21 +16,33 @@
 </head>
 <body>
 
-<p><b>Indtast dine login oplysninger</b></p>
-
-<div class="col" align="center">
+<p align="center"><b>Indtast dine login oplysninger</b></p>
+<div class="col" align="center" >
     <div class="emaildiv">
         <div id="form-container">
-            <form id="registration-container" action="/index" method="post">
-                <label for="email" style="text-align: center"> Email
-                </label>
-                <input type="text" id="email" name="email" style="text-align: center">
-                <span th:text="${}"
+            <form id="login-container" action="/index" method="post">
+                <input type="text" id="email" value="email" style="text-align: center">
+                <input type="text" id="password" value="password" style="text-align: center">
+                <input type="button" id="login" value="login" style="text-align: center">
+<!--                <span th:text="${""}"></span>-->
             </form>
         </div>
     </div>
 </div>
 
+<!-- TODO: Alternativ til 5 <br> tags i træk? -->
+<br><br><br><br><br>
+
+<p align="center"><b>Lav ny bruger:</b></p>
+<div class="col" align="center" >
+    <div class="emaildiv">
+        <div id="form2-container">
+            <form id="registration-container" action="/index" method="post">
+                <input type="button" id="createProfile" value="Lav ny profil" style="text-align: center">
+            </form>
+        </div>
+    </div>
+</div>
 
 
 </body>
