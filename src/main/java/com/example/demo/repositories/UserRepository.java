@@ -2,6 +2,9 @@ package com.example.demo.repositories;
 
 import com.example.demo.models.User;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +66,42 @@ public class UserRepository {
     public User getSingleUserFromDatabase(){
         //TODO
         return null;
+    }
+
+    public List<User> getAllUserFromDatabase(){
+
+        List<User> allUsers = new ArrayList<User>();
+
+        try{
+            PreparedStatement ps = connection.establishConnection().prepareStatement("Select * FROM users");
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                User user = new User(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getString(8)
+                        //rs.getObject(8, List.class),
+                        //rs.getObject(10, List.class),
+                        //rs.getObject(11, List.class),
+                        //rs.getObject(12, List.class)
+                );
+
+                allUsers.add(user);
+
+            }
+
+        }catch (SQLException e){
+            return null;
+        }
+
+        return allUsers;
     }
 
 

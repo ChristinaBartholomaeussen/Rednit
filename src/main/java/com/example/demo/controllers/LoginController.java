@@ -11,6 +11,8 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 
 @Controller
@@ -88,11 +90,13 @@ public class LoginController
     @PostMapping("/postLogin")
     public String userLogin(WebRequest dataFromForm){
 
+        List userFromDB = userServiceToDisplay.getAllUsers();
+
         try{
             String useremail = dataFromForm.getParameter("email");
             String userpassword = dataFromForm.getParameter("password");
 
-            for(User user : userServiceToDisplay.allUsers)
+            for(User user : userFromDB)
             {
                 if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
                 {

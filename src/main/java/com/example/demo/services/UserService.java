@@ -73,9 +73,22 @@ public class UserService extends ProfileService{
         return true;
     }
 
-    public List getAllUsers(){
-        return null;
+    public List<User> getAllUsers(){
+
+        UserRepository allUsersFromDatabase = new UserRepository();
+
+        allUsers = allUsersFromDatabase.getAllUserFromDatabase();
+
+        return allUsers;
     }
+
+
+
+
+
+
+
+
 
     public User getSingleUser(String email){
         //TODO
