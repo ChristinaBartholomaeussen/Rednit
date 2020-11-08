@@ -4,6 +4,7 @@ package com.example.demo.models;
 
 import com.example.demo.repositories.AdminRepository;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,7 @@ public class User extends Profil {
     private int gender;
     private int sexualPreference;
     private String bio;
-    private List photos;
+    private byte[] photo1, photo2, photo3;
     private List<User> likedUsers;
     private List<User> dislikedUsers;
     private List<User> potentialCandidates;
@@ -26,7 +27,7 @@ public class User extends Profil {
                 String firstName, String lastName,
                 Date dateOfBirth, int gender,
                 int sexualPrefrerence, String bio,
-                List photos, List likedUsers, List dislikedUsers, List potentialCandidates)
+                byte[] photo1, byte[] photo2, byte[] photo3, List likedUsers, List dislikedUsers, List potentialCandidates)
     {
         super(email, password);
                 this.firstName = firstName;
@@ -35,7 +36,9 @@ public class User extends Profil {
                 this.gender = gender;
                 this.sexualPreference = sexualPrefrerence;
                 this.bio = bio;
-                this.photos = new ArrayList<>();
+                this.photo1 = photo1;
+                this.photo2 = photo2;
+                this.photo3 = photo3;
                 this.likedUsers = new ArrayList<>();
                 this.dislikedUsers = new ArrayList<>();
                 this.potentialCandidates = new ArrayList<>();
@@ -55,12 +58,28 @@ public class User extends Profil {
         this.bio = bio;
     }
 
+    public User(String email, String password, String firstName, String lastName, Date dateOfBirth, int gender, int sexualPreference, String bio, byte[] photo1, byte[] photo2, byte[] photo3)
+    {
+        super(email, password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.sexualPreference = sexualPreference;
+        this.bio = bio;
+        this.photo1 = photo1;
+        this.photo2 = photo2;
+        this.photo3 = photo3;
+    }
+
     public User() {
        //Default constructor
     }
 
     public User(String email) {
     }
+
+
 
     public String getFirstName() {
         return firstName;
@@ -110,12 +129,26 @@ public class User extends Profil {
         this.bio = bio;
     }
 
-    public List getPhotos() {
-        return photos;
+    public byte[] getPhoto1(){
+        return photo1;
     }
 
-    public void setPhotos(List photos) {
-        this.photos = photos;
+    public byte[] getPhoto2(){
+        return photo2;
+    }
+
+    public byte[] getPhoto3(){
+        return photo3;
+    }
+
+    public List<String> setPhoto(String photo1, String photo2, String photo3){
+        ArrayList<String> photos = new ArrayList<>();
+
+        photos.add(photo1);
+        photos.add(photo2);
+        photos.add(photo3);
+
+        return photos;
     }
 
     public List getLikedUsers() {

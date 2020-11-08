@@ -4,6 +4,7 @@ import com.example.demo.models.User;
 import com.example.demo.repositories.AdminRepository;
 import com.example.demo.repositories.UserRepository;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class UserService extends ProfileService{
         return true;
     }
 
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() throws FileNotFoundException {
 
         UserRepository allUsersFromDatabase = new UserRepository();
 

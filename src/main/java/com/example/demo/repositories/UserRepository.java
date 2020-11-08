@@ -2,6 +2,8 @@ package com.example.demo.repositories;
 
 import com.example.demo.models.User;
 
+import java.io.*;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,16 +70,25 @@ public class UserRepository {
         return null;
     }
 
-    public List<User> getAllUserFromDatabase(){
+    public List<User> getAllUserFromDatabase() throws FileNotFoundException {
 
         List<User> allUsers = new ArrayList<User>();
+
+        File file = new File("src/main/resources/photos"); //Path til vores gemte billeder
+        FileOutputStream photoOutout = new FileOutputStream(file);
+
+        byte b[];
+        Blob blob;
+
 
         try{
             PreparedStatement ps = connection.establishConnection().prepareStatement("Select * FROM users");
 
             ResultSet rs = ps.executeQuery();
+            InputStream binaryStream;
 
             while(rs.next()){
+
                 User user = new User(
                         rs.getString(1),
                         rs.getString(2),
@@ -86,18 +97,19 @@ public class UserRepository {
                         rs.getDate(5),
                         rs.getInt(6),
                         rs.getInt(7),
-                        rs.getString(8)
-                        //rs.getObject(8, List.class),
-                        //rs.getObject(10, List.class),
-                        //rs.getObject(11, List.class),
-                        //rs.getObject(12, List.class)
+                        rs.getString(8),
+
+                        binaryStream = rs.getBinaryStream(9),
+                        rs.getBinaryStream(10),
+                        rs.getBinaryStream(11)
+
                 );
 
                 allUsers.add(user);
 
             }
 
-        }catch (SQLException e){
+        }catch (SQLException | IOException e){
             return null;
         }
 
