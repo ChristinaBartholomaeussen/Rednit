@@ -43,15 +43,24 @@ public class UserController {
 			user.setFirstName(updatedName);
 		}
     	
+    	/*  Mangler updateAge */
+    	
+		// Tjekker om bioen ikke er tom, og sætter en ny bio.
     	if (!data.getParameter("bio").equals("")) {
     		String updatedBio = String.valueOf(data.getParameter("bio"));
     		user.setBio(updatedBio);
 		}
     	
     	
-		
+    	// Tjekker at password ikke er null
+		// Tjekker om det nye passsword er det samme som det gamle
+		// Tjekker om password er det samme som passwordTwo
+    	if (!data.getParameter("password").equals("") && !data.getParameter("password").equals(user.getPassword()) && data.getParameter("password").equals(data.getParameter("passwordTwo"))) {
+    		String updatedPassword = data.getParameter("password");
+    		
+		}
     	
-    	
+    	// sender en POST request, og reloader siden igen. 
 		return "redirect:/myProfile";
 	}
 

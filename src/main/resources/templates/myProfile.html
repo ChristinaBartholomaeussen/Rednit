@@ -43,9 +43,17 @@
 
 <div id="wrapper" class="flex">
 	<form class="container reverse-flex" action="/myProfilePost" method="post" >
-		<input type="text" name="name" id="name" th:placeholder="${user.getFirstName()}">
-		<input type="text" name="age" id="age" th:placeholder="${user.getDateOfBirth()}">
-		<textarea name="bio" maxlength="250" id="update-user-settings" cols="30" rows="10" th:placeholder="${user.getBio()}"></textarea>
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" th:value="${user.getFirstName()}">
+
+		<label for="age">Age:</label>
+		<input type="text" name="age" id="age" th:value="${user.getDateOfBirth()}">
+		<label for="password">New password:</label>
+		<input type="password" name="password" id="password" >
+		<label for="passwordTwo">Repeat your password:</label>
+		<input type="password" name="passwordTwo" id="passwordTwo">
+		<label for="bio">Bio:</label>
+		<textarea name="bio" maxlength="250" id="bio" cols="30" rows="10" th:text="${user.getBio()}"></textarea>
 		<div class="flex">
 			<input type="submit" id="save" name="save" value="Update">
 			<button>Upload billede</button>
