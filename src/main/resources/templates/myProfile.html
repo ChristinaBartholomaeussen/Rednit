@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>MyProfile</title>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css2?family=David+Libre&family=Montserrat&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>MyPRofil</title>
 	<style>
 		.flex {
 			display: flex;
@@ -36,15 +38,18 @@
 </head>
 <body>
 
+<!-- Dette må ikke fjernes, det er fragments til headeren -->
+<div th:insert="Fragments/header :: header"></div>
+
 <div id="wrapper" class="flex">
 	<div class="container reverse-flex" >
-		<input type="text" name="name" id="name" placeholder="PH: Navn">
-		<input type="text" name="age" id="age" placeholder="age">
+		<input type="text" name="name" id="name" th:placeholder="${user.getFirstName()}">
+		<input type="text" name="age" id="age" >
 		<textarea name="bio" autofocus="autofocus" maxlength="250" id="update-user-settings" cols="30" rows="10" placeholder="Det her er en placeholder text. Vi burde nok læse mere om textareas under w3Schools: https://www.w3schools.com/tags/tag_textarea.asp.  Fordi her står der noget omkring form generelt."></textarea>
 	</div>
 	
 	
-	<div class="container">
+	<div class="container" >
 		
 		<div class="place-holer-main-image"></div>
 		
@@ -52,6 +57,8 @@
 			<button>Gem</button>
 			<button>Upload billede</button>
 		</div>
+		
+		
 		
 	</div>
 	

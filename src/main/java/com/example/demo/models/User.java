@@ -23,6 +23,8 @@ public class User extends Profil {
     private List<User> potentialCandidates;
 
 
+  
+	
     public User(String email, String password,
                 String firstName, String lastName,
                 Date dateOfBirth, int gender,
@@ -78,6 +80,12 @@ public class User extends Profil {
 
     public User(String email) {
     }
+    
+    // Til hurtig test af methoder.
+    public User(String firstName, String email, String password) {
+		super(email, password);
+		this.firstName = firstName;
+	}
 
 
 
