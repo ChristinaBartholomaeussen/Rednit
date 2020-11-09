@@ -21,6 +21,8 @@ public class LoginController
 {
     UserService userServiceToDisplay = new UserService();
 
+    UserRepository up = new UserRepository();
+
     @GetMapping("/create")
     public String index(Model userModel)
     {
@@ -61,11 +63,15 @@ public class LoginController
                 sexualPreference = 3;
 
             Date dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(dataFromForm.getParameter("dateOfBirth"));
+
             String bio = dataFromForm.getParameter("bio");
 
             //TODO RBP: Opret funktionalitet som kan sætte denne bruger ind på Databasen
-            User newUser = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio);
-            userServiceToDisplay.allUsers.add(newUser);
+            User user = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio);
+
+            up.insertUserIntoDatabase(user);
+
+            userServiceToDisplay.allUsers.add(user);
         }
         catch(Exception e)
         {

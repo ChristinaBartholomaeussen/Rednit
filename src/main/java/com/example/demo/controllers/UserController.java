@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.User;
+import com.example.demo.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +18,6 @@ import java.util.List;
 @Controller
 public class UserController {
 
-	
-
 	User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 1, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
 
     @GetMapping("/myMatches")
@@ -30,7 +29,7 @@ public class UserController {
     public String myProfile(Model model){
     	
     	model.addAttribute("user", user);
-    	
+
         return "myProfile";
     }
     

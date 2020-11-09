@@ -1,10 +1,8 @@
 package com.example.demo.models;
 
-
-
+import java.util.Date;
 import com.example.demo.repositories.AdminRepository;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -84,10 +82,10 @@ public class User extends Profil {
 
     public User(String email) {
     }
-    
-    
-    
-    
+
+    public User(String string, String string1, String string2, java.sql.Date date, String string3, int anInt, int anInt1) {
+    }
+
 
     public String getFirstName() {
         return firstName;

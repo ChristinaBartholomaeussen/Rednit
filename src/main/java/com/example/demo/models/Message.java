@@ -7,6 +7,10 @@ public class Message {
     private final LocalDateTime timestamp = LocalDateTime.now(); //Vi får forhåbenlig altid en ny tid.
     private String message;
 
+    public Message(String string, String string1) {
+
+    }
+
 
     public void setMessage(String message) {
         this.message = message;
