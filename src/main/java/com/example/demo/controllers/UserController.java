@@ -14,8 +14,9 @@ import java.util.List;
 @Controller
 public class UserController {
 
-	// Til testning af funktionaliteteter
-	User user = new User("Oscar", "asa@asa", "password");
+	
+
+	User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 1, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
 
     @GetMapping("/myMatches")
     public String match(){
@@ -32,9 +33,24 @@ public class UserController {
     
     @PostMapping("/myProfilePost") 
 	public String myProfilePost(WebRequest data) {
-    	String updatedName = String.valueOf(data.getParameter("name"));
+    	
+    	//ToDo Oscar:
+		// Updatere Date value? 
+    	
+    	if (!data.getParameter("name").equals("")) {
+    		
+    		String updatedName = String.valueOf(data.getParameter("name"));
+			user.setFirstName(updatedName);
+		}
+    	
+    	if (!data.getParameter("bio").equals("")) {
+    		String updatedBio = String.valueOf(data.getParameter("bio"));
+    		user.setBio(updatedBio);
+		}
+    	
+    	
 		
-    	user.setFirstName(updatedName);
+    	
     	
 		return "redirect:/myProfile";
 	}
