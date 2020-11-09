@@ -5,8 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -59,11 +62,27 @@ public class UserController {
     		String updatedPassword = data.getParameter("password");
     		user.setPassword(updatedPassword);
 		}
-    	
-    	// sender en POST request, og reloader siden igen. 
+		
+		
+
+		// sender en POST request, og reloader siden igen. 
 		return "redirect:/myProfile";
 	}
 
+	@PostMapping("/imageFile")
+	public String imageFile(@RequestParam("imageFile") MultipartFile imageFile) {
+
+		try {
+			user.saveImage(imageFile);
+			System.out.println(User.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
+
+		return "redirect:/myProfile";
+	}
+	
     @GetMapping("/explore")
     public String explore(Model model)
     {

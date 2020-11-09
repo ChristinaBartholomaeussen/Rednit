@@ -3,7 +3,11 @@ package com.example.demo.models;
 
 
 import com.example.demo.repositories.AdminRepository;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
@@ -80,6 +84,9 @@ public class User extends Profil {
 
     public User(String email) {
     }
+    
+    
+    
     
 
     public String getFirstName() {
@@ -169,4 +176,20 @@ public class User extends Profil {
     {
         return "User{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + ", sexualPreference=" + sexualPreference + ", bio='" + bio + '\'' + '}';
     }
+
+	public void saveImage(MultipartFile imageFile) throws Exception {
+    	try {
+    		//String folder = "/Documents/Dev/java/2.semester/Rednit/src/main/resources/static/photos";
+			String folder = "./src/main/resources/static/photos";
+
+			System.out.println(imageFile);
+    		byte[] imageBytesArray = imageFile.getBytes();
+			Path path = Paths.get(folder, imageFile.getOriginalFilename());
+			Files.write(path, imageBytesArray);
+			System.out.println(path);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 }
