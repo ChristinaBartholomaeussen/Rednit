@@ -55,9 +55,31 @@ public class AdminController
     }
 
     @GetMapping("/adminPage")
-    public String getSingleUser(@RequestParam(name = "chosenuserfirstName") String firstname){
-        String s = firstname;
-        System.out.println(s);
+    public String getSingleUser(@RequestParam(name = "chosenuserfirstName") String firstname, Model userModel) throws FileNotFoundException {
+
+        userModel.addAttribute("userToDisplay", userToDisplay);
+
+        String firstName = firstname;
+        String lastName = null;
+        String email = null;
+
+
+        for(User u : allUsers){
+            if(firstName.equals(u.getFirstName())){
+
+               userToDisplay.setFirstName(u.getFirstName());
+               userToDisplay.setLastName(u.getLastName());
+               userToDisplay.setEmail(u.getEmail());
+
+               //System.out.println(firstName + " " + lastName + " " + email);
+
+            }
+        }
+
+
+
+
+        //System.out.println(firstName);
         return "adminChosenUser";
 
 

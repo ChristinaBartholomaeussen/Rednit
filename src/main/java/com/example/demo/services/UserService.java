@@ -125,13 +125,13 @@ public class UserService extends ProfileService{
         } else return email.length() > 4 && email.indexOf('@') > 0 && email.indexOf('.') > email.indexOf('@');
     }
 
-    AdminRepository adminRepository = new AdminRepository();
+    UserRepository userRepository = new UserRepository();
 
     //Tjekker om vores email og password passer til det i vores database
-    public boolean doesEmailMatchPassword(String email, String password) {
+    public boolean doesEmailMatchPassword(String email, String password) throws FileNotFoundException {
 
 
-        List<User> usersFromDatabase = adminRepository.getAllUsersFromDatabase(); //Gemmer oplysningerne fra databasen i listen
+        List<User> usersFromDatabase = userRepository.getAllUserFromDatabase(); //Gemmer oplysningerne fra databasen i listen
 
             for (User u : usersFromDatabase) {
                 if (email.equalsIgnoreCase(u.getPassword()) && password.equals(u.getPassword())) {
@@ -143,7 +143,7 @@ public class UserService extends ProfileService{
     }
 
     //Skal returnere den bruger fra databasen, som har det matchende password + email.
-    public User isLoggedIn(String email, String password){
+    public User isLoggedIn(String email, String password) throws FileNotFoundException {
 
         UserRepository userRepository = new UserRepository();
 

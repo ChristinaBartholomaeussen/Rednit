@@ -36,9 +36,6 @@ public class AdminRepository {
         return null;
     }
 
-    public List<User> getAllUsersFromDatabase(){
-        return null;
-    }
 
 
 }

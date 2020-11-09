@@ -10,13 +10,12 @@ public class AdminService {
 
     private final List<User> allUsers;
     private final List<User> blacklistedUser;
-    private AdminRepository adminRepository;
+
 
     public AdminService()
     {
-        this.allUsers = adminRepository.getAllUsersFromDatabase();
         this.blacklistedUser = new ArrayList<>();
-        this.adminRepository = new AdminRepository();
+        this.allUsers = new ArrayList<>();
     }
 
     public List<User> addToBlacklist(User user)
@@ -46,5 +45,7 @@ public class AdminService {
 
         return "ok";
     }
+
+
 
 }

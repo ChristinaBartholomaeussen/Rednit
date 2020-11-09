@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=David+Libre&family=Montserrat&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <title>chosenuser</title>
 </head>
 <body>
+<!-- Dette må ikke fjernes, det er fragments til headeren -->
+<div th:insert="Fragments/header :: header"></div>
 
 <div>
-    <p>Halløj</p>
+    <form action="adminPage" method="post" >
+
+        <input th:value="${userToDisplay.getFirstName()}"><br>
+        <input th:value="${userToDisplay.getLastName()}"><br>
+        <input th:value="${userToDisplay.getEmail()}">
+
+
+
+    </form>
 </div>
 
 </body>
