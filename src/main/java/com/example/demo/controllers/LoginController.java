@@ -102,7 +102,7 @@ public class LoginController
                 if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
                 {
                     System.out.println("godkendt");
-                    System.out.println("Logget ind med bruger: " + user);
+                    System.out.println("Logget ind med bruger: " + user.getFirstName() + " " + user.getLastName());
                     return "redirect:/loginpage";
                 }
             }
