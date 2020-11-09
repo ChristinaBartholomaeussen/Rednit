@@ -47,41 +47,23 @@ public class AdminController
     }
 
     @PostMapping("/postAdmin")
-    public String adminPageDelete(WebRequest dataFromForm) throws FileNotFoundException {
-        String userObject = String.valueOf(dataFromForm.getParameter("firstname"));
-        System.out.println("ok1");
-
-        return "redirect:/adminPage?chosenuserfirstName="+userObject;
-    }
-
-    @GetMapping("/adminPage")
-    public String getSingleUser(@RequestParam(name = "chosenuserfirstName") String firstname, Model userModel) throws FileNotFoundException {
+    public String adminPageDelete(WebRequest dataFromForm, Model userModel) throws FileNotFoundException {
+        String firstname = String.valueOf(dataFromForm.getParameter("firstname"));
 
         userModel.addAttribute("userToDisplay", userToDisplay);
 
-        String firstName = firstname;
-        String lastName = null;
-        String email = null;
-
-
         for(User u : allUsers){
-            if(firstName.equals(u.getFirstName())){
+            if(firstname.equals(u.getFirstName())){
 
-               userToDisplay.setFirstName(u.getFirstName());
-               userToDisplay.setLastName(u.getLastName());
-               userToDisplay.setEmail(u.getEmail());
-
-               //System.out.println(firstName + " " + lastName + " " + email);
-
+                userToDisplay.setFirstName(u.getFirstName());
+                userToDisplay.setLastName(u.getLastName());
+                userToDisplay.setEmail(u.getEmail());
             }
         }
 
-
-
-
-        //System.out.println(firstName);
-        return "adminChosenUser";
-
-
+        return "redirect:/admin";
     }
+
+
+
 }
