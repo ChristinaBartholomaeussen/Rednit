@@ -18,12 +18,43 @@ import java.util.List;
 @Controller
 public class UserController {
 
-	User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 1, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
+	List<User> allUsers = new ArrayList<>();
+	User selectedUser = new User();
 
-    @GetMapping("/myMatches")
-    public String match(){
-        return "myMatches";
+    @GetMapping("/matches")
+    public String match(Model userModel)
+	{
+		for(int i = 0; i < 45; i++)
+		{
+			Date date = new Date(i);
+			allUsers.add(new User("email"+i,"password"+i,"firstName"+i,"lastName"+i,date,i,i,"bio"+i));
+		}
+
+		userModel.addAttribute("allUsers", allUsers);
+		userModel.addAttribute("selectedUser", selectedUser);
+
+		return "matches";
     }
+
+    @PostMapping("/postMatches")
+	public String matchSelect(WebRequest dataFromForm, Model userModel)
+	{
+		String firstName = String.valueOf(dataFromForm.getParameter("selected"));
+
+		userModel.addAttribute("selectedUser", selectedUser);
+
+		for(User u : allUsers)
+		{
+			if(firstName.equals(u.getFirstName()))
+			{
+				selectedUser = u;
+			}
+		}
+
+		return "redirect:/matches";
+	}
+
+	User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 1, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
 
     @GetMapping("/myProfile")
     public String myProfile(Model model){

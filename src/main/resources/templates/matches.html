@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>matches</title>
+</head>
+<body>
+
+<!-- Dette må ikke fjernes, det er fragments til headeren -->
+<div th:insert="Fragments/header :: header"></div>
+
+<br><br><br><br><br>
+
+<form action="/postMatches" method="post">
+    <select name="selected">
+        <option value="0">Vælg Match</option>
+        <option
+                th:each="user : ${allUsers}"
+                th:text="${user.email}"
+                th:value="${user.email}">
+        </option>
+    </select>
+    <input type="submit" value="Se match">
+</form>
+
+<div style="text-align: center">
+    <label style="text-align: center">
+        <input th:value="${selectedUser.getFirstName()}" placeholder="Fornavn"><br><br>
+        <input th:value="${selectedUser.getLastName()}" placeholder="Efternavn"><br><br>
+        <input th:value="${selectedUser.getEmail()}" placeholder="Email">
+    </label>
+</div>
+
+</body>
+</html>
