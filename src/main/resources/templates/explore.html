@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Udforsk</title>
+</head>
+<body>
+
+<h1 align="center"><b>Udforsk brugere</b></h1>
+<br><br><br><br><br>
+
+<div align="center">
+    <form >
+        <input type="button" value="Nej">
+        <br>
+        <br>
+        <div>
+            <input type="text" th:placeholder="${user.getFirstName()}">
+            <input type="text" th:placeholder="${user.getDateOfBirth()}">
+            <input type="text" th:placeholder="${user.getBio()}">
+        </div>
+        <br>
+        <input type="button" value="Ja">
+    </form>
+</div>
+
+</body>
+</html>
