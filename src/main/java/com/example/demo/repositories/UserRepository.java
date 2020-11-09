@@ -16,6 +16,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.xml.transform.Result;
+import javax.xml.transform.Source;
 
 public class UserRepository {
 
@@ -105,6 +106,7 @@ public class UserRepository {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        System.out.println(userToReturn);
         return userToReturn;
     }
 
@@ -131,8 +133,10 @@ public class UserRepository {
                         resultSet.getInt(7),
                         resultSet.getInt(8)
                 );
+                System.out.println(tmpUser);
                 allUsers.add(tmpUser);
             }
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -166,41 +170,6 @@ public class UserRepository {
         //der skal på en måde findes begges brugeres lister
 
         return likedList;
-
-
     }
 
-    public User getSingleUserFromDatabase(){
-        //TODO
-        return null;
-    }
-
-    public List<User> getAllUserFromDatabase() throws FileNotFoundException {
-
-        List<User> allUsers = new ArrayList<User>();
-
-        File file = new File("src/main/resources/photos"); //Path til vores gemte billeder
-
-
-        try{
-            PreparedStatement ps = connection.establishConnection().prepareStatement("Select * FROM users");
-
-            ResultSet rs = ps.executeQuery();
-
-            while(rs.next()){
-
-                User user = new User(
-
-                );
-
-                allUsers.add(user);
-
-            }
-
-        }catch (SQLException e){
-            return null;
-        }
-
-        return allUsers;
-    }
 }
