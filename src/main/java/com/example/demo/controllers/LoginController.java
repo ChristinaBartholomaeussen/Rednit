@@ -73,7 +73,7 @@ public class LoginController
             return "redirect:/create";
         }
 
-        return "redirect:/loginpage";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
