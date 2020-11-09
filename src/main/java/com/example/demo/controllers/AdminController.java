@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Admin;
 import com.example.demo.models.User;
+import com.example.demo.repositories.AdminRepository;
 import com.example.demo.services.AdminService;
 import com.example.demo.services.UserService;
 import com.mysql.cj.x.protobuf.MysqlxExpr;
@@ -22,6 +24,7 @@ public class AdminController
 {
     List<User> allUsers = new ArrayList<>();
     User userToDisplay = new User();
+    AdminService admin = new AdminService();
 
     UserService userService = new UserService();
 
@@ -31,7 +34,8 @@ public class AdminController
 
         adminModel.addAttribute("users", allUsers);
         adminModel.addAttribute("userToDisplay", userToDisplay);
-        adminModel.addAttribute("adminModel", adminModel);
+        adminModel.addAttribute("admin", admin);
+
 
         //Dummy code - 45 nye Users
         for(int i = 0; i < 45; i++)
@@ -47,10 +51,10 @@ public class AdminController
     }
 
     @PostMapping("/postAdmin")
-    public String adminPageDelete(WebRequest dataFromForm, Model userModel) throws FileNotFoundException {
-        String firstname = String.valueOf(dataFromForm.getParameter("firstname"));
+    public String adminPageDelete(WebRequest dataFromForm) throws FileNotFoundException {
 
-        userModel.addAttribute("userToDisplay", userToDisplay);
+        String firstname = dataFromForm.getParameter("firstname");
+
 
         for(User u : allUsers){
             if(firstname.equals(u.getFirstName())){
@@ -58,11 +62,24 @@ public class AdminController
                 userToDisplay.setFirstName(u.getFirstName());
                 userToDisplay.setLastName(u.getLastName());
                 userToDisplay.setEmail(u.getEmail());
+
+                byte[] image1 = userToDisplay.getPhoto1();
+                byte[] image2 = userToDisplay.getPhoto2();
+                byte[] image3 = userToDisplay.getPhoto3();
+                while(image1 != null && image2 != null & image3 != null){
+                    String i1 = new String(image1);
+                    String i2 = new String(image2);
+                    String i3 = new String(image3);
+                    userToDisplay.setPhoto(i1, i2, i3);
+                }
+
             }
         }
 
         return "redirect:/admin";
     }
+
+    //TODO CB indsæt metode til at håndtere bruger + adminPage
 
 
 

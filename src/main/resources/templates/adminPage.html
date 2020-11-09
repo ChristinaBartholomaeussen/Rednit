@@ -7,6 +7,26 @@
 
     <title>Admin</title>
 
+    <style>
+        .fitText{
+            width: fit-content;
+            text-align: center;
+        }
+
+        .place-holer-main-image {
+            width: 250px;
+            height: 350px;
+            background: #f3f3f3;
+        }
+
+        #wrapper {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+
+    </style>
+
 
 </head>
 
@@ -18,7 +38,6 @@
 
 <form  action="/postAdmin" method="post" >
     <div class="col" style="text-align: left">
-
         <div>
             <select class="form-control"  id="userInfo" name="firstname" style="width: fit-content">
                 <option id="option" value="0">Vælg bruger:</option>
@@ -33,13 +52,28 @@
         </div>
     </div>
 
-    <div style="text-align: center">
-        <label style="text-align: center">
-            <input th:value="${userToDisplay.getFirstName()}" placeholder="Firstname"><br><br>
-            <input th:value="${userToDisplay.getLastName()}" placeholder="Lastname"><br><br>
-            <input th:value="${userToDisplay.getEmail()}" placeholder="Email">
-        </label>
-    </div>
+
+            <div style="text-align: center" id="wrapper">
+
+                <div style="display: inline-block; vertical-align: top;">
+                    <label class="fitText">
+                        <input th:value="${userToDisplay.getFirstName()}" placeholder="Firstname"><br><br>
+                        <input th:value="${userToDisplay.getLastName()}" placeholder="Lastname"><br><br>
+                        <input th:value="${userToDisplay.getEmail()}" placeholder="Email"><br><br>
+
+                        <!-- Indsæt form til at håndtere sletning af bruger -->
+                        <input type="button" value="Slet bruger">
+                    </label>
+                </div>
+
+
+
+                <div style="display: inline-block; vertical-align: top; margin-left: 50px">
+                    
+                    <div class="place-holer-main-image"></div>
+
+                <div>
+         </div>
 
 
 

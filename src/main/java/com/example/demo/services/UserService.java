@@ -77,7 +77,7 @@ public class UserService extends ProfileService{
 
         UserRepository allUsersFromDatabase = new UserRepository();
 
-        allUsers = allUsersFromDatabase.getAllUserFromDatabase();
+        allUsers = allUsersFromDatabase.selectAllUsersFromDatabase();
 
         return allUsers;
     }
@@ -131,7 +131,7 @@ public class UserService extends ProfileService{
     public boolean doesEmailMatchPassword(String email, String password) throws FileNotFoundException {
 
 
-        List<User> usersFromDatabase = userRepository.getAllUserFromDatabase(); //Gemmer oplysningerne fra databasen i listen
+        List<User> usersFromDatabase = userRepository.selectAllUsersFromDatabase(); //Gemmer oplysningerne fra databasen i listen
 
             for (User u : usersFromDatabase) {
                 if (email.equalsIgnoreCase(u.getPassword()) && password.equals(u.getPassword())) {
@@ -151,7 +151,7 @@ public class UserService extends ProfileService{
 
         if(doesEmailMatchPassword(email, password))
         {
-            user = userRepository.getSingleUserFromDatabase();
+            user = userRepository.selectUserFromDatabase(email);
         }
 
         return user;
