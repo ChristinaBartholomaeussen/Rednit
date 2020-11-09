@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -88,7 +89,7 @@ public class LoginController
 
     //Postmapping til login - henter email og password fra html
     @PostMapping("/postLogin")
-    public String userLogin(WebRequest dataFromForm){
+    public String userLogin(WebRequest dataFromForm) throws FileNotFoundException {
 
         List<User> userFromDB = userServiceToDisplay.getAllUsers();
 
@@ -101,7 +102,7 @@ public class LoginController
                 if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
                 {
                     System.out.println("godkendt");
-                    System.out.println("Logget ind med bruger: " + user);
+                    System.out.println("Logget ind med bruger: " + user.getFirstName() + " " + user.getLastName());
                     return "redirect:/loginpage";
                 }
             }

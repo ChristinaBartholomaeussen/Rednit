@@ -2,6 +2,9 @@ package com.example.demo.repositories;
 
 import com.example.demo.models.User;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.sql.Blob;
 import java.sql.PreparedStatement;
@@ -9,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.imageio.ImageIO;
 
 public class UserRepository {
 
@@ -75,33 +79,16 @@ public class UserRepository {
         List<User> allUsers = new ArrayList<User>();
 
         File file = new File("src/main/resources/photos"); //Path til vores gemte billeder
-        FileOutputStream photoOutout = new FileOutputStream(file);
-
-        byte b[];
-        Blob blob;
 
 
         try{
             PreparedStatement ps = connection.establishConnection().prepareStatement("Select * FROM users");
 
             ResultSet rs = ps.executeQuery();
-            InputStream binaryStream;
 
             while(rs.next()){
 
                 User user = new User(
-                        rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getDate(5),
-                        rs.getInt(6),
-                        rs.getInt(7),
-                        rs.getString(8),
-
-                        binaryStream = rs.getBinaryStream(9),
-                        rs.getBinaryStream(10),
-                        rs.getBinaryStream(11)
 
                 );
 
@@ -109,7 +96,7 @@ public class UserRepository {
 
             }
 
-        }catch (SQLException | IOException e){
+        }catch (SQLException e){
             return null;
         }
 
