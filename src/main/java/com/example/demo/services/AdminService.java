@@ -42,9 +42,9 @@ public class AdminService {
 
     }
 
-    public User getSingleUser(){
-        //TODO
-        return null;
+    public String getSingleUser(String firstname){
+
+        return "ok";
     }
 
 }

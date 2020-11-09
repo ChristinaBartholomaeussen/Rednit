@@ -2,26 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Admin</title>
+
+
 </head>
 <body>
 
 <!-- Dette må ikke fjernes, det er fragments til headeren -->
 <div th:insert="Fragments/header :: header"></div>
 
-<form>
+<form  action="/postAdmin" method="post" >
     <label>Brugernavne</label>
     <br>
     <div class="form-group blu-margin">
-        <select class="form-control" >
+        <select class="form-control"  id="userInfo" name="firstname">
             <option value="0">Vælg bruger:</option>
-            <option th:each="user : ${users}"
+            <option
+                    th:each="user : ${users}"
                     th:value="${user.firstName}"
                     th:text="${user.firstName}">
             </option>
+
         </select>
+
+        <br>
+        <input type="submit" value="Se info">
+
     </div>
+
+
+
+
 </form>
+
+
+
+
 
 </body>
 </html>
