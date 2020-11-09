@@ -81,13 +81,6 @@ public class User extends Profil {
     public User(String email) {
     }
     
-    // Til hurtig test af methoder.
-    public User(String firstName, String email, String password) {
-		super(email, password);
-		this.firstName = firstName;
-	}
-
-
 
     public String getFirstName() {
         return firstName;
@@ -132,7 +125,7 @@ public class User extends Profil {
     public String getBio() {
         return bio;
     }
-
+    
     public void setBio(String bio) {
         this.bio = bio;
     }

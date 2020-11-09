@@ -57,7 +57,7 @@ public class UserController {
 		// Tjekker om password er det samme som passwordTwo
     	if (!data.getParameter("password").equals("") && !data.getParameter("password").equals(user.getPassword()) && data.getParameter("password").equals(data.getParameter("passwordTwo"))) {
     		String updatedPassword = data.getParameter("password");
-    		
+    		user.setPassword(updatedPassword);
 		}
     	
     	// sender en POST request, og reloader siden igen. 

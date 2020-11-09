@@ -20,6 +20,8 @@ public abstract class Profil {
 	public String getPassword() {
     	return password;
 	}
+	
+	public void setPassword(String password) {this.password = password;}
 
 	public List getAllProfiles(){
         return profiles;
