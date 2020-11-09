@@ -25,12 +25,12 @@ public class AdminRepository {
 
     }
 
-    public List getBlacklistFromDatabase(List<User> userList){
+    public List<User> getBlacklistFromDatabase(){
 
         return null;
     }
 
-    public User getSinleUserFromDatabase(){
+    public User getSingleUserFromDatabase(){
 
         //TODO
         return null;
