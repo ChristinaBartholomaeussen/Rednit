@@ -23,8 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Profil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Profil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/myProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/myProfile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604925757927</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="implementere at man kan updatere password, som kalder en setPassword() methode i Profil super klassen">
+      <created>1604926739401</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1604926739401</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +217,8 @@
     <MESSAGE value="implementere funktion der updatere data i user obj." />
     <MESSAGE value="implementere at man kan updatere data i obj" />
     <MESSAGE value="implementere at man kan updatere data i obj igen" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementere at man kan updatere data i obj igen" />
+    <MESSAGE value="implementere at man kan updatere password, som kalder en setPassword() methode i Profil super klassen" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementere at man kan updatere password, som kalder en setPassword() methode i Profil super klassen" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604912570029">
@@ -238,10 +245,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="346" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1604581940129" />
-    <state x="311" y="112" key="CommitChangelistDialog2" timestamp="1604925757827">
+    <state x="311" y="112" key="CommitChangelistDialog2" timestamp="1604926739279">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="311" y="112" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1604925757827" />
+    <state x="311" y="112" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1604926739279" />
     <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1604911559103">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -250,38 +257,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604524199990" />
-    <state width="1638" height="295" key="GridCell.Tab.0.bottom" timestamp="1604926617021">
+    <state width="1638" height="295" key="GridCell.Tab.0.bottom" timestamp="1604926990345">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1604926617021" />
-    <state width="1638" height="295" key="GridCell.Tab.0.center" timestamp="1604926617019">
+    <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1604926990345" />
+    <state width="1638" height="295" key="GridCell.Tab.0.center" timestamp="1604926990344">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1604926617019" />
-    <state width="1638" height="295" key="GridCell.Tab.0.left" timestamp="1604926617019">
+    <state width="1638" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1604926990344" />
+    <state width="1638" height="295" key="GridCell.Tab.0.left" timestamp="1604926990343">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1604926617019" />
-    <state width="1638" height="295" key="GridCell.Tab.0.right" timestamp="1604926617020">
+    <state width="1638" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1604926990343" />
+    <state width="1638" height="295" key="GridCell.Tab.0.right" timestamp="1604926990344">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1604926617020" />
-    <state width="1638" height="295" key="GridCell.Tab.1.bottom" timestamp="1604926617022">
+    <state width="1638" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1604926990344" />
+    <state width="1638" height="295" key="GridCell.Tab.1.bottom" timestamp="1604926990347">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1604926617022" />
-    <state width="1638" height="295" key="GridCell.Tab.1.center" timestamp="1604926617021">
+    <state width="1638" height="295" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1604926990347" />
+    <state width="1638" height="295" key="GridCell.Tab.1.center" timestamp="1604926990346">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1604926617021" />
-    <state width="1638" height="295" key="GridCell.Tab.1.left" timestamp="1604926617021">
+    <state width="1638" height="295" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1604926990346" />
+    <state width="1638" height="295" key="GridCell.Tab.1.left" timestamp="1604926990346">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1604926617021" />
-    <state width="1638" height="295" key="GridCell.Tab.1.right" timestamp="1604926617022">
+    <state width="1638" height="295" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1604926990346" />
+    <state width="1638" height="295" key="GridCell.Tab.1.right" timestamp="1604926990347">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1604926617022" />
+    <state width="1638" height="295" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1604926990347" />
     <state x="168" y="94" key="MergeDialog" timestamp="1604917372253">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -290,11 +297,11 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="551" y="249" key="MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1604917372280" />
-    <state x="395" y="185" key="Vcs.Push.Dialog.v2" timestamp="1604925760127">
+    <state x="395" y="185" key="Vcs.Push.Dialog.v2" timestamp="1604926741223">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604579719328" />
-    <state x="395" y="185" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1604925760127" />
+    <state x="395" y="185" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1604926741223" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604579686163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
