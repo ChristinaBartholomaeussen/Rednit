@@ -4,12 +4,16 @@ import com.example.demo.models.User;
 import com.example.demo.repositories.AdminRepository;
 import com.example.demo.repositories.UserRepository;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UserService extends ProfileService{
 
     public List<User> allUsers = new ArrayList<>();
+
+    User user = new User();
 
 
     /*****Kunne være en idé af bruge dette, så vi ikke oprettet en ny liste hver gang,
@@ -80,6 +84,15 @@ public class UserService extends ProfileService{
         allUsers = allUsersFromDatabase.selectAllUsersFromDatabase();
 
         return allUsers;
+    }
+
+
+    public int calculateAge(Date date){
+
+
+        LocalDate today = LocalDate.now();
+        //LocalDate birthday = LocalDate.of(user.getDateOfBirth());
+
     }
 
 

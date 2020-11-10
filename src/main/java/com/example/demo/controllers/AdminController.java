@@ -56,12 +56,13 @@ public class AdminController
         String firstname = dataFromForm.getParameter("firstname");
 
 
-        for(User u : allUsers){
-            if(firstname.equals(u.getFirstName())){
 
-                userToDisplay.setFirstName(u.getFirstName());
-                userToDisplay.setLastName(u.getLastName());
-                userToDisplay.setEmail(u.getEmail());
+        for(User u : allUsers){
+            if(firstname.equals(u.getFirstName()))
+            {
+                userToDisplay = u;
+
+
 
                 byte[] image1 = userToDisplay.getPhoto1();
                 byte[] image2 = userToDisplay.getPhoto2();
