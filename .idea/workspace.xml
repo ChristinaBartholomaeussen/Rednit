@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="ændret datatype for user dateOfBirth">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/TestSQLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/TestSQLController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/UserRepository.java" afterDir="false" />
-    </list>
+    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="ændret datatype for user tilbage" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +101,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -214,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605002561552</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="ændret datatype for user tilbage">
+      <created>1605003208208</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1605003208208</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +253,8 @@
     <MESSAGE value="implementere at man kan updatere password, som kalder en setPassword() methode i Profil super klassen" />
     <MESSAGE value="implementere et input fil html tag" />
     <MESSAGE value="ændret datatype for user dateOfBirth" />
-    <option name="LAST_COMMIT_MESSAGE" value="ændret datatype for user dateOfBirth" />
+    <MESSAGE value="ændret datatype for user tilbage" />
+    <option name="LAST_COMMIT_MESSAGE" value="ændret datatype for user tilbage" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604912570029">
