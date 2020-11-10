@@ -93,6 +93,7 @@ public class UserService extends ProfileService{
         LocalDate today = LocalDate.now();
         //LocalDate birthday = LocalDate.of(user.getDateOfBirth());
 
+        return 0;
     }
 
 
