@@ -71,7 +71,7 @@ public class AdminController
                     String i1 = new String(image1);
                     String i2 = new String(image2);
                     String i3 = new String(image3);
-                    userToDisplay.setPhoto(i1, i2, i3);
+                    userToDisplay.setPhoto1(i1);
                 }
 
             }

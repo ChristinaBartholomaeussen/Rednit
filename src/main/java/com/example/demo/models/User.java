@@ -173,15 +173,9 @@ public class User extends Profile {
         return photo3;
     }
 
-    public List<String> setPhoto(String photo1, String photo2, String photo3){
-        ArrayList<String> photos = new ArrayList<>();
-
-        photos.add(photo1);
-        photos.add(photo2);
-        photos.add(photo3);
-
-        return photos;
-    }
+   public void setPhoto1(String photo1) {
+    	this.photo1 = photo1;
+   }
 
     public List getLikedUsers() {
         return likedUsers;
@@ -201,17 +195,5 @@ public class User extends Profile {
         return "User{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + ", sexualPreference=" + sexualPreference + ", bio='" + bio + '\'' + '}';
     }
 
-	public void saveImage(MultipartFile imageFile) throws Exception {
-    	try {
-    		//String folder = "/Documents/Dev/java/2.semester/Rednit/src/main/resources/static/photos";
-			String folder = "./src/main/resources/static/photos";
 
-    		byte[] imageBytesArray = imageFile.getBytes();
-			Path path = Paths.get(folder, imageFile.getOriginalFilename());
-			Files.write(path, imageBytesArray);
-			
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
 }

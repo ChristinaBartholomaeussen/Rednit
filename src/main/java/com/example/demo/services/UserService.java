@@ -3,7 +3,12 @@ package com.example.demo.services;
 import com.example.demo.models.User;
 import com.example.demo.repositories.AdminRepository;
 import com.example.demo.repositories.UserRepository;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -176,6 +181,20 @@ public class UserService extends ProfileService{
     }
 
 
+	public static void saveImage(MultipartFile imageFile, User user) throws Exception {
+		try {
+			String folder = "./src/main/resources/static/photos";
 
+			byte[] imageBytesArray = imageFile.getBytes();
+			Path path = Paths.get(folder, imageFile.getOriginalFilename());
+			Files.write(path, imageBytesArray);
+			user.setPhoto1(String.valueOf(Files.write(path, imageBytesArray)));
+			System.out.println(user.getPhoto1());
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+    
 
 }

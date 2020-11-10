@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.User;
 import com.example.demo.repositories.UserRepository;
+import com.example.demo.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -62,19 +63,7 @@ public class UserController {
 	
 	@RequestMapping(value="/sendMessage", method={RequestMethod.GET, RequestMethod.POST})
 	public String sendMessage(WebRequest data, Model model) {
-		
-    	
-    	
-    	
-    	
-		
-		
-		messageList.add(data.getParameter("send"));
-
-		System.out.println(messageList.size());
-
-		
-		//model.addAttribute("message", message);
+    	messageList.add(data.getParameter("send"));
 		
     	return "redirect:/matches";	
 	}
@@ -109,7 +98,6 @@ public class UserController {
     		user.setBio(updatedBio);
 		}
     	
-    	
     	// Tjekker at password ikke er null
 		// Tjekker om det nye passsword er det samme som det gamle
 		// Tjekker om password er det samme som passwordTwo
@@ -117,19 +105,17 @@ public class UserController {
     		String updatedPassword = data.getParameter("password");
     		user.setPassword(updatedPassword);
 		}
-		
-		
-
+    	
 		// sender en POST request, og reloader siden igen. 
 		return "redirect:/myProfile";
 	}
 
 	@PostMapping("/imageFile")
 	public String imageFile(@RequestParam("imageFile") MultipartFile imageFile) {
-  
 			
 				try {
-					user.saveImage(imageFile);
+					UserService.saveImage(imageFile, user);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 					System.out.println(e);
