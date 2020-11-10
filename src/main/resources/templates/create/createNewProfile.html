@@ -8,9 +8,7 @@
     <link href="style.css" rel="stylesheet">
 
 <!-- RBP: Nedenstående linje er nødvendig for at vise "Lokale" ændringer, men ved Run Code kan Spring ikke se denne fil-->
-    <link href="../static/style.css" rel="stylesheet">
-
-
+    <link href="../../static/style.css" rel="stylesheet">
 
     <title>Create Profile</title>
 </head>
@@ -24,7 +22,7 @@
     <div align="center" class="col" >
         <div class="textField">
             <div id="form-container">
-                <form action="/postCreate" id="createProfile" method="post">
+                <form action="/postCreate" id="createProfile" method="post" enctype="multipart/form-data">
                     <input id="email" name="email" placeholder="Indtast email" style="text-align: center" type="email">
                     &nbsp
 
@@ -47,17 +45,14 @@
 
                     <label>Hvad er du interesseret i? </label>
                     <select name="sexualPreference">
-                        <option value="male">Kvinder</option>
-                        <option value="female">Mænd</option>
+                        <option value="female">Kvinder</option>
+                        <option value="male">Mænd</option>
                         <option value="both">Begge</option>
                     </select>
                     &nbsp
                     <input name="dateOfBirth" placeholder="Indtast fødselsdato" style="text-align: center" type="date" value="2002-01-01">
                     &nbsp
                     <input name="bio" placeholder="Indtast beskrivelse" style="text-align: center" type="text">
-                    &nbsp
-                    <label>Upload profilbillede</label>
-                    <input name="photo" type="file" value="Upload billede">
                     &nbsp
                     <input id="saveProfileInfo" type="submit" value="Gem og Opret profil">
                 </form>

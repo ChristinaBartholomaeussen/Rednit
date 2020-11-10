@@ -5,33 +5,30 @@ import com.example.demo.services.UserService;
 import com.example.demo.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 
 @Controller
 public class LoginController
 {
     UserService userServiceToDisplay = new UserService();
-
-    UserRepository up = new UserRepository();
+    UserRepository userRepository = new UserRepository();
 
     @GetMapping("/create")
     public String index(Model userModel)
     {
         userModel.addAttribute("userModel", userModel);
-        return "createNewProfile";
+        return "create/createNewProfile";
     }
 
     @PostMapping("/postCreate")
-    public String login(WebRequest dataFromForm)
+    public String postCreate(WebRequest dataFromForm)
     {
         try
         {
@@ -60,17 +57,17 @@ public class LoginController
             else if(dataFromForm.getParameter("sexualPreference").equals("male"))
                 sexualPreference = 1;
             else
-                sexualPreference = 3;
+                sexualPreference = 2;
 
             Date dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(dataFromForm.getParameter("dateOfBirth"));
 
+            //TODO Fil implementering
+
             String bio = dataFromForm.getParameter("bio");
 
-            //TODO RBP: Opret funktionalitet som kan sætte denne bruger ind på Databasen
             User user = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio);
 
-            up.insertUserIntoDatabase(user);
-
+            userRepository.insertUserIntoDatabase(user);
             userServiceToDisplay.allUsers.add(user);
         }
         catch(Exception e)
@@ -79,11 +76,25 @@ public class LoginController
             return "redirect:/create";
         }
 
-        return "redirect:/login";
+        return "/create/uploadPhoto";
     }
 
+    @GetMapping("/uploadPicture")
+    public String uploadPicture()
+    {
+        return "createUploadPhoto"; // HTML side
+    }
+
+    @PostMapping("/uploadPicture")
+    public String uploadPicture(WebRequest data)
+    {
+
+        return "create";
+    }
+
+
     @GetMapping("/login")
-    public String login(Model userModel){
+    public String postCreate(Model userModel){
 
         User userToDisplay = new User();
         userModel.addAttribute("userToDisplay", userToDisplay);
@@ -91,7 +102,6 @@ public class LoginController
 
         return "loginPage";
     }
-
 
     //Postmapping til login - henter email og password fra html
     @PostMapping("/postLogin")
@@ -114,11 +124,11 @@ public class LoginController
             }
 
             //TODO RBP: Implementer Database kald, så kan tjekke om User findes på databasen
-//            if(userServiceToDisplay.doesEmailMatchPassword(useremail, userpassword)){
-//
-//                System.out.println("godkendt");
-//                return "redirect:/loginpage";
-//            }
+            if(userServiceToDisplay.doesEmailMatchPassword(useremail, userpassword)){
+
+                System.out.println("godkendt");
+                return "redirect:/loginpage";
+            }
 
         }catch(Exception e){
             System.out.println("fejl: " + e);
@@ -129,5 +139,6 @@ public class LoginController
         return "redirect:/create";
 
     }
+
 
 }
