@@ -17,7 +17,7 @@
         <option
                 th:each="user : ${allUsers}"
                 th:text="${user.email}"
-                th:value="${user.email}">
+                th:value="${user.firstName}">
         </option>
     </select>
     <input type="submit" value="Se match">
