@@ -17,6 +17,7 @@ import java.util.List;
 
 public class UserService extends ProfileService{
 
+
     public List<User> allUsers = new ArrayList<>();
 
 
@@ -51,8 +52,10 @@ public class UserService extends ProfileService{
         allUsers.add(user); //Vi adder user til den fulde liste
     }
 
-    public void deleteUser(User user) {
-        //INDSÆT KODE
+    public void deleteUser(int id) {
+
+        userRepository.deleteUserFromDatabase(id);
+
     }
 
 

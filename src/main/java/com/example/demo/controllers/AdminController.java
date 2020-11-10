@@ -33,6 +33,11 @@ public class AdminController
     @GetMapping("/admin")
     public String adminPage(Model adminModel)
     {
+        for(int i = 0; i < 45; i++)
+        {
+            Date date = new Date(i);
+            allUsers.add(new User("email"+i,"password"+i,"firstName"+i,"lastName"+i, date,i,i,"bio"+i));
+        }
 
         adminModel.addAttribute("users", allUsers);
         adminModel.addAttribute("userToDisplay", userToDisplay);
@@ -43,11 +48,18 @@ public class AdminController
         return "adminPage";
     }
 
+
+
     @PostMapping("/postAdmin")
     public String adminPageDelete(WebRequest dataFromForm) throws FileNotFoundException {
 
         String firstname = dataFromForm.getParameter("firstname");
 
+        for(int i = 0; i < 45; i++)
+        {
+            Date date = new Date(i);
+            allUsers.add(new User("email"+i,"password"+i,"firstName"+i,"lastName"+i, date,i,i,"bio"+i));
+        }
 
         for(User u : allUsers){
             if(firstname.equals(u.getFirstName()))
@@ -57,14 +69,41 @@ public class AdminController
                 userToDisplay.setEmail(u.getEmail());
                 userToDisplay.setDateOfBirth(u.getDateOfBirth());
                 userToDisplay.setBio(u.getBio());
-
             }
         }
-
         return "redirect:/admin";
     }
 
-    //TODO CB indsæt metode til at håndtere bruger + adminPage
+
+    @PostMapping("/adminDeleteUser")
+    public String deleteUser(WebRequest dateFromForm){
+
+        String delete = String.valueOf(dateFromForm.getParameter("deleteUser"));
+        String blakclist = dateFromForm.getParameter("blacklistUser");
+
+        if(delete.equals("Slet bruger")){
+            for(User u : allUsers){
+                if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
+                    userService.deleteUser(u.getIdUser());
+                    //System.out.println(u.getIdUser() + " deleted");
+                }
+            }
+        }
+        if(blakclist.equals("Blacklist bruger")){
+            for(User u : allUsers){
+                if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
+                    //admin.addToBlacklist(u.getIdUser());
+                    //System.out.println(u.getIdUser() + " deleted");
+                }
+            }
+        }
+
+
+//TODO lav redirect
+        return "redirect:/admin";
+    }
+
+
 
 
 

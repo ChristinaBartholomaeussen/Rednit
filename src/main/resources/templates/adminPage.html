@@ -7,6 +7,17 @@
 
     <title>Admin</title>
 
+    <script>
+        function customReset()
+        {
+            document.getElementById("firstname").value = "";
+            document.getElementById("lastname").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("age").value = "";
+            document.getElementById("bio").value = "";
+        }
+    </script>
+
     <style>
         .fitText{
             width: fit-content;
@@ -34,7 +45,9 @@
 
 <form  action="/postAdmin" method="post" >
     <div class="col" style="text-align: left">
+
         <div>
+
             <select class="form-control"  id="userInfo" name="firstname" style="width: fit-content">
                 <option id="option" value="0">Vælg bruger:</option>
                 <option
@@ -44,7 +57,9 @@
                 </option>
             </select>
             <br>
+
             <input type="submit" value="Se info">
+
         </div>
     </div>
 
@@ -53,33 +68,35 @@
 
                 <div style="display: inline-block; vertical-align: top;">
                     <label class="fitText">
-                        <input th:value="${userToDisplay.getFirstName()}" placeholder="Firstname"><br><br>
-                        <input th:value="${userToDisplay.getLastName()}" placeholder="Lastname"><br><br>
-                        <input th:value="${userToDisplay.getEmail()}" placeholder="Email"><br><br>
-                        <input th:value="${#dates.format(userToDisplay.getDateOfBirth(), 'yyyy')}" placeholder="Årstal"><br><br>
-                        <input style="height: 136px" th:value="${userToDisplay.getBio()}"><br><br>
+                        <input th:value="${userToDisplay.getFirstName()}" placeholder="Firstname" id="firstname"><br><br>
+                        <input th:value="${userToDisplay.getLastName()}" placeholder="Lastname" id="lastname"><br><br>
+                        <input th:value="${userToDisplay.getEmail()}" placeholder="Email" id="email"><br><br>
+                        <input th:value="${#dates.format(userToDisplay.getDateOfBirth(), 'yyyy')}" placeholder="Årstal" id="age"><br><br>
+                        <input style="height: 136px" th:value="${userToDisplay.getBio()}" id="bio"><br><br>
 
-                        <!-- Indsæt form til at håndtere sletning af bruger -->
-                        <input type="submit" value="Slet bruger" id="deleteUser">
-                        <br>
-                        <br>
-                        <input type="submit" value="Blacklist bruger" id="blacklistUser">
+   <!-- Indsæt form til at håndtere sletning af bruger -->
 
                     </label>
+
                 </div>
-
-
 
                 <div style="display: inline-block; vertical-align: top; margin-left: 50px">
-                    
                     <div class="place-holer-main-image"></div>
-
                 </div>
-
-
             </div>
 </form>
 
+<form action="/adminDeleteUser" method="post">
+    <div  style="text-align: center" class="wrapper">
+        <div style="display: inline-block; vertical-align: top;">
+
+    <input type="button" value="Slet bruger" id="deleteUser" name="deleteUser" onclick="customReset();">
+    <br>
+    <br>
+    <input type="button" value="Blacklist bruger" id="blacklistUser" name="blacklistUser" onclick="customReset();">
+        </div>
+    </div>
+</form>
 
 
 
