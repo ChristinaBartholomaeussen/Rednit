@@ -36,17 +36,6 @@ public class AdminController
         adminModel.addAttribute("userToDisplay", userToDisplay);
         adminModel.addAttribute("admin", admin);
 
-
-        //Dummy code - 45 nye Users
-        for(int i = 0; i < 45; i++)
-        {
-            Date date = new Date(i);
-            allUsers.add(new User("email"+i,"password"+i,"firstName"+i,"lastName"+i,date,i,i,"bio"+i));
-        }
-
-        //User user = new User();
-
-
         return "adminPage";
     }
 
