@@ -14,7 +14,7 @@ public class User extends Profile {
 
     private String firstName;
     private String lastName;
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
     private int gender;
     private int sexualPreference;
     private String bio;
@@ -28,7 +28,7 @@ public class User extends Profile {
 	
     public User(String email, String password,
                 String firstName, String lastName,
-                LocalDate dateOfBirth, int gender,
+                Date dateOfBirth, int gender,
                 int sexualPrefrerence, String bio,
                 byte[] photo1, byte[] photo2, byte[] photo3, List likedUsers, List dislikedUsers, List potentialCandidates)
     {
@@ -50,7 +50,7 @@ public class User extends Profile {
     
     /*  Mangler at sætte en liste med billeder.  */
 
-    public User(String email, String password, String firstName, String lastName, LocalDate dateOfBirth, int gender, int sexualPreference, String bio)
+    public User(String email, String password, String firstName, String lastName, Date dateOfBirth, int gender, int sexualPreference, String bio)
     {
         super(email, password);
         this.firstName = firstName;
@@ -61,7 +61,7 @@ public class User extends Profile {
         this.bio = bio;
     }
 
-    public User(String email, String password, String firstName, String lastName, LocalDate dateOfBirth, int gender, int sexualPreference, String bio, byte[] photo1, byte[] photo2, byte[] photo3)
+    public User(String email, String password, String firstName, String lastName, Date dateOfBirth, int gender, int sexualPreference, String bio, byte[] photo1, byte[] photo2, byte[] photo3)
     {
         super(email, password);
         this.firstName = firstName;
@@ -82,7 +82,7 @@ public class User extends Profile {
     public User(String email) {
     }
 
-    public User(String email, String firstName, String lastName, LocalDate dateOfBirth, String bio, int gender, int sexualPreference)
+    public User(String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference)
     {
         super(email);
         this.firstName = firstName;
@@ -110,11 +110,11 @@ public class User extends Profile {
         this.lastName = lastName;
     }
 
-    public LocalDate getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

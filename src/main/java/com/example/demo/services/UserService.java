@@ -5,6 +5,7 @@ import com.example.demo.repositories.AdminRepository;
 import com.example.demo.repositories.UserRepository;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -87,13 +88,14 @@ public class UserService extends ProfileService{
     }
 
 
-    public int calculateAge(Date date){
+    public int calculateAge(){
+
+        LocalDate birthday = user.getDateOfBirth();
+        LocalDate currentDate = LocalDate.now();
 
 
-        LocalDate today = LocalDate.now();
-        //LocalDate birthday = LocalDate.of(user.getDateOfBirth());
 
-        return 0;
+        return Period.between(currentDate, birthday).getYears();
     }
 
 
