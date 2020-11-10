@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="ændret datatype for user dateOfBirth">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/UserService.java" afterDir="false" />
-    </list>
+    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="ændret datatype for user tilbage" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -217,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605002561552</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="ændret datatype for user tilbage">
+      <created>1605003208208</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1605003208208</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +253,8 @@
     <MESSAGE value="implementere at man kan updatere password, som kalder en setPassword() methode i Profil super klassen" />
     <MESSAGE value="implementere et input fil html tag" />
     <MESSAGE value="ændret datatype for user dateOfBirth" />
-    <option name="LAST_COMMIT_MESSAGE" value="ændret datatype for user dateOfBirth" />
+    <MESSAGE value="ændret datatype for user tilbage" />
+    <option name="LAST_COMMIT_MESSAGE" value="ændret datatype for user tilbage" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604912570029">
