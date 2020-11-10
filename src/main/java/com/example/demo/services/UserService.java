@@ -88,8 +88,8 @@ public class UserService extends ProfileService{
     }
 
 
-    public int calculateAge(){
-/*
+    /*public int calculateAge(){
+
 
 
         LocalDate birthday = user.getDateOfBirth();
@@ -98,7 +98,7 @@ public class UserService extends ProfileService{
 
 
         return Period.between(currentDate, birthday).getYears();
-    }/*
+    }*/
 
 
 
