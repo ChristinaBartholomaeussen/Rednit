@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -15,12 +16,13 @@ public class TestSQLController {
 
     User user = null;
 
+    List<User> allUsersList = new ArrayList<>();
+
     @GetMapping("/test")
     public String test() {
 
-        List<User> str = userRepository.selectAllUsersFromDatabase();
-
-        System.out.println(str);
+        allUsersList = userRepository.selectAllUsersFromDatabase();
+        System.out.println(allUsersList);
 
         return "testSQL";
     }

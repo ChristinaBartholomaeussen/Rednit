@@ -78,7 +78,7 @@ public class UserRepository {
         }
     }
 
-    //Failed test
+    //Finished
 
     public User selectUserFromDatabase(String email){
 
@@ -106,11 +106,10 @@ public class UserRepository {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(userToReturn);
         return userToReturn;
     }
 
-    //Testing
+    //Finished
 
     public List<User> selectAllUsersFromDatabase() {
 
@@ -133,7 +132,6 @@ public class UserRepository {
                         resultSet.getInt(7),
                         resultSet.getInt(8)
                 );
-                System.out.println(tmpUser);
                 allUsers.add(tmpUser);
             }
 

@@ -1,8 +1,6 @@
 package com.example.demo.models;
 
-import java.util.List;
-
-public class Admin extends Profil {
+public class Admin extends Profile {
 
     //Det vil give mening so far at lave den abstact, da vi ikke skal lave flere objekter af den.
 
