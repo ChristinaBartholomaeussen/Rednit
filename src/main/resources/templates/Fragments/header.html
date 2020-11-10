@@ -3,12 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+	<style>
+		.flex {
+			display: flex;
+		}
+		
+		a {
+			text-transform: uppercase;
+			text-decoration: none;
+			text-align: center;
+			color: #0e0e0e;
+		}
+	</style>
 	
 </head>
 <body>
 
 	<header th:fragment="header">
-		<nav><h1 style="color: red; text-align: center;">Rednit</h1></nav>
+		<nav class="flex">
+			<h1 style="color: red; text-align: center;">Rednit</h1>
+			<div class="flex">
+				<a href="./create">Create</a>
+				<a href="./login">Login</a>
+				<a href="./admin">Admin</a>
+				<a href="./myProfile">My Profile</a>
+				<a href="./matches">matches</a>
+				<a href="./explore">Explore</a>
+			</div>
+		</nav>
 	</header>
 
 </body>

@@ -101,33 +101,15 @@ public class UserController {
 
 	@PostMapping("/imageFile")
 	public String imageFile(@RequestParam("imageFile") MultipartFile imageFile) {
-    	
-    	boolean flag = false; 
-    	String fileFormatTest = "";
-    	
-    		// tester at der er et '.' som den fjerde sidste character.
-			if (imageFile.getOriginalFilename().charAt(imageFile.getOriginalFilename().length()-4) == '.') {
-				//Looper efter de tre sidste karaktere, og lægger dem i en string. 
-				for (int i = imageFile.getOriginalFilename().length() -1; i > imageFile.getOriginalFilename().length()-4; i--) {
-					fileFormatTest += imageFile.getOriginalFilename().charAt(i);
-					
-				}
-			}
-
-			//Tester om de tre karaktere som kommer fra loopet, er en reverse udgave af enten 'gif', 'png' eller 'jpg'
-			if (fileFormatTest.equals("gpj") && fileFormatTest.equals("gnp") && fileFormatTest.equals("fig") ) {
-				flag = true; // skifter til true, så billedet kan uploades.
-			}
-			if (flag) {
+  
+			
 				try {
 					user.saveImage(imageFile);
-					System.out.println(User.class.getProtectionDomain().getCodeSource().getLocation().getPath());
-					flag = false;
 				} catch (Exception e) {
 					e.printStackTrace();
 					System.out.println(e);
 				}
-			}
+			
 		
 
 		return "redirect:/myProfile";

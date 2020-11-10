@@ -186,11 +186,9 @@ public class User extends Profile {
     		//String folder = "/Documents/Dev/java/2.semester/Rednit/src/main/resources/static/photos";
 			String folder = "./src/main/resources/static/photos";
 
-			System.out.println(imageFile);
     		byte[] imageBytesArray = imageFile.getBytes();
 			Path path = Paths.get(folder, imageFile.getOriginalFilename());
 			Files.write(path, imageBytesArray);
-			System.out.println(path);
 			
 		} catch (Exception e) {
 			System.out.println(e);
