@@ -43,19 +43,19 @@
 
 <div id="wrapper" class="flex">
 	<form class="container reverse-flex" action="/myProfilePost" method="post"  >
-		<label for="name">Name:</label>
+		<label for="name">Navn:</label>
 		<input type="text" name="name" id="name" th:value="${user.getFirstName()}">
 
-		<label for="age">Age:</label>
+		<label for="age">Alder:</label>
 		<input type="text" name="age" id="age" th:value="${user.getDateOfBirth()}">
-		<label for="password">New password:</label>
+		<label for="password">Nyt password:</label>
 		<input type="password" name="password" id="password" >
 		
-		<label for="passwordTwo">Repeat your password:</label>
+		<label for="passwordTwo">Gentag dit password:</label>
 		<input type="password" name="passwordTwo" id="passwordTwo">
-		<label for="bio">Bio:</label>
+		<label for="bio">Beskrivelse:</label>
 		<textarea name="bio" maxlength="250" id="bio" cols="30" rows="10" th:text="${user.getBio()}"></textarea>
-		<input type="submit" id="save" name="save" value="Update">
+		<input type="submit" id="save" name="save" value="Updatere personlig info">
 	</form>
 
 	<form action="/imageFile" method="post" enctype="multipart/form-data">

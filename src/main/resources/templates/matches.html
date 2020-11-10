@@ -3,33 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <title>matches</title>
+	<style>
+		
+		* {
+			box-sizing: border-box;
+		}	
+		
+		#wrapper {
+			width: 950px;
+			margin: 0 auto;
+		}
+		
+		.flex {
+			display: flex;
+		}
+		
+		
+		.match-container {
+			height: 500px;
+			width: 350px;
+			overflow: scroll;
+			padding: 20px;
+			
+		}
+		
+		.match-item {
+			width: 250px;
+			height: 150px;
+			background: #e2e2e2;
+			margin: 15px;
+		}
+		
+		button {
+			cursor: pointer;
+			border: 4px solid #f4f4f4;
+			border-radius: 15px;
+		}
+		
+		.placeholder-img {
+			width: 200px;
+			height: 150px;
+			background: #333;
+		}
+		
+		.chat-box {
+			height: 500px;
+			width: 350px;
+			overflow: scroll;
+			padding: 20px;
+			border: 2px solid #f4f4f4;
+		}
+		
+		.reverse-flex {
+			display: flex;
+			flex-direction: column-reverse;
+		}
+		
+		.message-item {
+			margin: 5px;
+		}
+		
+		.message-item > * {
+			background-color: #34deeb;
+			width: auto;
+			color: #fff;
+			display: inline;
+			padding: 3px;
+		}
+		
+		.column-flex {
+			display: flex;
+			flex-direction: column;
+		}
+		
+		
+		.space-between {
+			height: 100%;
+			width: 100%;
+			justify-content: flex-start;
+			align-content: flex-start;
+			
+		}
+		
+		.btn {
+			width: 15%;
+			margin-left: 1vw;
+			border: none;
+			cursor: pointer;
+		}
+		
+		.send-message {
+			width: 80%;
+			border: 1px solid #f4f4f4;
+			border-radius: 5px;
+		}
+		
+	</style>
 </head>
-<body>
+	<body>
+	
+	<!-- Dette må ikke fjernes, det er fragments til headeren -->
+		<div th:insert="Fragments/header :: header"></div>
+	
+		<div id="wrapper" class="flex">
+			<form action="/postMatches" method="post" id="matchList">
+				<div class="match-container">
+					
+					<button class="flex match-item" th:each="user : ${allUsers}" type="submit" form="matchList" th:name="submitBtn" th:value="${user.getFirstName()}">
+						<p th:text="${user.firstName}"></p>
+						<p th:text="${user.getLastName()}"></p>
+					</button>
+					
+				</div>
+			</form>
+		
+			<div class="active-match-info-box">
+				<div class="placeholder-img"></div>
+				<h2 th:text="${selectedUser.getFirstName()}"></h2>
+				<h2 th:text="${selectedUser.getLastName()}"></h2>
+				<p th:text="${selectedUser.getDateOfBirth()}"></p>
+				<!-- p th:text="${selectedUser.getGender()}"></p  udkommenteres, når gender funkere.   -->
+				<p th:text="${selectedUser.getBio()}"></p>
+			</div>
+			
+			<div class="chat-box">
+				<form action="/sendMessage" method="post" class="reverse-flex space-between">
+					<div class="flex">
+						<input class="send-message" type="text" th:name="send" autofocus placeholder="Skriv besked....">
+						<input class="btn"type="submit" value="Send" >
+					</div>
+					
+					<div class="column-flex block-children">
+						<div th:each=" message : ${listOfMessages}" class="message-item">
+							<p th:text="${message}"></p>
+						</div>
+					</div>
+					
+				</form>
+			</div>
+			
+		</div>
+	</body>
+</html>
 
-<!-- Dette må ikke fjernes, det er fragments til headeren -->
-<div th:insert="Fragments/header :: header"></div>
 
-<br><br><br><br><br>
 
-<form action="/postMatches" method="post">
+
+<!--
+ 
+ 
+ 
+ 
+ <form action="/postMatches" method="post">
     <select name="selected">
         <option value="0">Vælg Match</option>
         <option
                 th:each="user : ${allUsers}"
-                th:text="${user.email}"
+                th:text="${user.firstName}"
                 th:value="${user.firstName}">
         </option>
     </select>
     <input type="submit" value="Se match">
 </form>
-
-<div style="text-align: center">
-    <label style="text-align: center">
-        <input th:value="${selectedUser.getFirstName()}" placeholder="Fornavn"><br><br>
-        <input th:value="${selectedUser.getLastName()}" placeholder="Efternavn"><br><br>
-        <input th:value="${selectedUser.getEmail()}" placeholder="Email">
-    </label>
-</div>
-
-</body>
-</html>
+ 
+ -->

@@ -4,9 +4,7 @@ import com.example.demo.models.User;
 import com.example.demo.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,17 +19,22 @@ public class UserController {
 	List<User> allUsers = new ArrayList<>();
 	User selectedUser = new User();
 
+	ArrayList<String> messageList = new ArrayList();
+	String message = "";
+
     @GetMapping("/matches")
     public String match(Model userModel)
 	{
 		for(int i = 0; i < 45; i++)
 		{
 			Date date = new Date(i);
-			allUsers.add(new User("email"+i,"password"+i,"firstName"+i,"lastName"+i,date,i,i,"bio"+i));
+			allUsers.add(new User("email"+i,"password"+i,"firstName"+i,"lastName"+i, date,i,i,"bio"+i));
 		}
 
 		userModel.addAttribute("allUsers", allUsers);
 		userModel.addAttribute("selectedUser", selectedUser);
+
+		userModel.addAttribute("listOfMessages", messageList);
 
 		return "matches";
     }
@@ -39,7 +42,7 @@ public class UserController {
     @PostMapping("/postMatches")
 	public String matchSelect(WebRequest dataFromForm, Model userModel)
 	{
-		String firstName = String.valueOf(dataFromForm.getParameter("selected"));
+		String firstName = String.valueOf(dataFromForm.getParameter("submitBtn"));
 
 		userModel.addAttribute("selectedUser", selectedUser);
 
@@ -50,10 +53,32 @@ public class UserController {
 				selectedUser = u;
 			}
 		}
-
+		
+		
 		return "redirect:/matches";
 	}
 
+	
+	
+	@RequestMapping(value="/sendMessage", method={RequestMethod.GET, RequestMethod.POST})
+	public String sendMessage(WebRequest data, Model model) {
+		
+    	
+    	
+    	
+    	
+		
+		
+		messageList.add(data.getParameter("send"));
+
+		System.out.println(messageList.size());
+
+		
+		//model.addAttribute("message", message);
+		
+    	return "redirect:/matches";	
+	}
+	
 	User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 1, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
 
     @GetMapping("/myProfile")
