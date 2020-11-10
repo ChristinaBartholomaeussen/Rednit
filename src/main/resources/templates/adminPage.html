@@ -23,13 +23,9 @@
             width: 70%;
             margin: 0 auto;
         }
-
-
     </style>
 
-
 </head>
-
 
 <body>
 
@@ -60,10 +56,15 @@
                         <input th:value="${userToDisplay.getFirstName()}" placeholder="Firstname"><br><br>
                         <input th:value="${userToDisplay.getLastName()}" placeholder="Lastname"><br><br>
                         <input th:value="${userToDisplay.getEmail()}" placeholder="Email"><br><br>
-                        <input th:value="${userToDisplay.getDateOfBirth()}" placeholder="Alder"><br><br>
+                        <input th:value="${#dates.format(userToDisplay.getDateOfBirth(), 'yyyy')}" placeholder="Årstal"><br><br>
+                        <input style="height: 136px" th:value="${userToDisplay.getBio()}"><br><br>
 
                         <!-- Indsæt form til at håndtere sletning af bruger -->
-                        <input type="button" value="Slet bruger">
+                        <input type="submit" value="Slet bruger" id="deleteUser">
+                        <br>
+                        <br>
+                        <input type="submit" value="Blacklist bruger" id="blacklistUser">
+
                     </label>
                 </div>
 
@@ -73,12 +74,10 @@
                     
                     <div class="place-holer-main-image"></div>
 
-                <div>
-         </div>
+                </div>
 
 
-
-
+            </div>
 </form>
 
 

@@ -19,7 +19,7 @@ public class UserService extends ProfileService{
 
     public List<User> allUsers = new ArrayList<>();
 
-    User user = new User();
+
 
 
     /*****Kunne være en idé af bruge dette, så vi ikke oprettet en ny liste hver gang,
@@ -83,11 +83,11 @@ public class UserService extends ProfileService{
         return true;
     }
 
-    public List<User> getAllUsers() throws FileNotFoundException {
+    public static List<User> getAllUsers() {
 
-        UserRepository allUsersFromDatabase = new UserRepository();
+        UserRepository userRepository = new UserRepository();
 
-        allUsers = allUsersFromDatabase.selectAllUsersFromDatabase();
+        List<User> allUsers = userRepository.selectAllUsersFromDatabase();
 
         return allUsers;
     }
@@ -190,11 +190,11 @@ public class UserService extends ProfileService{
 			Files.write(path, imageBytesArray);
 			user.setPhoto1(String.valueOf(Files.write(path, imageBytesArray)));
 			System.out.println(user.getPhoto1());
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
-    
+
 
 }

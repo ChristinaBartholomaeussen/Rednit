@@ -22,11 +22,13 @@ import java.util.List;
 @Controller
 public class AdminController
 {
-    List<User> allUsers = new ArrayList<>();
+
+    UserService userService = new UserService();
     User userToDisplay = new User();
     AdminService admin = new AdminService();
 
-    UserService userService = new UserService();
+    List<User> allUsers = userService.getAllUsers();
+
 
     @GetMapping("/admin")
     public String adminPage(Model adminModel)
@@ -35,6 +37,8 @@ public class AdminController
         adminModel.addAttribute("users", allUsers);
         adminModel.addAttribute("userToDisplay", userToDisplay);
         adminModel.addAttribute("admin", admin);
+        adminModel.addAttribute("userService", userService);
+
 
         return "adminPage";
     }
@@ -45,23 +49,14 @@ public class AdminController
         String firstname = dataFromForm.getParameter("firstname");
 
 
-
         for(User u : allUsers){
             if(firstname.equals(u.getFirstName()))
             {
-                userToDisplay = u;
-
-
-
-                String image1 = userToDisplay.getPhoto1();
-                String image2 = userToDisplay.getPhoto2();
-                String image3 = userToDisplay.getPhoto3();
-                while(image1 != null && image2 != null & image3 != null){
-                    String i1 = new String(image1);
-                    String i2 = new String(image2);
-                    String i3 = new String(image3);
-                    userToDisplay.setPhoto1(i1);
-                }
+                userToDisplay.setFirstName(u.getFirstName());
+                userToDisplay.setLastName(u.getLastName());
+                userToDisplay.setEmail(u.getEmail());
+                userToDisplay.setDateOfBirth(u.getDateOfBirth());
+                userToDisplay.setBio(u.getBio());
 
             }
         }
