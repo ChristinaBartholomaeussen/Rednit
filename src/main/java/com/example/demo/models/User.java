@@ -12,13 +12,14 @@ import java.util.List;
 
 public class User extends Profile {
 
+    private int idUser;
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
     private int gender;
     private int sexualPreference;
     private String bio;
-    private byte[] photo1, photo2, photo3;
+    private String photo1, photo2, photo3;
     private List<User> likedUsers;
     private List<User> dislikedUsers;
     private List<User> potentialCandidates;
@@ -30,7 +31,7 @@ public class User extends Profile {
                 String firstName, String lastName,
                 Date dateOfBirth, int gender,
                 int sexualPrefrerence, String bio,
-                byte[] photo1, byte[] photo2, byte[] photo3, List likedUsers, List dislikedUsers, List potentialCandidates)
+                String photo1, String photo2, String photo3, List likedUsers, List dislikedUsers, List potentialCandidates)
     {
         super(email, password);
                 this.firstName = firstName;
@@ -61,7 +62,7 @@ public class User extends Profile {
         this.bio = bio;
     }
 
-    public User(String email, String password, String firstName, String lastName, Date dateOfBirth, int gender, int sexualPreference, String bio, byte[] photo1, byte[] photo2, byte[] photo3)
+    public User(String email, String password, String firstName, String lastName, Date dateOfBirth, int gender, int sexualPreference, String bio, String photo1, String photo2, String photo3)
     {
         super(email, password);
         this.firstName = firstName;
@@ -93,6 +94,24 @@ public class User extends Profile {
         this.sexualPreference = sexualPreference;
     }
 
+    public User(int idUser, String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference) {
+        super(email);
+        this.idUser = idUser;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.bio = bio;
+        this.gender = gender;
+        this.sexualPreference = sexualPreference;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser() {
+        this.idUser = idUser;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -142,15 +161,15 @@ public class User extends Profile {
         this.bio = bio;
     }
 
-    public byte[] getPhoto1(){
+    public String getPhoto1(){
         return photo1;
     }
 
-    public byte[] getPhoto2(){
+    public String getPhoto2(){
         return photo2;
     }
 
-    public byte[] getPhoto3(){
+    public String getPhoto3(){
         return photo3;
     }
 

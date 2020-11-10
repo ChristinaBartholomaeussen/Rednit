@@ -64,9 +64,9 @@ public class AdminController
 
 
 
-                byte[] image1 = userToDisplay.getPhoto1();
-                byte[] image2 = userToDisplay.getPhoto2();
-                byte[] image3 = userToDisplay.getPhoto3();
+                String image1 = userToDisplay.getPhoto1();
+                String image2 = userToDisplay.getPhoto2();
+                String image3 = userToDisplay.getPhoto3();
                 while(image1 != null && image2 != null & image3 != null){
                     String i1 = new String(image1);
                     String i2 = new String(image2);

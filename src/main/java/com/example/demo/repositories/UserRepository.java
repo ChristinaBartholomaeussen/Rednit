@@ -22,7 +22,7 @@ public class UserRepository {
 
     ConnectionRepository connection = new ConnectionRepository();
 
-    //Finished
+    //Done
 
     public void insertUserIntoDatabase(User user) {
         String insertUserSQL ="INSERT INTO users (email, password, firstName, lastName, dateOfBirth, bio, gender, sexualPreference) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -43,30 +43,31 @@ public class UserRepository {
         }
     }
 
-    //Testing
+    //Implementation
 
     public void updateUserInfoInDatabase(User user) {
-        String updateUserSQL = "UPDATE users SET (firstName, lastName, bio, gender, sexualPreference) VALUES (?, ?, ?, ?, ?) WHERE email = ?";
+        String updateUserSQL = "UPDATE users SET email = ?, firstName = ?, lastName = ?, bio = ?, gender = ?, sexualPreference = ? WHERE idUser = ?";
         try {
 
             System.out.println(user);
 
+            user.setEmail("hottranny@gmail.com");
             user.setFirstName("Frederikke");
             user.setLastName("Pedersen");
             user.setBio("Tranny");
             user.setGender(0);
             user.setSexualPreference(2);
-            user.setEmail("hottranny@gmail.com");
 
             PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(updateUserSQL);
-            preparedStatement.setString(1, user.getFirstName());
-            preparedStatement.setString(2, user.getLastName());
-            preparedStatement.setString(3, user.getBio());
-            preparedStatement.setInt(4, user.getGender());
-            preparedStatement.setInt(5, user.getSexualPreference());
-            preparedStatement.setString(6, user.getEmail());
+            preparedStatement.setString(1, user.getEmail());
+            preparedStatement.setString(2, user.getFirstName());
+            preparedStatement.setString(3, user.getLastName());
+            preparedStatement.setString(4, user.getBio());
+            preparedStatement.setInt(5, user.getGender());
+            preparedStatement.setInt(6, user.getSexualPreference());
+            preparedStatement.setInt(7, user.getIdUser());
 
-            preparedStatement.execute();
+            System.out.println(preparedStatement.executeUpdate());
 
             System.out.println(user);
 
@@ -77,11 +78,11 @@ public class UserRepository {
 
     //Implementation
 
-    public void deleteUserFromDatabase(String email){
-        String deleteUserSQL = "DELETE FROM users WHERE (email = ?)";
+    public void deleteUserFromDatabase(int idUser){
+        String deleteUserSQL = "DELETE FROM users WHERE idUser = ?";
         try {
             PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(deleteUserSQL);
-            preparedStatement.setString(1, email);
+            preparedStatement.setInt(1, idUser);
 
             preparedStatement.execute();
 
@@ -93,27 +94,28 @@ public class UserRepository {
 
     //Implementation
 
-    public User selectUserFromDatabase(String email){
+    public User selectUserFromDatabase(int idUser){
 
         User userToReturn = new User();
 
-        String selectUser = "SELECT * FROM users WHERE email = ?";
+        String selectUser = "SELECT * FROM users WHERE idUser = ?";
 
         try {
             PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectUser);
-            preparedStatement.setString(1, email);
+            preparedStatement.setInt(1, idUser);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 userToReturn = new User(
-                resultSet.getString(1),
-                resultSet.getString(3),
-                resultSet.getString(4),
-                resultSet.getDate(5),
-                resultSet.getString(6),
-                resultSet.getInt(7),
-                resultSet.getInt(8)
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getDate(6),
+                        resultSet.getString(7),
+                        resultSet.getInt(8),
+                        resultSet.getInt(9)
                 );
             }
         } catch (SQLException e) {
@@ -137,13 +139,14 @@ public class UserRepository {
 
             while(resultSet.next()) {
                 User tmpUser = new User(
-                        resultSet.getString(1),
-                        resultSet.getString(3),
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
                         resultSet.getString(4),
-                        resultSet.getDate(5),
-                        resultSet.getString(6),
-                        resultSet.getInt(7),
-                        resultSet.getInt(8)
+                        resultSet.getString(5),
+                        resultSet.getDate(6),
+                        resultSet.getString(7),
+                        resultSet.getInt(8),
+                        resultSet.getInt(9)
                 );
                 allUsers.add(tmpUser);
             }
@@ -154,11 +157,13 @@ public class UserRepository {
         return allUsers;
     }
 
-    public void selectPhotoFromDatabase() {
+    public void selectPhotoFromDatabase(int idUser) {
+        String selectPhotosSQL = "SELECT photo1, photo2, photo3 FROM users WHERE idUser = ?";
+
 
     }
 
-    public void addPhotoToDatabase() {
+    public void insertPhotoToDatabase() {
 
     }
 
@@ -166,11 +171,19 @@ public class UserRepository {
 
     }
 
-    public void addToLikedTableInDatabase(){
+    public void selectUserLikedListFromDatabase() {
 
     }
 
-    public void addToDislikedTableInDatabase(){
+    public void insertUserIntoLikedListInDatabase() {
+
+    }
+
+    public void deleteUserFromLikedListInDatabase() {
+
+    }
+
+    public void insertUserIntoDislikedInDatabase(){
 
     }
 

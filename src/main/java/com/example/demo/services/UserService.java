@@ -161,7 +161,7 @@ public class UserService extends ProfileService{
     }
 
     //Skal returnere den bruger fra databasen, som har det matchende password + email.
-    public User isLoggedIn(String email, String password) throws FileNotFoundException {
+    public User isLoggedIn(String email, String password, int idUser) throws FileNotFoundException {
 
         UserRepository userRepository = new UserRepository();
 
@@ -169,7 +169,7 @@ public class UserService extends ProfileService{
 
         if(doesEmailMatchPassword(email, password))
         {
-            user = userRepository.selectUserFromDatabase(email);
+            user = userRepository.selectUserFromDatabase(idUser);
         }
 
         return user;
