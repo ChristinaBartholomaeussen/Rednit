@@ -21,7 +21,7 @@ public class TestSQLController {
     @GetMapping("/test")
     public String test() {
 
-        userRepository.updateUserInfoInDatabase(userRepository.selectUserFromDatabase(1));
+        userRepository.updatePhotoInDatabase(userRepository.selectUserFromDatabase(1));
 
         return "testSQL";
     }

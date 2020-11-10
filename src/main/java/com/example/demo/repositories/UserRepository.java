@@ -45,18 +45,13 @@ public class UserRepository {
 
     //Implementation
 
+
+
+    //Implementation
+
     public void updateUserInfoInDatabase(User user) {
         String updateUserSQL = "UPDATE users SET email = ?, firstName = ?, lastName = ?, bio = ?, gender = ?, sexualPreference = ? WHERE idUser = ?";
         try {
-
-            System.out.println(user);
-
-            user.setEmail("hottranny@gmail.com");
-            user.setFirstName("Frederikke");
-            user.setLastName("Pedersen");
-            user.setBio("Tranny");
-            user.setGender(0);
-            user.setSexualPreference(2);
 
             PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(updateUserSQL);
             preparedStatement.setString(1, user.getEmail());
@@ -68,8 +63,6 @@ public class UserRepository {
             preparedStatement.setInt(7, user.getIdUser());
 
             System.out.println(preparedStatement.executeUpdate());
-
-            System.out.println(user);
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -94,7 +87,7 @@ public class UserRepository {
 
     //Implementation
 
-    public User selectUserFromDatabase(int idUser){
+    public User selectUserFromDatabase(int idUser) {
 
         User userToReturn = new User();
 
@@ -115,7 +108,41 @@ public class UserRepository {
                         resultSet.getDate(6),
                         resultSet.getString(7),
                         resultSet.getInt(8),
-                        resultSet.getInt(9)
+                        resultSet.getInt(9),
+                        resultSet.getString(10)
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return userToReturn;
+    }
+
+    //Test
+
+    public User selectUserFromDatabaseFromEmail(String email) {
+
+        User userToReturn = new User();
+
+        String selectUser = "SELECT * FROM users WHERE email = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectUser);
+            preparedStatement.setString(1, email);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                userToReturn = new User(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getDate(6),
+                        resultSet.getString(7),
+                        resultSet.getInt(8),
+                        resultSet.getInt(9),
+                        resultSet.getString(10)
                 );
             }
         } catch (SQLException e) {
@@ -146,7 +173,8 @@ public class UserRepository {
                         resultSet.getDate(6),
                         resultSet.getString(7),
                         resultSet.getInt(8),
-                        resultSet.getInt(9)
+                        resultSet.getInt(9),
+                        resultSet.getString(10)
                 );
                 allUsers.add(tmpUser);
             }
@@ -157,18 +185,18 @@ public class UserRepository {
         return allUsers;
     }
 
-    public void selectPhotoFromDatabase(int idUser) {
-        String selectPhotosSQL = "SELECT photo1, photo2, photo3 FROM users WHERE idUser = ?";
+    public void updatePhotoInDatabase(User user) {
+        String insertPhotoSQL = "UPDATE users SET photo1 = ? WHERE idUser = ?";
 
+        try {
+            PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(insertPhotoSQL);
+            preparedStatement.setString(1, user.getPhoto1());
+            preparedStatement.setInt(2, user.getIdUser());
 
-    }
-
-    public void insertPhotoToDatabase() {
-
-    }
-
-    public void deletePhotoFromDatabase() {
-
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void selectUserLikedListFromDatabase() {

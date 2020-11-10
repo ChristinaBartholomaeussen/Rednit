@@ -85,7 +85,7 @@ public class User extends Profile {
     public User(String email) {
     }
 
-    public User(String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference)
+    public User(String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference, String photo1)
     {
         super(email);
         this.firstName = firstName;
@@ -94,9 +94,10 @@ public class User extends Profile {
         this.bio = bio;
         this.gender = gender;
         this.sexualPreference = sexualPreference;
+        this.photo1 = photo1;
     }
 
-    public User(int idUser, String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference) {
+    public User(int idUser, String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference, String photo1) {
         super(email);
         this.idUser = idUser;
         this.firstName = firstName;
@@ -105,13 +106,14 @@ public class User extends Profile {
         this.bio = bio;
         this.gender = gender;
         this.sexualPreference = sexualPreference;
+        this.photo1 = photo1;
     }
 
     public int getIdUser() {
         return idUser;
     }
 
-    public void setIdUser() {
+    public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 
