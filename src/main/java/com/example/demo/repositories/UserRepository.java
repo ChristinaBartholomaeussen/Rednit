@@ -48,6 +48,16 @@ public class UserRepository {
     public void updateUserInfoInDatabase(User user) {
         String updateUserSQL = "UPDATE users SET (firstName, lastName, bio, gender, sexualPreference) VALUES (?, ?, ?, ?, ?) WHERE email = ?";
         try {
+
+            System.out.println(user);
+
+            user.setFirstName("Frederikke");
+            user.setLastName("Pedersen");
+            user.setBio("Tranny");
+            user.setGender(0);
+            user.setSexualPreference(2);
+            user.setEmail("hottranny@gmail.com");
+
             PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(updateUserSQL);
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
@@ -57,6 +67,9 @@ public class UserRepository {
             preparedStatement.setString(6, user.getEmail());
 
             preparedStatement.execute();
+
+            System.out.println(user);
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -78,7 +91,7 @@ public class UserRepository {
         }
     }
 
-    //Finished
+    //Implementation
 
     public User selectUserFromDatabase(String email){
 
@@ -109,7 +122,7 @@ public class UserRepository {
         return userToReturn;
     }
 
-    //Finished
+    //Implementation
 
     public List<User> selectAllUsersFromDatabase() {
 

@@ -21,8 +21,7 @@ public class TestSQLController {
     @GetMapping("/test")
     public String test() {
 
-        allUsersList = userRepository.selectAllUsersFromDatabase();
-        System.out.println(allUsersList);
+        userRepository.updateUserInfoInDatabase(userRepository.selectUserFromDatabase("frederikmpetersen@gmail.com"));
 
         return "testSQL";
     }
