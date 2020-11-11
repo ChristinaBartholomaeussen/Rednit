@@ -12,16 +12,17 @@ public class AdminService {
     private final List<User> blacklistedUser;
 
 
+    AdminRepository adminRepository = new AdminRepository();
+
     public AdminService()
     {
         this.blacklistedUser = new ArrayList<>();
         this.allUsers = new ArrayList<>();
     }
 
-    public List<User> addToBlacklist(User user)
+    public void addToBlacklist(int id)
     {
-        blacklistedUser.add(user);
-        return blacklistedUser;
+        adminRepository.addUserToBlacklistToDatabase(id);
     }
 
     public List<User> restoreUser(User user)
@@ -36,10 +37,6 @@ public class AdminService {
         return null;
     }
 
-    public void deleteUser(User user)
-    {
-
-    }
 
     public String getSingleUser(String firstname){
 

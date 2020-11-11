@@ -8,18 +8,15 @@ public class AdminRepository {
 
     ConnectionRepository connection = new ConnectionRepository();
 
-    public void addUserToBlacklistToDatabase(User user)
+    public void addUserToBlacklistToDatabase(int id)
     {
-
+        //TODO
     }
 
     public void deleteUserFromBlacklistFromDatabase(User user){
 
     }
 
-    public void deleteUserFromDatabase(User user){
-
-    }
 
     public void deleteUserPhotoFromDatabase(User user, int indexOfPhoto){
 

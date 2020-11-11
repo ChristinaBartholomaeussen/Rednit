@@ -10,11 +10,11 @@
     <script>
         function customReset()
         {
-            document.getElementById("firstname").value = "";
-            document.getElementById("lastname").value = "";
-            document.getElementById("email").value = "";
-            document.getElementById("age").value = "";
-            document.getElementById("bio").value = "";
+            var frm = document.getElementsByName('firstform')[0];
+            frm.submit();
+            frm.reset();
+
+            return true;
         }
     </script>
 
@@ -34,6 +34,8 @@
             width: 70%;
             margin: 0 auto;
         }
+
+
     </style>
 
 </head>
@@ -43,7 +45,7 @@
 <!-- Dette må ikke fjernes, det er fragments til headeren -->
 <div th:insert="Fragments/header :: header"></div>
 
-<form  action="/postAdmin" method="post" >
+<form  action="/postAdmin" method="post" name="firstform">
     <div class="col" style="text-align: left">
 
         <div>
@@ -81,8 +83,15 @@
                 </div>
 
                 <div style="display: inline-block; vertical-align: top; margin-left: 50px">
-                    <div class="place-holer-main-image"></div>
+
+                    <div class="place-holer-main-image">
+
+                    </div>
+
+
                 </div>
+
+
             </div>
 </form>
 
@@ -93,11 +102,14 @@
     <input type="button" value="Slet bruger" id="deleteUser" name="deleteUser" onclick="customReset();">
     <br>
     <br>
-    <input type="button" value="Blacklist bruger" id="blacklistUser" name="blacklistUser" onclick="customReset();">
+    <input type="but" value="Blacklist bruger" id="blacklistUser" name="blacklistUser" onclick="customReset();">
         </div>
     </div>
 </form>
 
+<form action="/adminDeleteUser" method="post">
+    <input type="button" value="Slet billede" name="deletePhoto" id="deletePhoto">
+</form>
 
 
 

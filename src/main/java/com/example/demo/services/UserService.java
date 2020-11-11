@@ -58,6 +58,10 @@ public class UserService extends ProfileService{
 
     }
 
+    public void deletePhoto(User user){
+        userRepository.updatePhotoInDatabase(user);
+    }
+
 
     public void saveUserProfileChanges() {
         //TODO
@@ -96,17 +100,6 @@ public class UserService extends ProfileService{
     }
 
 
-    /*public int calculateAge(){
-
-
-
-        LocalDate birthday = user.getDateOfBirth();
-        LocalDate currentDate = LocalDate.now();
-
-
-
-        return Period.between(currentDate, birthday).getYears();
-    }*/
 
 
 

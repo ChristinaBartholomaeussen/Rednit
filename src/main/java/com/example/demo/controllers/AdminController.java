@@ -33,11 +33,7 @@ public class AdminController
     @GetMapping("/admin")
     public String adminPage(Model adminModel)
     {
-        for(int i = 0; i < 45; i++)
-        {
-            Date date = new Date(i);
-            allUsers.add(new User("email"+i,"password"+i,"firstName"+i,"lastName"+i, date,i,i,"bio"+i));
-        }
+
 
         adminModel.addAttribute("users", allUsers);
         adminModel.addAttribute("userToDisplay", userToDisplay);
@@ -55,11 +51,11 @@ public class AdminController
 
         String firstname = dataFromForm.getParameter("firstname");
 
-        for(int i = 0; i < 45; i++)
+        /*for(int i = 0; i < 45; i++)
         {
             Date date = new Date(i);
             allUsers.add(new User("email"+i,"password"+i,"firstName"+i,"lastName"+i, date,i,i,"bio"+i));
-        }
+        }*/
 
         for(User u : allUsers){
             if(firstname.equals(u.getFirstName()))
@@ -80,23 +76,36 @@ public class AdminController
 
         String delete = String.valueOf(dateFromForm.getParameter("deleteUser"));
         String blakclist = dateFromForm.getParameter("blacklistUser");
+        //String deletePhoto = dateFromForm.getParameter("deletePhoto");
 
         if(delete.equals("Slet bruger")){
             for(User u : allUsers){
                 if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
+
+                    System.out.println(u.getIdUser() + " deleted");
                     userService.deleteUser(u.getIdUser());
-                    //System.out.println(u.getIdUser() + " deleted");
+
                 }
             }
         }
         if(blakclist.equals("Blacklist bruger")){
             for(User u : allUsers){
                 if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
-                    //admin.addToBlacklist(u.getIdUser());
-                    //System.out.println(u.getIdUser() + " deleted");
+                    admin.addToBlacklist(u.getIdUser());
+                    System.out.println("Blacklisted");
                 }
             }
         }
+/*
+        if(deletePhoto.equals("Slet billede"))
+        {
+            for(User u : allUsers){
+                if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
+                    userService.deletePhoto(u);
+                    System.out.println(u);
+                }
+            }
+        }*/
 
 
 //TODO lav redirect
