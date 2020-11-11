@@ -28,40 +28,33 @@ import java.util.List;
 @Service
 public class UserService  extends ProfileService {
 
-
-    public List<User> allUsers = new ArrayList<>();
-
+    UserRepository userRepository = new UserRepository();
 
 
 
-    /*****Kunne være en idé af bruge dette, så vi ikke oprettet en ny liste hver gang,
-     * hvis det kan i forhold til vores database. På den på kan vi også bruge listen
-     * og metoderne i klassen andre steder i vores kode, uden at den laver en ny liste****
-     */
-/*
-    private static MyUser single_instance = null;
+    public List<User> allUsers = userRepository.selectAllUsersFromDatabase();
 
-    public static MyUser getInstance()
-    {
-        if(single_instance == null)
-        {
-            single_instance = new MyUser();
-        }
 
-        return single_instance;
+    User user = new User();
 
+
+    public User userToDisplay(){
+       return user;
     }
 
- */
+    public void setUserToDefault(){
+        user = new User();
+    }
+
 
     public void createUser() {
         //TODO
         //INDSÆT KODE
     }
 
-    public void addToAllUsers(User user) {
+    /*public void addToAllUsers(User user) {
         allUsers.add(user); //Vi adder user til den fulde liste
-    }
+    }*/
 
     public void deleteUser(int id) {
 
@@ -70,6 +63,7 @@ public class UserService  extends ProfileService {
     }
 
     public void deletePhoto(User user){
+        user.setPhoto1(null);
         userRepository.updatePhotoInDatabase(user);
     }
 
@@ -155,7 +149,7 @@ public class UserService  extends ProfileService {
         } else return email.length() > 4 && email.indexOf('@') > 0 && email.indexOf('.') > email.indexOf('@');
     }
 
-    UserRepository userRepository = new UserRepository();
+
 
     //Tjekker om vores email og password passer til det i vores database
     public boolean doesEmailMatchPassword(String email, String password) throws FileNotFoundException {
