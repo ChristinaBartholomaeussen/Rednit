@@ -24,8 +24,6 @@ public class TestSQLController {
     @GetMapping("/test")
     public String test() {
 
-        adminRepository.deleteUserFromBlacklistInDatabase(38);
-
         return "testSQL";
     }
 
