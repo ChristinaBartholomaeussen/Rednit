@@ -47,7 +47,7 @@ public class AdminRepository {
     public List<User> selectAllBlackListUsersFromDatabase() {
         String selectAllBlacklistedUsers = "SELECT * FROM users INNER JOIN blacklists ON users.idUser=blacklists.idUser";
 
-        List<User> allBlackListUsers = new ArrayList<>();
+        List<User> allBlacklistUsers = new ArrayList<>();
 
         try {
             PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectAllBlacklistedUsers);
@@ -66,13 +66,13 @@ public class AdminRepository {
                         resultSet.getInt(9),
                         resultSet.getString(10)
                 );
-                allBlackListUsers.add(tmpBlacklistUser);
+                allBlacklistUsers.add(tmpBlacklistUser);
             }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return allBlackListUsers;
+        return allBlacklistUsers;
     }
 
 }

@@ -13,15 +13,16 @@ public class MessageRepository {
 
     ConnectionRepository connection = new ConnectionRepository();
 
-    //Testing
+    //Implementation
 
-    public void insertMessageIntoDatabase(String email, String message) {
-        String insertMessageSQL = "INSERT INTO messages (email, message) VALUES (?, ?)";
+    public void insertMessageIntoDatabase(int idUser, int idUserMatch, String message) {
+        String insertMessageSQL = "INSERT INTO messages (idUser, idUserMatch, message) VALUES (?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(insertMessageSQL);
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, message);
+            preparedStatement.setInt(1, idUser);
+            preparedStatement.setInt(2, idUserMatch);
+            preparedStatement.setString(3, message);
 
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -29,32 +30,32 @@ public class MessageRepository {
         }
     }
 
-    //Requirement, we need to discuss how messages will be actioned
+    //Implementation
 
-    public List<Message> selectMessagesFromDatabase(String email) {
+    public List<Message> selectMessagesFromDatabase(int idUserMatch, int idUser) {
 
-        String selectMessages = "SELECT * FROM messages WHERE email = ?";
+        String selectMatchMessages = "SELECT * FROM messages INNER JOIN users ON messages.idUser=users.idUser WHERE messages.idUserMatch = ? OR users.idUser = ?";
 
-        List<Message> allMessages = new ArrayList<>();
+        List<Message> allMatchMessages = new ArrayList<>();
 
         try {
-            PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectMessages);
-            preparedStatement.setString(1, email);
+            PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectMatchMessages);
+            preparedStatement.setInt(1, idUserMatch);
+            preparedStatement.setInt(2, idUser);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 Message tmpMessage = new Message(
-                resultSet.getString(1),
-                resultSet.getString(2)
+                        resultSet.getInt(1),
+                        resultSet.getInt(2),
+                        resultSet.getString(3)
                 );
-                allMessages.add(tmpMessage);
+                allMatchMessages.add(tmpMessage);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return allMessages;
+        return allMatchMessages;
     }
-
-
 }

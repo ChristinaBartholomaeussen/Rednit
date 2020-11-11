@@ -26,6 +26,7 @@ public class UserRepository {
 
     public void insertUserIntoDatabase(User user) {
         String insertUserSQL ="INSERT INTO users (email, password, firstName, lastName, dateOfBirth, bio, gender, sexualPreference) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
         try {
             PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(insertUserSQL);
             preparedStatement.setString(1, user.getEmail());
@@ -42,10 +43,6 @@ public class UserRepository {
             System.out.println(e.getMessage());
         }
     }
-
-    //Implementation
-
-
 
     //Implementation
 
@@ -78,8 +75,6 @@ public class UserRepository {
             preparedStatement.setInt(1, idUser);
 
             preparedStatement.execute();
-
-            System.out.println("deleted");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -198,30 +193,4 @@ public class UserRepository {
             System.out.println(e.getMessage());
         }
     }
-
-    public void selectUserLikedListFromDatabase() {
-
-    }
-
-    public void insertUserIntoLikedListInDatabase() {
-
-    }
-
-    public void deleteUserFromLikedListInDatabase() {
-
-    }
-
-    public void insertUserIntoDislikedInDatabase(){
-
-    }
-
-    public List<User> getLikedListFromDatabase(User user){
-        List<User> likedList = new ArrayList<User>();
-
-        //TODO
-        //der skal på en måde findes begges brugeres lister
-
-        return likedList;
-    }
-
 }

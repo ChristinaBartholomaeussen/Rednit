@@ -13,25 +13,22 @@ public class MatchService {
 
 
 
-    public List<User> showAllMatches() {
+   /*public List<User> showAllMatches() {
 
-        List<User> matches = matchRepository.getAllMatchesFromDatabase();
+        /List<User> matches = matchRepository.getAllMatchesFromDatabase();
 
         return matches;
 
-    }
-
+   }
 
     public void addToMatches(User loggedInUser, User potentiallyMatch) {
 
         if(isAMatch(loggedInUser, potentiallyMatch)){
 
-            matchRepository.addToMatchTableInDatabase(loggedInUser, potentiallyMatch);
+            //matchRepository.addToMatchTableInDatabase(loggedInUser, potentiallyMatch);
 
         }
     }
-
-
 
     public void deleteMatch(User match ) {
 
@@ -42,12 +39,12 @@ public class MatchService {
         String choice = null;
 
         if(choice.equalsIgnoreCase("yes")){
-            matchRepository.deleteMatchFromTableInDatabase(match);
+            //matchRepository.deleteMatchFromTableInDatabase(match);
         }
     }
 
 
-    public boolean isAMatch(User loggedInUser, User potentiallyMatch) {
+    /*public boolean isAMatch(User loggedInUser, User potentiallyMatch) {
 
         List<User> loggedInUserList = userRepository.getLikedListFromDatabase(loggedInUser);
         List<User> potentiallyMatchList = userRepository.getLikedListFromDatabase(potentiallyMatch);
@@ -62,5 +59,5 @@ public class MatchService {
             return false;
         }
 
-    }
+    }*/
 }

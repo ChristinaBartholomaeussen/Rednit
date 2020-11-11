@@ -15,6 +15,7 @@ import java.util.List;
 public class User extends Profile {
 
     private int idUser;
+    private int idUserMatch;
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
@@ -26,7 +27,10 @@ public class User extends Profile {
     private List<User> dislikedUsers;
     private List<User> potentialCandidates;
 
-
+    public User(int idUser, int idUserMatch) {
+        this.idUser = idUser;
+        this.idUserMatch = idUserMatch;
+    }
   
 	
     public User(String email, String password,
@@ -85,6 +89,20 @@ public class User extends Profile {
     public User(String email) {
     }
 
+    public User(int idUser, int idUserMatch, String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference, String photo1) {
+        super(email);
+        this.idUser = idUser;
+        this.idUserMatch = idUserMatch;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.bio = bio;
+        this.gender = gender;
+        this.sexualPreference = sexualPreference;
+        this.photo1 = photo1;
+
+    }
+
     public User(String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference, String photo1)
     {
         super(email);
@@ -114,6 +132,14 @@ public class User extends Profile {
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
+    }
+
+    public int getIdUserMatch() {
+        return idUserMatch;
+    }
+
+    public void setIdUserMatch(int idUserMatch) {
+        this.idUserMatch = idUserMatch;
     }
 
     public String getFirstName() {

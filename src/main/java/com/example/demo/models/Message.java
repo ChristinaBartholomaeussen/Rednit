@@ -2,15 +2,21 @@ package com.example.demo.models;
 
 import java.time.LocalDateTime;
 
-public class Message {
+public class Message extends User {
 
     private final LocalDateTime timestamp = LocalDateTime.now(); //Vi får forhåbenlig altid en ny tid.
     private String message;
 
+    public Message(int idUser, int idUserMatch, String message) {
+        super(idUser, idUserMatch);
+        this.message = message;
+    }
+
+
+
     public Message(String string, String string1) {
 
     }
-
 
     public void setMessage(String message) {
         this.message = message;
