@@ -7,16 +7,7 @@
 
     <title>Admin</title>
 
-    <script>
-        function customReset()
-        {
-            var frm = document.getElementsByName('firstform')[0];
-            frm.submit();
-            frm.reset();
 
-            return true;
-        }
-    </script>
 
     <style>
         .fitText{
@@ -95,7 +86,7 @@
             </div>
 </form>
 
-<form action="/adminDeleteUser" method="post">
+<form action="/adminDeleteUser" method="post" id="deleteBlacklist">
     <div  style="text-align: center" class="wrapper">
         <div style="display: inline-block; vertical-align: top;">
 
@@ -108,7 +99,7 @@
 </form>
 
 <form action="/adminDeleteUser" method="post">
-    <input type="button" value="Slet billede" name="deletePhoto" id="deletePhoto">
+    <input type="submit" value="Slet billede" name="deletePhoto" id="deletePhoto">
 </form>
 
 

@@ -89,30 +89,39 @@ public class AdminController
                 }
             }
             else if(blakclist.equals("Blacklist bruger")){
-                for(User u : allUsers){
-                    if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
-                        admin.addToBlacklist(u.getIdUser());
-                        System.out.println("Blacklisted");
+
+                    for(User u : allUsers){
+                        if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
+                            admin.addToBlacklist(u.getIdUser());
+                            System.out.println("Blacklisted");
+                        }
                     }
-                }
+
             }
 
             else if(deletePhoto.equals("Slet billede"))
             {
-                for(User u : allUsers){
-                    if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
-                        userService.deletePhoto(u);
-                        System.out.println(u);
+                try{
+                    for(User u : allUsers){
+                        if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
+                            userService.deletePhoto(u);
+                            System.out.println(u);
+                        }
                     }
+                }catch (NullPointerException e){
+                    System.out.println(e.getMessage());
                 }
+
             }
         }catch (ConcurrentModificationException e){
+            System.out.println(e.getMessage());
+        }catch (NullPointerException e){
             System.out.println(e.getMessage());
         }
 
 
 
-//TODO lav redirect
+
         return "redirect:/admin";
     }
 
