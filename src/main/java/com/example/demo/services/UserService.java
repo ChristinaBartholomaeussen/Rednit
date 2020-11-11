@@ -3,6 +3,12 @@ package com.example.demo.services;
 import com.example.demo.models.User;
 import com.example.demo.repositories.AdminRepository;
 import com.example.demo.repositories.UserRepository;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.Cookie;
@@ -15,10 +21,12 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-public class UserService extends ProfileService{
+@Service
+public class UserService  extends ProfileService {
 
 
     public List<User> allUsers = new ArrayList<>();
@@ -182,7 +190,7 @@ public class UserService extends ProfileService{
 
 	public static void saveImage(MultipartFile imageFile, Cookie cookie) throws Exception {
 		try {
-			String folder = "./src/main/resources/static/photos/fotos" + cookie.getValue();
+			String folder = "./photos/fotos" + cookie.getValue();
 
 
 			UserRepository userRepository = new UserRepository();
@@ -216,10 +224,6 @@ public class UserService extends ProfileService{
 		return cookieId;
 	}
 
-	
-	
-	
-	
 	public static void createDir(Cookie cookie) {
 		String path = "./src/main/resources/static/photos/fotos" + cookie.getValue();
 		File file = new File(path);
@@ -227,6 +231,5 @@ public class UserService extends ProfileService{
 
 		System.out.println("Dir greated");
 	}
-
 
 }

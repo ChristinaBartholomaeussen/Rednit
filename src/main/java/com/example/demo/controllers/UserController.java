@@ -3,6 +3,8 @@ package com.example.demo.controllers;
 import com.example.demo.models.User;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.UserService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 public class UserController {
@@ -130,15 +132,54 @@ public class UserController {
 
 		return "redirect:/myProfile";
 	}
-	
+
+	UserService userService = new UserService();
+	List<User> getAllUsers = userService.getAllUsers();
+
+	List<User> likedUsers = new ArrayList<>();
+
+
     @GetMapping("/explore")
     public String explore(Model model)
     {
-        Date date = new Date();
-        User user = new User("email","password","Rune","Petersen",date,1,0,"hej med dig");
+		List<User> listInMemory = getAllUsers;
+		Random randomNumber = new Random();
+		User userInMemory = listInMemory.get(randomNumber.nextInt(listInMemory.size()));
 
-        model.addAttribute("user", user);
-        return "explore";
+		model.addAttribute("user",userInMemory);
+		model.addAttribute("allUsers", listInMemory);
+
+		return "explore";
     }
+
+    @PostMapping("/postExploreLiked")
+	public String postExploreLiked(WebRequest data)
+	{
+		int likedUserId = Integer.valueOf(data.getParameter("liked"));
+
+		for(User user : getAllUsers)
+			if(likedUserId == user.getIdUser())
+			{
+				// Adding user to Liked list - should be changed to singular userId and sent to the database, but right now atleast we have a list
+				likedUsers.add(user);
+			}
+
+		return "redirect:/explore";
+	}
+
+	@PostMapping("/postExploreSkipped")
+	public String postExploreSkipped(WebRequest data)
+	{
+		int skippedUserId = Integer.valueOf(data.getParameter("skipped"));
+
+		for(User user : getAllUsers)
+			if(skippedUserId == user.getIdUser())
+			{
+				// Remove from All Users list, so user wont be shown again - atleast before next time we run the application
+			}
+
+
+		return "redirect:/explore";
+	}
 
 }
