@@ -16,6 +16,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Date;
 import java.util.List;
 
@@ -26,14 +27,15 @@ public class AdminController
     UserService userService = new UserService();
     User userToDisplay = new User();
     AdminService admin = new AdminService();
+    List<User> allUsers;
 
-    List<User> allUsers = userService.getAllUsers();
 
 
     @GetMapping("/admin")
     public String adminPage(Model adminModel)
     {
 
+        allUsers = userService.getAllUsers();
 
         adminModel.addAttribute("users", allUsers);
         adminModel.addAttribute("userToDisplay", userToDisplay);
@@ -51,11 +53,7 @@ public class AdminController
 
         String firstname = dataFromForm.getParameter("firstname");
 
-        /*for(int i = 0; i < 45; i++)
-        {
-            Date date = new Date(i);
-            allUsers.add(new User("email"+i,"password"+i,"firstName"+i,"lastName"+i, date,i,i,"bio"+i));
-        }*/
+
 
         for(User u : allUsers){
             if(firstname.equals(u.getFirstName()))
@@ -74,38 +72,44 @@ public class AdminController
     @PostMapping("/adminDeleteUser")
     public String deleteUser(WebRequest dateFromForm){
 
+
         String delete = String.valueOf(dateFromForm.getParameter("deleteUser"));
         String blakclist = dateFromForm.getParameter("blacklistUser");
-        //String deletePhoto = dateFromForm.getParameter("deletePhoto");
+        String deletePhoto = dateFromForm.getParameter("deletePhoto");
 
-        if(delete.equals("Slet bruger")){
-            for(User u : allUsers){
-                if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
+        try{
+            if(delete.equals("Slet bruger")){
+                for(User u : allUsers){
+                    if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
 
-                    System.out.println(u.getIdUser() + " deleted");
-                    userService.deleteUser(u.getIdUser());
-
+                        System.out.println(u.getIdUser() + " deleted");
+                        userService.deleteUser(u.getIdUser());
+                        allUsers.remove(u);
+                    }
                 }
             }
+            else if(blakclist.equals("Blacklist bruger")){
+                for(User u : allUsers){
+                    if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
+                        admin.addToBlacklist(u.getIdUser());
+                        System.out.println("Blacklisted");
+                    }
+                }
+            }
+
+            else if(deletePhoto.equals("Slet billede"))
+            {
+                for(User u : allUsers){
+                    if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
+                        userService.deletePhoto(u);
+                        System.out.println(u);
+                    }
+                }
+            }
+        }catch (ConcurrentModificationException e){
+            System.out.println(e.getMessage());
         }
-        if(blakclist.equals("Blacklist bruger")){
-            for(User u : allUsers){
-                if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
-                    admin.addToBlacklist(u.getIdUser());
-                    System.out.println("Blacklisted");
-                }
-            }
-        }
-/*
-        if(deletePhoto.equals("Slet billede"))
-        {
-            for(User u : allUsers){
-                if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
-                    userService.deletePhoto(u);
-                    System.out.println(u);
-                }
-            }
-        }*/
+
 
 
 //TODO lav redirect

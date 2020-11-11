@@ -90,7 +90,7 @@ public class UserService extends ProfileService{
         return true;
     }
 
-    public static List<User> getAllUsers() {
+    public List<User> getAllUsers() {
 
         UserRepository userRepository = new UserRepository();
 
