@@ -192,11 +192,11 @@ public class User extends Profile {
         return potentialCandidates;
     }
 
+  
     @Override
-    public String toString()
-    {
-        return "User{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + ", sexualPreference=" + sexualPreference + ", bio='" + bio + '\'' + '}';
-    }
+	public String toString() {
+    	return "Id: " + idUser + "\nNavn: " + getFirstName() + "\nEmail: " + getEmail() + "\nGender: " + gender + "\nSexual Prefrence: " + sexualPreference + "\nFilsti til foto: " + photo1 + "\nBio: " + bio;
+	}
 
 
 }

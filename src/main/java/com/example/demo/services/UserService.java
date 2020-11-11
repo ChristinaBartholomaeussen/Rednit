@@ -5,6 +5,9 @@ import com.example.demo.repositories.AdminRepository;
 import com.example.demo.repositories.UserRepository;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -177,19 +180,52 @@ public class UserService extends ProfileService{
     }
 
 
-	public static void saveImage(MultipartFile imageFile, User user) throws Exception {
+	public static void saveImage(MultipartFile imageFile, Cookie cookie) throws Exception {
 		try {
-			String folder = "./src/main/resources/static/photos";
+			String folder = "./src/main/resources/static/photos/fotos" + cookie.getValue();
+
+
+			UserRepository userRepository = new UserRepository();
+			
+			 
+			User user = userRepository.selectUserFromDatabase(Integer.parseInt(cookie.getValue()));
 
 			byte[] imageBytesArray = imageFile.getBytes();
 			Path path = Paths.get(folder, imageFile.getOriginalFilename());
+			System.out.println("Filstien til hvor billedet burde blive gemt: " + path);
 			Files.write(path, imageBytesArray);
 			user.setPhoto1(String.valueOf(Files.write(path, imageBytesArray)));
-			System.out.println(user.getPhoto1());
-
+			userRepository.updatePhotoInDatabase(user);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	}
+	
+	public static Cookie getCookieId(HttpServletRequest request) {
+
+		Cookie cookie[] = request.getCookies();
+
+		Cookie cookieId = new Cookie("id", "");
+
+		for (Cookie cookie1 : cookie) {
+			if (cookie1.getName().equals("id")) {
+				cookieId.setValue(cookie1.getValue());
+			}
+		}
+		
+		return cookieId;
+	}
+
+	
+	
+	
+	
+	public static void createDir(Cookie cookie) {
+		String path = "./src/main/resources/static/photos/fotos" + cookie.getValue();
+		File file = new File(path);
+		file.mkdir();
+
+		System.out.println("Dir greated");
 	}
 
 
