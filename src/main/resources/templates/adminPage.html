@@ -45,8 +45,8 @@
                 <option id="option" value="0">Vælg bruger:</option>
                 <option
                         th:each="user : ${users}"
-                        th:value="${user.firstName}"
-                        th:text="${user.firstName}">
+                        th:value="${user.getFirstName()}"
+                        th:text="${user.getFirstName()}">
                 </option>
             </select>
             <br>
