@@ -20,10 +20,11 @@ public class AdminService {
         this.allUsers = new ArrayList<>();
     }
 
-    public void addToBlacklist(int id)
+    /* ?
+    public void addToBlacklist(int idUser)
     {
-        adminRepository.addUserToBlacklistToDatabase(id);
-    }
+        adminRepository.insertUserIntoBlacklistInDatabase(user.getIdUser());
+    }*/
 
     public List<User> restoreUser(User user)
     {

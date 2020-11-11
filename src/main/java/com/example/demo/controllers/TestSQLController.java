@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.User;
+import com.example.demo.repositories.AdminRepository;
 import com.example.demo.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ public class TestSQLController {
 
     UserRepository userRepository = new UserRepository();
 
+    AdminRepository adminRepository = new AdminRepository();
+
     User user = null;
 
     List<User> allUsersList = new ArrayList<>();
@@ -21,7 +24,7 @@ public class TestSQLController {
     @GetMapping("/test")
     public String test() {
 
-        userRepository.updatePhotoInDatabase(userRepository.selectUserFromDatabase(1));
+        adminRepository.deleteUserFromBlacklistInDatabase(38);
 
         return "testSQL";
     }

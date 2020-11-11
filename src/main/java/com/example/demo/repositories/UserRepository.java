@@ -118,7 +118,7 @@ public class UserRepository {
         return userToReturn;
     }
 
-    //Test
+    //Done
 
     public User selectUserFromDatabaseFromEmail(String email) {
 

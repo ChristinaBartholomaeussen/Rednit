@@ -92,7 +92,7 @@ public class AdminController
 
                     for(User u : allUsers){
                         if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
-                            admin.addToBlacklist(u.getIdUser());
+                            //admin.addToBlacklist(u.getIdUser());
                             System.out.println("Blacklisted");
                         }
                     }

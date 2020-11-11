@@ -59,9 +59,9 @@ public class User extends Profile {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
+        this.bio = bio;
         this.gender = gender;
         this.sexualPreference = sexualPreference;
-        this.bio = bio;
     }
 
     public User(String email, String password, String firstName, String lastName, Date dateOfBirth, int gender, int sexualPreference, String bio, String photo1, String photo2, String photo3)
@@ -94,7 +94,6 @@ public class User extends Profile {
         this.bio = bio;
         this.gender = gender;
         this.sexualPreference = sexualPreference;
-        this.photo1 = photo1;
     }
 
     public User(int idUser, String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference, String photo1) {
