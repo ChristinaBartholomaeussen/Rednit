@@ -75,7 +75,13 @@ public class UserController {
 	User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 1, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
 
     @GetMapping("/myProfile")
-    public String myProfile(Model model){
+    public String myProfile(Model model, HttpServletRequest request){
+    	
+    	UserRepository userRepository = new UserRepository();
+    	
+    	Cookie cookieId = UserService.getCookieId(request);
+    	User user = userRepository.selectUserFromDatabase(Integer.parseInt(cookieId.getValue()));
+    	
     	
     	model.addAttribute("user", user);
 

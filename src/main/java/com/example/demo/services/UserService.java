@@ -200,7 +200,6 @@ public class UserService  extends ProfileService {
 
 			byte[] imageBytesArray = imageFile.getBytes();
 			Path path = Paths.get(folder, imageFile.getOriginalFilename());
-			System.out.println("Filstien til hvor billedet burde blive gemt: " + path);
 			Files.write(path, imageBytesArray);
 			user.setPhoto1(String.valueOf(Files.write(path, imageBytesArray)));
 			userRepository.updatePhotoInDatabase(user);
@@ -229,7 +228,6 @@ public class UserService  extends ProfileService {
 		File file = new File(path);
 		file.mkdir();
 
-		System.out.println("Dir greated");
 	}
 
 }

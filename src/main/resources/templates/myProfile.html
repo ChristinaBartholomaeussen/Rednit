@@ -20,12 +20,15 @@
 			flex-direction: column;
 		}
 		
-		.place-holer-main-image {
+		.main-image {
 			width: 250px;
 			height: 350px;
-			background: #f3f3f3;
+			
 		}
-		
+		.main-image img {
+			width: 100%;
+			height: auto;
+		}
 		
 		.small-placeholder-img {
 			width: 75px;
@@ -64,13 +67,9 @@
 	</form>
 	
 	<div class="container" >
-		
-		<div class="place-holer-main-image"></div>
-		
-		
-		
-		
-		
+		<div class="main-image">
+			<img th:src="${user.getPhoto1()}" th:alt="${user.getFirstName()}">
+		</div>
 	</div>
 	
 	<div class="container">
