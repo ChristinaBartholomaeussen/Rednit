@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
@@ -111,10 +113,13 @@ public class UserController {
 	}
 
 	@PostMapping("/imageFile")
-	public String imageFile(@RequestParam("imageFile") MultipartFile imageFile) {
-			
+	public String imageFile(@RequestParam("imageFile") MultipartFile imageFile, HttpServletRequest request) {
+
+		
+    	Cookie cookieId = UserService.getCookieId(request);
+    	
 				try {
-					UserService.saveImage(imageFile, user);
+					UserService.saveImage(imageFile, cookieId);
 					
 				} catch (Exception e) {
 					e.printStackTrace();

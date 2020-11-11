@@ -3,11 +3,17 @@ package com.example.demo.controllers;
 import com.example.demo.models.User;
 import com.example.demo.services.UserService;
 import com.example.demo.repositories.UserRepository;
+import org.springframework.boot.Banner;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,7 +34,7 @@ public class LoginController
     }
 
     @PostMapping("/postCreate")
-    public String postCreate(WebRequest dataFromForm)
+    public String postCreate(WebRequest dataFromForm, HttpServletResponse response)
     {
         try
         {
@@ -65,10 +71,10 @@ public class LoginController
 
             String bio = dataFromForm.getParameter("bio");
 
-            User user = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio);
+            User user = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio,"","", "");
 
             userRepository.insertUserIntoDatabase(user);
-            userServiceToDisplay.allUsers.add(user);
+
         }
         catch(Exception e)
         {
@@ -76,20 +82,30 @@ public class LoginController
             return "redirect:/create";
         }
 
-        return "/create/uploadPhoto";
+        String id = "" + userRepository.selectUserFromDatabaseFromEmail(dataFromForm.getParameter("email")).getIdUser();
+        Cookie cookie = new Cookie("id", id);
+        response.addCookie(cookie);
+        return "create/uploadPhoto";
     }
 
-    @GetMapping("/uploadPicture")
-    public String uploadPicture()
+    @GetMapping("/postCreate")
+	@ResponseBody
+    public String uploadPicture(Model model, HttpServletRequest request)
     {
-        return "createUploadPhoto"; // HTML side
+    	
+    	
+		//model.addAttribute("user", user);
+    	return "create/uploadPhoto"; // HTML side
     }
 
     @PostMapping("/uploadPicture")
-    public String uploadPicture(WebRequest data)
-    {
+    public String uploadPicture(@RequestParam("imageFile") MultipartFile imageFile, HttpServletRequest request) throws Exception {
 
-        return "create";
+		Cookie cookieId = UserService.getCookieId(request);
+		UserService.createDir(cookieId);
+		
+		UserService.saveImage(imageFile, cookieId);
+        return "redirect:/create/uploadPhoto";
     }
 
 
