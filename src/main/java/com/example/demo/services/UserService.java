@@ -190,8 +190,8 @@ public class UserService  extends ProfileService {
 
 	public static void saveImage(MultipartFile imageFile, Cookie cookie) throws Exception {
 		try {
-			String folder = "./photos/fotos" + cookie.getValue();
-
+			String folder = "./src/main/resources/static/photos/fotos" + cookie.getValue();
+			String imgPath = "./photos/fotos" + cookie.getValue() + "/" + imageFile.getOriginalFilename();
 
 			UserRepository userRepository = new UserRepository();
 			
@@ -201,7 +201,10 @@ public class UserService  extends ProfileService {
 			byte[] imageBytesArray = imageFile.getBytes();
 			Path path = Paths.get(folder, imageFile.getOriginalFilename());
 			Files.write(path, imageBytesArray);
-			user.setPhoto1(String.valueOf(Files.write(path, imageBytesArray)));
+
+			System.out.println(imgPath);
+			
+			user.setPhoto1(imgPath);
 			userRepository.updatePhotoInDatabase(user);
 		} catch (Exception e) {
 			System.out.println(e);
