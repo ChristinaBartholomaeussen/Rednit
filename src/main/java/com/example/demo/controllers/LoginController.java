@@ -123,7 +123,7 @@ public class LoginController
     @PostMapping("/postLogin")
     public String userLogin(WebRequest dataFromForm, HttpServletResponse response) throws FileNotFoundException {
 
-        List<User> userFromDB = userServiceToDisplay.getAllUsers();
+        List<User> userFromDB = userServiceToDisplay.getAllUsersLoginInformation();
 
         String useremail = dataFromForm.getParameter("email");
         String userpassword = dataFromForm.getParameter("password");
@@ -132,49 +132,22 @@ public class LoginController
             return "redirect:/admin";
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         try{
-
+			
 
             for(User user : userFromDB)
             {
+				System.out.println(user.getPassword());
+            	
                 if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
                 {
 					String id = "" + userRepository.selectUserFromDatabaseFromEmail(useremail).getIdUser();
 					Cookie cookie = new Cookie("id", id);
 					response.addCookie(cookie);
-					System.out.println(cookie.getValue());
-                    System.out.println("godkendt");
-                    System.out.println("Logget ind med bruger: " + user.getFirstName() + " " + user.getLastName());
-                    return "redirect:/loginpage";
+                    return "redirect:/explore";
                 }
             }
-
-            //TODO RBP: Implementer Database kald, så kan tjekke om User findes på databasen
-            if(userServiceToDisplay.doesEmailMatchPassword(useremail, userpassword)){
-
-                System.out.println("godkendt");
-                return "redirect:/loginpage";
-            }
-
+            
         }catch(Exception e){
             System.out.println("fejl: " + e);
             return "redirect:/login";

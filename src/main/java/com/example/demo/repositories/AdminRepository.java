@@ -3,6 +3,7 @@ package com.example.demo.repositories;
 import com.example.demo.models.Admin;
 import com.example.demo.models.User;
 
+import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -78,15 +79,30 @@ public class AdminRepository {
         return allBlacklistUsers;
     }
 
-    /*public Admin selectAdmin() {
-        String selectAdmin = "SELECT * FROM admins";
+    //Testing
 
-        Admin.
+    public Admin selectAdmin(String email) {
+
+        Admin adminToReturn = new Admin();
+
+        String selectAdmin = "SELECT * FROM admins WHERE email = ?";
 
         try {
             PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectAdmin);
+            preparedStatement.setString(1, email);
 
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                adminToReturn= new Admin(
+                        resultSet.getString(1),
+                        resultSet.getString(2)
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-    }*/
+        return adminToReturn;
+    }
 
 }
