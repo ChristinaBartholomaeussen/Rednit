@@ -15,7 +15,7 @@ public class MatchService {
         matchRepository.deleteMatchFromMatchlistInDatabase(userFrom.getIdUser(), userTo.getIdUser());
     }
 
-    public void insertMatch(User userFrom, User userTo) {
+    public void insertPotentialMatch(User userFrom, User userTo) {
         matchRepository.InsertMatchIntoMatchListInDatabase(userFrom.getIdUser(), userTo.getIdUser());
     }
 
