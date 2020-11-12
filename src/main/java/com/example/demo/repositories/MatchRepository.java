@@ -13,7 +13,7 @@ public class MatchRepository {
 
     ConnectionRepository connection = new ConnectionRepository();
 
-    //Implementation
+    /**Deletes a match between two users in the database*/
 
     public void deleteMatchFromMatchlistInDatabase(int idUser, int idUserMatch) {
         String deleteUserMatch = "DELETE FROM matchlists WHERE idUser = ? AND idUserMatch = ?";
@@ -29,7 +29,7 @@ public class MatchRepository {
         }
     }
 
-    //Implementation
+    /**Inserts a match after a user has 'liked' another user*/
 
     public void InsertMatchIntoMatchListInDatabase(int idUser, int idUserMatch) {
         String insertUserMatch = "INSERT INTO matchlists (idUser, idUserMatch) VALUES (?, ?)";
@@ -45,7 +45,7 @@ public class MatchRepository {
         }
     }
 
-    //Implementation
+    /**Selects a single users matches and returns it as an ArrayList*/
 
     public List<User> selectUserMatchesFromDatabase(int idUser) {
         String selectUserMatches = "SELECT * FROM matchlists INNER JOIN users ON matchlists.idUser=users.idUser WHERE users.idUser = ?  OR matchlists.idUserMatch = ?";
@@ -79,6 +79,8 @@ public class MatchRepository {
         }
         return userMatches;
     }
+
+    /**Selects all matches in the database and returns them as an ArrayList*/
 
     public List<Match> selectAllMatchesFromDatabase() {
         String selectAllMatches = "SELECT * FROM matchlists";

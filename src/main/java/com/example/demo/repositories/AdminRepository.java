@@ -16,7 +16,7 @@ public class AdminRepository {
 
     Admin admin = new Admin();
 
-    //Implementation
+    /**Inserts the users idUser attribute into the blacklist table, in the database */
 
     public void insertUserIntoBlacklistInDatabase(User user) {
         String insertUserIntoBlackList = "INSERT INTO blacklists (idUser) VALUES (?)";
@@ -31,7 +31,7 @@ public class AdminRepository {
         }
     }
 
-    //Implementation
+    /**Deletes a users idUser attribute from the blacklist table, in the database*/
 
     public void deleteUserFromBlacklistInDatabase(int idUser) {
         String deleteUserFromBlackList = "DELETE FROM blacklists WHERE idUser = ?";
@@ -46,7 +46,7 @@ public class AdminRepository {
         }
     }
 
-    //Implementation
+    /**Selects all blacklisted users in the database and returns it as an ArrayList*/
 
     public List<User> selectAllBlackListUsersFromDatabase() {
         String selectAllBlacklistedUsers = "SELECT * FROM users INNER JOIN blacklists ON users.idUser=blacklists.idUser";
@@ -79,7 +79,7 @@ public class AdminRepository {
         return allBlacklistUsers;
     }
 
-    //Testing
+    /**Selects all admins in the database and returns it as an ArrayList*/
 
     public List<Admin> selectAllAdminsFromDatabase() {
 

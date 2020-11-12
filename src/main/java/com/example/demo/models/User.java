@@ -226,7 +226,7 @@ public class User extends Profile {
   
     @Override
 	public String toString() {
-    	return "Id: " + idUser + "\nNavn: " + getFirstName() + "\nEmail: " + getEmail() + "\nGender: " + gender + "\nSexual Prefrence: " + sexualPreference + "\nFilsti til foto: " + photo1 + "\nBio: " + bio;
+    	return "Id: " + idUser + "\nIdUserMatch: " + idUserMatch + "\nNavn: " + getFirstName() + "\nEmail: " + getEmail() + "\nGender: " + gender + "\nSexual Prefrence: " + sexualPreference + "\nFilsti til foto: " + photo1 + "\nBio: " + bio;
 	}
 
 

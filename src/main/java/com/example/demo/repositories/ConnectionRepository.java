@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class ConnectionRepository {
 
-    //Finished
+    /**Establishes a connection to our cloud based database*/
 
     public Connection establishConnection() {
         Connection connection = null;

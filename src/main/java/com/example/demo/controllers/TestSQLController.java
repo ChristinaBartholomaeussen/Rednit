@@ -30,6 +30,8 @@ public class TestSQLController {
     @GetMapping("/test")
     public String test() {
 
+        matchRepository.selectAllMatchesFromDatabase();
+
 
 
         return "testSQL";
