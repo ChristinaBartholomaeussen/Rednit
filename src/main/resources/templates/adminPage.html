@@ -8,7 +8,6 @@
     <title>Admin</title>
 
 
-
     <style>
         .fitText{
             width: fit-content;
@@ -26,6 +25,11 @@
             margin: 0 auto;
         }
 
+        .showHover:hover{
+            background: yellow;
+        }
+
+
 
     </style>
 
@@ -36,10 +40,9 @@
 <!-- Dette må ikke fjernes, det er fragments til headeren -->
 <div th:insert="Fragments/header :: header"></div>
 
+<!-- Form 1 -->
 <form  action="/postAdmin" method="post" name="firstform">
     <div class="col" style="text-align: left">
-
-
         <div>
             <label>
             <select class="form-control"  id="userInfo" name="firstname" style="width: fit-content">
@@ -55,22 +58,17 @@
             <input type="submit" value="Se info">
             </label>
         </div>
-
     </div>
 
 
             <div style="text-align: center" id="wrapper">
-
                 <div style="display: inline-block; vertical-align: top;">
                     <label class="fitText">
                         <input th:value="${userToDisplay.getFirstName()}" placeholder="Firstname" id="firstname"><br><br>
                         <input th:value="${userToDisplay.getLastName()}" placeholder="Lastname" id="lastname"><br><br>
                         <input th:value="${userToDisplay.getEmail()}" placeholder="Email" id="email"><br><br>
                         <input th:value="${#dates.format(userToDisplay.getDateOfBirth(), 'yyyy')}" placeholder="Årstal" id="age"><br><br>
-                        <input style="height: 136px" th:value="${userToDisplay.getBio()}" id="bio"><br><br>
-
-   <!-- Indsæt form til at håndtere sletning af bruger -->
-
+                        <input style="height: 134px" th:value="${userToDisplay.getBio()}" id="bio" placeholder="Bio"><br><br>
                     </label>
 
                 </div>
@@ -78,7 +76,7 @@
                 <div style="display: inline-block; vertical-align: top; margin-left: 50px">
 
                     <div class="place-holer-main-image">
-
+                        <img th:src="${userToDisplay.getPhoto1()}" style="height: 350px; width: 250px" onerror="this.style.display='none'">
                     </div>
 
 
@@ -92,18 +90,21 @@
     <div  style="text-align: center" class="wrapper">
         <div style="display: inline-block; vertical-align: top;">
 
-    <input type="submit" value="Slet bruger" id="deleteUser" name="deleteUser">
+    <input type="submit" value="Slet bruger" id="deleteUser" name="deleteUser" class="showHover">
     <br>
     <br>
-    <input type="submit" value="Blacklist bruger" id="blacklistUser" name="blacklistUser">
+
         </div>
     </div>
 </form>
 
-<form action="/adminDeleteUser" method="post">
-    <input type="submit" value="Slet billede" name="deletePhoto" id="deletePhoto">
+<form action="/adminDeletePhoto" method="post">
+    <input type="submit" value="Slet billede" name="deletePhoto" id="deletePhoto" class="showHover">
 </form>
 
+<form action="/adminBlacklistUser" method="post">
+    <input type="submit" value="Blacklist bruger" id="blacklistUser" name="blacklistUser" class="showHover">
+</form>
 
 
 </body>

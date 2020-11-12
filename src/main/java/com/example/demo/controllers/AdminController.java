@@ -25,22 +25,26 @@ public class AdminController
 {
 
     UserService userService = new UserService();
-    User userToDisplay = new User();
     AdminService admin = new AdminService();
     List<User> allUsers;
+
+
 
 
 
     @GetMapping("/admin")
     public String adminPage(Model adminModel)
     {
-
         allUsers = userService.getAllUsers();
 
+        //metoder kald her til user!
+
+
         adminModel.addAttribute("users", allUsers);
-        adminModel.addAttribute("userToDisplay", userToDisplay);
+        adminModel.addAttribute("userToDisplay", userService.userToDisplay());
         adminModel.addAttribute("admin", admin);
         adminModel.addAttribute("userService", userService);
+
 
 
         return "adminPage";
@@ -49,38 +53,46 @@ public class AdminController
 
 
     @PostMapping("/postAdmin")
-    public String adminPageDelete(WebRequest dataFromForm) throws FileNotFoundException {
+    public String adminStart(WebRequest dataFromForm) throws FileNotFoundException {
 
-        String firstname = dataFromForm.getParameter("firstname");
+        userService.setUserToDefault();
+
+        try{
+            String firstname = dataFromForm.getParameter("firstname");
+
+                for(User u : allUsers){
+                    if(firstname.equals(u.getFirstName()))
+                    {
+                        userService.userToDisplay().setFirstName(u.getFirstName());
+                        userService.userToDisplay().setLastName(u.getLastName());
+                        userService.userToDisplay().setEmail(u.getEmail());
+                        userService.userToDisplay().setDateOfBirth(u.getDateOfBirth());
+                        userService.userToDisplay().setBio(u.getBio());
+                        userService.userToDisplay().setPhoto1(u.getPhoto1());
+
+                    }
+                }
 
 
-
-        for(User u : allUsers){
-            if(firstname.equals(u.getFirstName()))
-            {
-                userToDisplay.setFirstName(u.getFirstName());
-                userToDisplay.setLastName(u.getLastName());
-                userToDisplay.setEmail(u.getEmail());
-                userToDisplay.setDateOfBirth(u.getDateOfBirth());
-                userToDisplay.setBio(u.getBio());
-            }
+        }catch (ConcurrentModificationException e){
+            System.out.println(e.getMessage());
         }
+
         return "redirect:/admin";
     }
 
 
-    @PostMapping("/adminDeleteUser")
+   @PostMapping("/adminDeleteUser")
     public String deleteUser(WebRequest dateFromForm){
 
 
+
         String delete = String.valueOf(dateFromForm.getParameter("deleteUser"));
-        String blakclist = dateFromForm.getParameter("blacklistUser");
-        String deletePhoto = dateFromForm.getParameter("deletePhoto");
 
         try{
-            if(delete.equals("Slet bruger")){
-                for(User u : allUsers){
-                    if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
+            if(delete.equals("Slet bruger")) {
+                for (User u : allUsers) {
+                    if (userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())) {
 
                         System.out.println(u.getIdUser() + " deleted");
                         userService.deleteUser(u.getIdUser());
@@ -88,44 +100,60 @@ public class AdminController
                     }
                 }
             }
-            else if(blakclist.equals("Blacklist bruger")){
-
-                    for(User u : allUsers){
-                        if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
-                            admin.addToBlacklist(u);
-                            System.out.println(u.getIdUser() + " Blacklisted");
-                        }
-                    }
-
-            }
-
-            else if(deletePhoto.equals("Slet billede"))
-            {
-                try{
-                    for(User u : allUsers){
-                        if(userToDisplay.getFirstName().equals(u.getFirstName()) && userToDisplay.getEmail().equals(u.getEmail())){
-                            userService.deletePhoto(u);
-                            System.out.println(u);
-                        }
-                    }
-                }catch (NullPointerException e){
-                    System.out.println(e.getMessage());
-                }
-
-            }
         }catch (ConcurrentModificationException e){
-            System.out.println(e.getMessage());
-        }catch (NullPointerException e){
             System.out.println(e.getMessage());
         }
 
+        userService.setUserToDefault();
+        return "redirect:/admin";
+    }
 
+    @PostMapping("/adminBlacklistUser")
+    public String blacklistUser(WebRequest dateFromForm)
+    {
 
-//TODO lav redirect
+        String blacklist = String.valueOf(dateFromForm.getParameter("blacklistUser"));
+
+        try{
+            if(blacklist.equals("Blacklist bruger")){
+                for(User u : allUsers){
+                    if(userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())){
+                        admin.addToBlacklist(u);
+                        System.out.println(u.getIdUser() + " Blacklisted");
+                    }
+                }
+            }
+        }catch (ConcurrentModificationException e){
+            System.out.println(e.getMessage());
+        }
+        userService.setUserToDefault();
         return "redirect:/admin";
     }
 
 
+    @PostMapping("/adminDeletePhoto")
+    public String deletePhone(WebRequest dataFromForm){
+
+        String deletePhoto = String.valueOf(dataFromForm.getParameter("deletePhoto"));
+
+        if(deletePhoto.equals("Slet billede"))
+        {
+            try{
+                for(User u : allUsers){
+                    if(userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())){
+                        userService.deletePhoto(u);
+
+                        System.out.println(u);
+                    }
+                }
+            }catch (NullPointerException e){
+                System.out.println(e.getMessage());
+            }
+
+        }
+        userService.setUserToDefault();
+        return "redirect:/admin";
+    }
 
 
 
