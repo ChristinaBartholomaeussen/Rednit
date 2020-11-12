@@ -125,18 +125,34 @@ public class LoginController
 
         List<User> userFromDB = userServiceToDisplay.getAllUsers();
 
-        /*if(true)
+        String useremail = dataFromForm.getParameter("email");
+        String userpassword = dataFromForm.getParameter("password");
+
+        if(useremail.equals("admin@rednit.dk") && userpassword.equals("admin")){
+            return "redirect:/admin";
+        }
 
 
-//TODO indsæt admin metode
 
 
 
-         */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         try{
-            String useremail = dataFromForm.getParameter("email");
-            String userpassword = dataFromForm.getParameter("password");
+
 
             for(User user : userFromDB)
             {
