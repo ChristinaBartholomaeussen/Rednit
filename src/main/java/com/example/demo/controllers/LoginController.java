@@ -119,7 +119,7 @@ public class LoginController
     {
         User userToDisplay = new User();
         userModel.addAttribute("userToDisplay", userToDisplay);
-        userModel.addAttribute("userServiceToDisplay", userServiceToDisplay);
+
         userModel.addAttribute("adminService", adminService);
 
         return "loginPage";
@@ -145,8 +145,12 @@ public class LoginController
                 return "redirect:/admin";
 
         for(User user : usersFromDB)
-            if(user.getEmail().equals(enteredEmail) && user.getPassword().equals(enteredPassword))
+            if(user.getEmail().equals(enteredEmail) && user.getPassword().equals(enteredPassword)){
+                user = userServiceToDisplay.loggedInUser(enteredEmail, enteredPassword);
+                System.out.println(user.toString());
                 return "redirect:/explore";
+            }
+
 
         System.out.println("Bruger findes ikke - redirecter til /create");
         return "redirect:/create";

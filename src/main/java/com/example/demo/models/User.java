@@ -26,6 +26,7 @@ public class User extends Profile {
     private List<User> likedUsers;
     private List<User> dislikedUsers;
     private List<User> potentialCandidates;
+    private int cookie;
 
     public User(int idUser, int idUserMatch) {
         this.idUser = idUser;

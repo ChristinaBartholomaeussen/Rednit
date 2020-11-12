@@ -61,9 +61,6 @@ public class UserController {
 		userModel.addAttribute("selectedUser", selectedUser);
 
 		userModel.addAttribute("listOfMessages", messageList);
-		
-		 
-			
 
 		
 		

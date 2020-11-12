@@ -34,6 +34,17 @@ public class UserService  extends ProfileService {
 
     User user = new User();
 
+    public User loggedInUser(String email, String password){
+
+        for(User u : allUsers){
+            if(email.equals(u.getEmail()) && password.equals(u.getPassword())){
+                user = u;
+            }
+        }
+
+        return user;
+    }
+
 
     public User userToDisplay(){
        return user;
