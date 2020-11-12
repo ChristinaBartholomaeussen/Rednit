@@ -29,9 +29,6 @@ import java.util.List;
 public class UserService  extends ProfileService {
 
     UserRepository userRepository = new UserRepository();
-
-
-
     public List<User> allUsers = userRepository.selectAllUsersFromDatabase();
 
 

@@ -20,7 +20,7 @@
             background: #f3f3f3;
         }
 
-        #wrapper {
+        .wrapper {
             width: 70%;
             margin: 0 auto;
         }
@@ -59,9 +59,37 @@
             </label>
         </div>
     </div>
+</form>
+<br>
+
+<div class="col" style="text-align: left">
+<form action="/showBlacklist" method="post">
+    <div>
+        <label>
+            <select class="form-control"  id="blacklistInfo" name="firstname2" style="width: fit-content">
+                <option id="optionB" value="0">Se Blacklist:</option>
+                <option
+                        th:each="user : ${admin.getBlacklist()}"
+                        th:value="${user.getFirstName()}"
+                        th:text="${user.getFirstName()}">
+                </option>
+            </select>
+            <br>
+            <input type="submit" value="Se info">
+        </label>
+    </div>
+</form>
+</div>
+<div class="col" style="text-align: left">
+    <form action="/restoreUserFromBlackList" method="post">
+        <input type="submit" value="Genaktiver" name="restore">
+    </form>
+</div>
 
 
-            <div style="text-align: center" id="wrapper">
+
+<form  action="/postAdmin" method="post" name="firstform2">
+            <div style="text-align: center" class="wrapper">
                 <div style="display: inline-block; vertical-align: top;">
                     <label class="fitText">
                         <input th:value="${userToDisplay.getFirstName()}" placeholder="Firstname" id="firstname"><br><br>
@@ -70,41 +98,41 @@
                         <input th:value="${#dates.format(userToDisplay.getDateOfBirth(), 'yyyy')}" placeholder="Årstal" id="age"><br><br>
                         <input style="height: 134px" th:value="${userToDisplay.getBio()}" id="bio" placeholder="Bio"><br><br>
                     </label>
-
                 </div>
-
                 <div style="display: inline-block; vertical-align: top; margin-left: 50px">
 
                     <div class="place-holer-main-image">
                         <img th:src="${userToDisplay.getPhoto1()}" style="height: 350px; width: 250px" onerror="this.style.display='none'">
                     </div>
-
-
                 </div>
-
-
             </div>
 </form>
 
-<form action="/adminDeleteUser" method="post" id="deleteBlacklist">
-    <div  style="text-align: center" class="wrapper">
-        <div style="display: inline-block; vertical-align: top;">
 
-    <input type="submit" value="Slet bruger" id="deleteUser" name="deleteUser" class="showHover">
-    <br>
-    <br>
 
-        </div>
-    </div>
-</form>
 
-<form action="/adminDeletePhoto" method="post">
-    <input type="submit" value="Slet billede" name="deletePhoto" id="deletePhoto" class="showHover">
-</form>
 
-<form action="/adminBlacklistUser" method="post">
-    <input type="submit" value="Blacklist bruger" id="blacklistUser" name="blacklistUser" class="showHover">
-</form>
+
+
+
+
+<div style="text-align: center" class="wrapper">
+
+        <form action="/adminBlacklistUser" method="post">
+            <input type="submit" value="Blacklist bruger" id="blacklistUser" name="blacklistUser" class="showHover">
+        </form>
+        <br>
+        <form action="/adminDeletePhoto" method="post">
+            <input type="submit" value="Slet billede" name="deletePhoto" id="deletePhoto" class="showHover">
+        </form>
+        <br>
+        <form action="/adminDeleteUser" method="post" id="deleteBlacklist">
+            <div  style="text-align: center" class="wrapper">
+                <input type="submit" value="Slet bruger" id="deleteUser" name="deleteUser" class="showHover">
+            </div>
+        </form>
+
+</div>
 
 
 </body>

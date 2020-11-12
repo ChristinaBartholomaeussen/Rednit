@@ -125,6 +125,15 @@ public class LoginController
 
         List<User> userFromDB = userServiceToDisplay.getAllUsers();
 
+        /*if(true)
+
+
+//TODO indsæt admin metode
+
+
+
+         */
+
         try{
             String useremail = dataFromForm.getParameter("email");
             String userpassword = dataFromForm.getParameter("password");

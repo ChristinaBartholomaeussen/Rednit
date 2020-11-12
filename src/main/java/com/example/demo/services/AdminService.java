@@ -9,7 +9,8 @@ import java.util.List;
 public class AdminService {
 
     private final List<User> allUsers;
-    private final List<User> blacklistedUser;
+    public List<User> blacklistedUser;
+
 
 
 
@@ -27,16 +28,19 @@ public class AdminService {
         adminRepository.insertUserIntoBlacklistInDatabase(user);
     }
 
-    public List<User> restoreUser(User user)
+
+    public void restoreUser(int id)
     {
-        blacklistedUser.remove(user);
-        return blacklistedUser;
+
+        adminRepository.deleteUserFromBlacklistInDatabase(id);
+
     }
 
     public List<User> getBlacklist()
     {
-        //TODO Get List from Database
-        return null;
+        blacklistedUser = adminRepository.selectAllBlackListUsersFromDatabase();
+
+        return blacklistedUser;
     }
 
 

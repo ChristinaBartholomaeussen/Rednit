@@ -1,23 +1,16 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.Admin;
 import com.example.demo.models.User;
-import com.example.demo.repositories.AdminRepository;
 import com.example.demo.services.AdminService;
 import com.example.demo.services.UserService;
-import com.mysql.cj.x.protobuf.MysqlxExpr;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -27,6 +20,7 @@ public class AdminController
     UserService userService = new UserService();
     AdminService admin = new AdminService();
     List<User> allUsers;
+    List<User> blacklistedUsers;
 
 
 
@@ -36,18 +30,43 @@ public class AdminController
     public String adminPage(Model adminModel)
     {
         allUsers = userService.getAllUsers();
-
-        //metoder kald her til user!
-
+        blacklistedUsers = admin.getBlacklist();
 
         adminModel.addAttribute("users", allUsers);
         adminModel.addAttribute("userToDisplay", userService.userToDisplay());
         adminModel.addAttribute("admin", admin);
+        adminModel.addAttribute("blacklist", blacklistedUsers);
         adminModel.addAttribute("userService", userService);
 
-
-
         return "adminPage";
+    }
+
+    @PostMapping("restoreUserFromBlackList")
+    public String restoreUserFromBlackList(WebRequest dataFromForm){
+
+        String userID = dataFromForm.getParameter("restore");
+
+        try{
+            if(userID.equals("Genaktiver")) {
+                for (User u : blacklistedUsers) {
+                    if (userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())) {
+
+                        System.out.println(u.getIdUser() + " deleted");
+                        admin.restoreUser(u.getIdUser());
+                        blacklistedUsers.remove(u);
+                    }
+                }
+            }
+        }catch (ConcurrentModificationException e){
+            System.out.println(e.getMessage());
+            userService.setUserToDefault();
+            return "redirect:/admin";
+        }catch (NullPointerException e){
+            return "redirect:/admin";
+        }
+
+        userService.setUserToDefault();
+        return "redirect:/admin";
     }
 
 
@@ -76,6 +95,36 @@ public class AdminController
 
         }catch (ConcurrentModificationException e){
             System.out.println(e.getMessage());
+            userService.setUserToDefault();
+            return "redirect:/admin";
+        }
+
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/showBlacklist")
+    public String showBlack(WebRequest dataFromForm) {
+
+        userService.setUserToDefault();
+
+        try{
+            String firstname2 = dataFromForm.getParameter("firstname2");
+
+            for(User u : blacklistedUsers){
+                if(firstname2.equals(u.getFirstName()))
+                {
+                    userService.userToDisplay().setFirstName(u.getFirstName());
+                    userService.userToDisplay().setLastName(u.getLastName());
+                    userService.userToDisplay().setEmail(u.getEmail());
+                    userService.userToDisplay().setDateOfBirth(u.getDateOfBirth());
+                    userService.userToDisplay().setBio(u.getBio());
+                    userService.userToDisplay().setPhoto1(u.getPhoto1());
+                }
+            }
+        }catch (ConcurrentModificationException e){
+            System.out.println(e.getMessage());
+            userService.setUserToDefault();
+            return "redirect:/admin";
         }
 
         return "redirect:/admin";
@@ -84,8 +133,6 @@ public class AdminController
 
    @PostMapping("/adminDeleteUser")
     public String deleteUser(WebRequest dateFromForm){
-
-
 
         String delete = String.valueOf(dateFromForm.getParameter("deleteUser"));
 
@@ -102,6 +149,10 @@ public class AdminController
             }
         }catch (ConcurrentModificationException e){
             System.out.println(e.getMessage());
+            userService.setUserToDefault();
+            return "redirect:/admin";
+        }catch (NullPointerException e){
+            return "redirect:/admin";
         }
 
         userService.setUserToDefault();
@@ -125,14 +176,21 @@ public class AdminController
             }
         }catch (ConcurrentModificationException e){
             System.out.println(e.getMessage());
+            userService.setUserToDefault();
+            return "redirect:/admin";
+
+        }catch (NullPointerException e){
+            System.out.println(e.getMessage());
+            return "redirect:/admin";
         }
+
         userService.setUserToDefault();
         return "redirect:/admin";
     }
 
 
     @PostMapping("/adminDeletePhoto")
-    public String deletePhone(WebRequest dataFromForm){
+    public String deletePhoto(WebRequest dataFromForm){
 
         String deletePhoto = String.valueOf(dataFromForm.getParameter("deletePhoto"));
 
@@ -142,12 +200,13 @@ public class AdminController
                 for(User u : allUsers){
                     if(userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())){
                         userService.deletePhoto(u);
-
                         System.out.println(u);
                     }
                 }
             }catch (NullPointerException e){
                 System.out.println(e.getMessage());
+                userService.setUserToDefault();
+                return "redirect:/admin";
             }
 
         }
@@ -157,4 +216,7 @@ public class AdminController
 
 
 
-}
+
+
+
+    }
