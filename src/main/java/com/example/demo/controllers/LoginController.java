@@ -137,7 +137,6 @@ public class LoginController
 
             for(User user : userFromDB)
             {
-				System.out.println(user.getPassword());
             	
                 if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
                 {

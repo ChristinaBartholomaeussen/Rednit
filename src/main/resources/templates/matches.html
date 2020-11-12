@@ -43,7 +43,11 @@
 		.placeholder-img {
 			width: 200px;
 			height: 150px;
-			background: #333;
+		}
+		
+		.placeholder-img img {
+			width: 100%;
+			height: auto;
 		}
 		
 		.chat-box {
@@ -118,7 +122,9 @@
 			</form>
 		
 			<div class="active-match-info-box">
-				<div class="placeholder-img"></div>
+				<div class="placeholder-img">
+					<img th:src="${selectedUser.getPhoto1()}" alt="">
+				</div>
 				<h2 th:text="${selectedUser.getFirstName()}"></h2>
 				<h2 th:text="${selectedUser.getLastName()}"></h2>
 				<p th:text="${selectedUser.getDateOfBirth()}"></p>

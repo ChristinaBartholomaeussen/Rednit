@@ -47,7 +47,7 @@ public class AdminService {
     }
 
     public void getAdmin(String email) {
-        adminRepository.selectAdmin(email);
+        //adminRepository.selectAdmin(email);
     }
 
 
