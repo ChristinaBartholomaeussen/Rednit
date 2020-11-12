@@ -2,9 +2,8 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.User;
 import com.example.demo.repositories.UserRepository;
+import com.example.demo.services.MatchService;
 import com.example.demo.services.UserService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Type;
+import javax.servlet.http.HttpServletResponse;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Controller
 public class UserController {
 
+	MatchService matchService = new MatchService();
+	UserService userService = new UserService();
 	List<User> allUsers = new ArrayList<>();
 	User selectedUser = new User();
 
@@ -28,6 +27,26 @@ public class UserController {
 	String message = "";
 
 	UserRepository userRepository = new UserRepository();
+
+	List<User> allUsersForExplore = userService.getAllUsers();
+	int counter;
+	List<User> listOfPotentialCandidates = new ArrayList<>();
+	int activeUserId;
+
+	User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 0, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
+
+	public UserController()
+	{
+		for(User user : allUsersForExplore)
+		{
+			if(user.getIdUser() != allUsersForExplore.get(0).getIdUser() && user.getSexualPreference() != allUsersForExplore.get(0).getSexualPreference())
+			{
+				listOfPotentialCandidates.add(user);
+			}
+		}
+		counter = listOfPotentialCandidates.size() - 1;
+
+	}
 
     @GetMapping("/matches")
     public String match(Model userModel)
@@ -61,8 +80,6 @@ public class UserController {
 		return "redirect:/matches";
 	}
 
-	
-	
 	@RequestMapping(value="/sendMessage", method={RequestMethod.GET, RequestMethod.POST})
 	public String sendMessage(WebRequest data, Model model) {
     	messageList.add(data.getParameter("send"));
@@ -70,8 +87,6 @@ public class UserController {
     	return "redirect:/matches";	
 	}
 	
-	User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 1, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
-
     @GetMapping("/myProfile")
     public String myProfile(Model model, HttpServletRequest request){
     	
@@ -131,58 +146,40 @@ public class UserController {
 					e.printStackTrace();
 					System.out.println(e);
 				}
-			
-		
 
 		return "redirect:/myProfile";
 	}
 
-	UserService userService = new UserService();
-	List<User> getAllUsers = userService.getAllUsers();
-
-	List<User> likedUsers = new ArrayList<>();
-
-
     @GetMapping("/explore")
-    public String explore(Model model)
+    public String explore(Model model, HttpServletRequest request)
     {
-		List<User> listInMemory = getAllUsers;
-		Random randomNumber = new Random();
-		User userInMemory = listInMemory.get(randomNumber.nextInt(listInMemory.size()));
+		int activeUserId = UserService.getCookieId(request);
 
-		model.addAttribute("user",userInMemory);
-		model.addAttribute("allUsers", listInMemory);
+    	if(counter < 0)
+			return "/explore/exploreNoMoreUsers";
 
-		return "explore";
+    	//  potentialUser should be active user
+		User potentialUser = listOfPotentialCandidates.get(counter);
+
+		model.addAttribute("user",potentialUser);
+		model.addAttribute("allUsers", listOfPotentialCandidates);
+		return "/explore/explore";
     }
 
     @PostMapping("/postExploreLiked")
-	public String postExploreLiked(WebRequest data)
+	public String postExploreLiked(WebRequest data, HttpServletRequest request)
 	{
-		int likedUserId = Integer.valueOf(data.getParameter("liked"));
-
-		for(User user : getAllUsers)
-			if(likedUserId == user.getIdUser())
-			{
-				// Adding user to Liked list - should be changed to singular userId and sent to the database, but right now atleast we have a list
-				likedUsers.add(user);
-			}
-
+		matchService.insertPotentialMatch(allUsersForExplore.get(0),allUsersForExplore.get(counter));
+		allUsersForExplore.remove(counter);
+		counter--;
 		return "redirect:/explore";
 	}
 
 	@PostMapping("/postExploreSkipped")
 	public String postExploreSkipped(WebRequest data)
 	{
-		int skippedUserId = Integer.valueOf(data.getParameter("skipped"));
-
-		for(User user : getAllUsers)
-			if(skippedUserId == user.getIdUser())
-			{
-				// Remove from All Users list, so user wont be shown again - atleast before next time we run the application
-			}
-
-
+		allUsersForExplore.remove(counter);
+		counter--;
 		return "redirect:/explore";
 	}
 
