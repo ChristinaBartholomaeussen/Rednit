@@ -94,8 +94,8 @@ public class MatchRepository {
 
             while (resultSet.next()) {
                 Match tmpMatches = new Match(
-                        resultSet.getInt(1),
-                        resultSet.getInt(2)
+                        resultSet.getInt(2),
+                        resultSet.getInt(3)
                 );
                 allMatches.add(tmpMatches);
             }
