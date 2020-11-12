@@ -101,10 +101,10 @@ public class LoginController
     @PostMapping("/uploadPicture")
     public String uploadPicture(@RequestParam("imageFile") MultipartFile imageFile, HttpServletRequest request) throws Exception {
 
-		int cookieId = UserService.getCookieId(request);
-		UserService.createDir(cookieId);
+		int activeUserId = UserService.getCookieId(request);
+		UserService.createDir(activeUserId);
 		
-		UserService.saveImage(imageFile, cookieId);
+		UserService.saveImage(imageFile, activeUserId);
         return "redirect:/create/uploadPhoto";
     }
 
@@ -125,18 +125,34 @@ public class LoginController
 
         List<User> userFromDB = userServiceToDisplay.getAllUsers();
 
-        /*if(true)
+        String useremail = dataFromForm.getParameter("email");
+        String userpassword = dataFromForm.getParameter("password");
+
+        if(useremail.equals("admin@rednit.dk") && userpassword.equals("admin")){
+            return "redirect:/admin";
+        }
 
 
-//TODO indsæt admin metode
 
 
 
-         */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         try{
-            String useremail = dataFromForm.getParameter("email");
-            String userpassword = dataFromForm.getParameter("password");
+
 
             for(User user : userFromDB)
             {
