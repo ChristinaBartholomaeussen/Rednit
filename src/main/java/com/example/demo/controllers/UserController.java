@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Match;
 import com.example.demo.models.User;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.MatchService;
@@ -32,6 +33,8 @@ public class UserController {
 	int counter;
 	List<User> listOfPotentialCandidates = new ArrayList<>();
 	int activeUserId;
+	
+
 
 	User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 0, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
 
@@ -59,17 +62,9 @@ public class UserController {
 
 		userModel.addAttribute("listOfMessages", messageList);
 		
-		int activeUserCookieId = UserService.getCookieId(request);
-		
-		User activeUser = null;
-		
-		for (User user : allUsers) {
-			if (user.getIdUser() == activeUserCookieId) {
-				activeUser = user;
-			}
-		}
+		 
+			
 
-		System.out.println(matchService.getAllMatch());
 		
 		
 		return "matches";
@@ -180,7 +175,19 @@ public class UserController {
     @PostMapping("/postExploreLiked")
 	public String postExploreLiked(WebRequest data, HttpServletRequest request)
 	{
-		matchService.insertPotentialMatch(allUsersForExplore.get(0),allUsersForExplore.get(counter));
+		
+
+		int cookieId = UserService.getCookieId(request);
+		User activeUser = userRepository.selectUserFromDatabase(cookieId);
+
+		matchService.insertPotentialMatch(activeUser,allUsersForExplore.get(counter));
+		
+		User potentialUser = listOfPotentialCandidates.get(counter);
+		activeUser.setIdUserMatch(potentialUser.getIdUser());
+		System.out.println("tests");
+		ArrayList<Match> test = matchService.getAllMatches(activeUser);
+		System.out.println(test);
+		
 		allUsersForExplore.remove(counter);
 		counter--;
 		return "redirect:/explore";
