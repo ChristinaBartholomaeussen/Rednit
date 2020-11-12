@@ -182,15 +182,15 @@ public class UserService  extends ProfileService {
     }
 
 
-	public static void saveImage(MultipartFile imageFile, Cookie cookie) throws Exception {
+	public static void saveImage(MultipartFile imageFile, int cookie) throws Exception {
 		try {
-			String folder = "./src/main/resources/static/photos/fotos" + cookie.getValue();
-			String imgPath = "./photos/fotos" + cookie.getValue() + "/" + imageFile.getOriginalFilename();
+			String folder = "./src/main/resources/static/photos/fotos" + cookie;
+			String imgPath = "./photos/fotos" + cookie+ "/" + imageFile.getOriginalFilename();
 
 			UserRepository userRepository = new UserRepository();
 			
 			 
-			User user = userRepository.selectUserFromDatabase(Integer.parseInt(cookie.getValue()));
+			User user = userRepository.selectUserFromDatabase(cookie);
 
 			byte[] imageBytesArray = imageFile.getBytes();
 			Path path = Paths.get(folder, imageFile.getOriginalFilename());
@@ -205,7 +205,7 @@ public class UserService  extends ProfileService {
 		}
 	}
 	
-	public static Cookie getCookieId(HttpServletRequest request) {
+	public static int getCookieId(HttpServletRequest request) {
 
 		Cookie cookie[] = request.getCookies();
 
@@ -217,11 +217,11 @@ public class UserService  extends ProfileService {
 			}
 		}
 		
-		return cookieId;
+		return Integer.parseInt(cookieId.getValue());
 	}
 
-	public static void createDir(Cookie cookie) {
-		String path = "./src/main/resources/static/photos/fotos" + cookie.getValue();
+	public static void createDir(int cookie) {
+		String path = "./src/main/resources/static/photos/fotos" + cookie;
 		File file = new File(path);
 		file.mkdir();
 

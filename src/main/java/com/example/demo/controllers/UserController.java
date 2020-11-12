@@ -77,8 +77,8 @@ public class UserController {
     	
     	UserRepository userRepository = new UserRepository();
     	
-    	Cookie cookieId = UserService.getCookieId(request);
-    	User user = userRepository.selectUserFromDatabase(Integer.parseInt(cookieId.getValue()));
+    	int cookieId = UserService.getCookieId(request);
+    	User user = userRepository.selectUserFromDatabase(cookieId);
     	
     	
     	model.addAttribute("user", user);
@@ -122,7 +122,7 @@ public class UserController {
 	public String imageFile(@RequestParam("imageFile") MultipartFile imageFile, HttpServletRequest request) {
 
 		
-    	Cookie cookieId = UserService.getCookieId(request);
+    	int cookieId = UserService.getCookieId(request);
     	
 				try {
 					UserService.saveImage(imageFile, cookieId);
