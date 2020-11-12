@@ -174,8 +174,7 @@ public class UserController {
 
     @PostMapping("/postExploreLiked")
 	public String postExploreLiked(WebRequest data, HttpServletRequest request)
-	{
-		
+	{ 
 
 		int cookieId = UserService.getCookieId(request);
 		User activeUser = userRepository.selectUserFromDatabase(cookieId);
