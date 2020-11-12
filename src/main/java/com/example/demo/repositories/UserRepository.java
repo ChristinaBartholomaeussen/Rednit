@@ -22,7 +22,7 @@ public class UserRepository {
 
     ConnectionRepository connection = new ConnectionRepository();
 
-    //Done
+    /**Inserts a newly created user into the database*/
 
     public void insertUserIntoDatabase(User user) {
         String insertUserSQL ="INSERT INTO users (email, password, firstName, lastName, dateOfBirth, bio, gender, sexualPreference) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -44,7 +44,7 @@ public class UserRepository {
         }
     }
 
-    //Implementation
+    /**Updates a single user in the database*/
 
     public void updateUserInfoInDatabase(User user) {
         String updateUserSQL = "UPDATE users SET email = ?, firstName = ?, lastName = ?, bio = ?, gender = ?, sexualPreference = ? WHERE idUser = ?";
@@ -66,8 +66,7 @@ public class UserRepository {
         }
      }
 
-    //Implementation
-
+    /**Deletes a user in the database*/
     public void deleteUserFromDatabase(int idUser){
         String deleteUserSQL = "DELETE FROM users WHERE idUser = ?";
         try {
@@ -80,7 +79,7 @@ public class UserRepository {
         }
     }
 
-    //Implementation
+    /**Selects a single user in the database from their idUSer and retuns an object of User*/
 
     public User selectUserFromDatabase(int idUser) {
 
@@ -113,7 +112,7 @@ public class UserRepository {
         return userToReturn;
     }
 
-    //Done
+    /**Selects a single user in the database from their email and returns an object of User*/
 
     public User selectUserFromDatabaseFromEmail(String email) {
 
@@ -146,7 +145,7 @@ public class UserRepository {
         return userToReturn;
     }
 
-    //Implementation
+    /**Selects all users in the database and returns them as an ArrayList*/
 
     public List<User> selectAllUsersFromDatabase() {
 
@@ -180,7 +179,7 @@ public class UserRepository {
         return allUsers;
     }
 
-    //Test
+    /**Selects all users emails and passwords in the databse and returns them as an ArrayList*/
 
     public List<User> selectAllUsersLoginInformationFromDatabase() {
 
@@ -208,7 +207,7 @@ public class UserRepository {
         return allUsersLoginInformation;
     }
 
-    //Implementation
+    /**Updates photo1 in the database*/
 
     public void updatePhotoInDatabase(User user) {
         String insertPhotoSQL = "UPDATE users SET photo1 = ? WHERE idUser = ?";

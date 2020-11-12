@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Match;
 import com.example.demo.models.User;
 import com.example.demo.repositories.AdminRepository;
 import com.example.demo.repositories.MatchRepository;
@@ -23,16 +24,12 @@ public class TestSQLController {
 
     MessageRepository messageRepository = new MessageRepository();
 
-    User user = null;
+    User user = new User();
 
     List<User> allUsersList = new ArrayList<>();
 
     @GetMapping("/test")
     public String test() {
-
-        matchRepository.selectAllMatchesFromDatabase();
-
-
 
         return "testSQL";
     }
