@@ -30,7 +30,6 @@ public class LoginController
     UserService userServiceToDisplay = new UserService();
     UserRepository userRepository = new UserRepository();
     AdminService adminService = new AdminService();
-    List<User> blacklistedUser;
 
     @GetMapping("/create")
     public String index(Model userModel)
@@ -116,14 +115,11 @@ public class LoginController
 
 
     @GetMapping("/login")
-    public String postCreate(Model userModel){
-
-        blacklistedUser = adminService.getBlacklist();
-
+    public String postCreate(Model userModel)
+    {
         User userToDisplay = new User();
         userModel.addAttribute("userToDisplay", userToDisplay);
         userModel.addAttribute("userServiceToDisplay", userServiceToDisplay);
-        userModel.addAttribute("blacklist", blacklistedUser);
         userModel.addAttribute("adminService", adminService);
 
         return "loginPage";
@@ -133,29 +129,24 @@ public class LoginController
     @PostMapping("/postLogin")
     public String userLogin(WebRequest dataFromForm)
     {
-        List<User> usersFromDB = userServiceToDisplay.getAllUsersLoginInformation();
+        List<User> blacklistedUsersFromDB = adminRepository.selectAllBlackListUsersFromDatabase();
         List<Admin> adminsFromDB = adminRepository.selectAllAdminsFromDatabase();
+        List<User> usersFromDB = userServiceToDisplay.getAllUsersLoginInformation();
 
+        String enteredEmail = dataFromForm.getParameter("email");
+        String enteredPassword = dataFromForm.getParameter("password");
 
-        String useremail = dataFromForm.getParameter("email");
-        String userpassword = dataFromForm.getParameter("password");
-
-//VIRKER IKKE!!!!!! for blacklisten
-        for(User u : blacklistedUser){
-            if(blacklistedUser.contains(u.getEmail().equals(useremail)) && blacklistedUser.contains(u.getPassword().equals(userpassword))){
-                System.out.println("hej");
+        for(User blacklistedUser : blacklistedUsersFromDB)
+            if(blacklistedUser.getEmail().equals(enteredEmail) && blacklistedUser.getPassword().equals(enteredPassword))
                 return "redirect:/blacklist";
-            }
-            else{
-                for(Admin admin : adminsFromDB)
-                    if(admin.getEmail().equals(useremail) && admin.getPassword().equals(userpassword))
-                        return "redirect:/admin";
 
-                for(User user : usersFromDB)
-                    if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
-                        return "redirect:/explore";
-            }
-        }
+        for(Admin admin : adminsFromDB)
+            if(admin.getEmail().equals(enteredEmail) && admin.getPassword().equals(enteredPassword))
+                return "redirect:/admin";
+
+        for(User user : usersFromDB)
+            if(user.getEmail().equals(enteredEmail) && user.getPassword().equals(enteredPassword))
+                return "redirect:/explore";
 
         System.out.println("Bruger findes ikke - redirecter til /create");
         return "redirect:/create";
