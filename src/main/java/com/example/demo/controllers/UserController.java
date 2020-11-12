@@ -27,14 +27,12 @@ public class UserController {
 	ArrayList<String> messageList = new ArrayList();
 	String message = "";
 
+	UserRepository userRepository = new UserRepository();
+
     @GetMapping("/matches")
     public String match(Model userModel)
 	{
-		for(int i = 0; i < 45; i++)
-		{
-			Date date = new Date(i);
-			allUsers.add(new User("email"+i,"password"+i,"firstName"+i,"lastName"+i, date,i,i,"bio"+i));
-		}
+		allUsers = userRepository.selectAllUsersFromDatabase();
 
 		userModel.addAttribute("allUsers", allUsers);
 		userModel.addAttribute("selectedUser", selectedUser);
