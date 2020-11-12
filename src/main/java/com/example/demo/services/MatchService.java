@@ -22,4 +22,8 @@ public class MatchService {
     public List<User> getMatches(User user) {
         return matchRepository.selectUserMatchesFromDatabase(user.getIdUser());
     }
+
+    public List<User> getAllMatch() {
+        return matchRepository.selectAllMatchesFromDatabase();
+    }
 }

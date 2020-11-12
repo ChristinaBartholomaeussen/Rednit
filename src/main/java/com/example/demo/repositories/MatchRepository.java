@@ -79,4 +79,35 @@ public class MatchRepository {
         }
         return userMatches;
     }
+
+    public List<User> selectAllMatchesFromDatabase() {
+        String selectUserMatches = "SELECT * FROM matchlists";
+
+        List<User> allMatches = new ArrayList<User>();
+
+        try {
+            PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectUserMatches);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                User tmpUsers = new User(
+                        resultSet.getInt(1),
+                        resultSet.getInt(2),
+                        resultSet.getString(4),
+                        resultSet.getString(6),
+                        resultSet.getString(7),
+                        resultSet.getDate(8),
+                        resultSet.getString(9),
+                        resultSet.getInt(10),
+                        resultSet.getInt(11),
+                        resultSet.getString(12)
+                );
+                allMatches.add(tmpUsers);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return allMatches;
+    }
 }
