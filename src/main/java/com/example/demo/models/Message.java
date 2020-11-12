@@ -12,6 +12,10 @@ public class Message extends User {
         this.message = message;
     }
 
+    public Message() {
+
+    }
+
 
 
     public Message(String string, String string1) {
