@@ -153,12 +153,9 @@ public class UserController {
     @GetMapping("/explore")
     public String explore(Model model, HttpServletRequest request)
     {
-		int activeUserId = UserService.getCookieId(request);
-
     	if(counter < 0)
 			return "/explore/exploreNoMoreUsers";
 
-    	//  potentialUser should be active user
 		User potentialUser = listOfPotentialCandidates.get(counter);
 
 		model.addAttribute("user",potentialUser);

@@ -1,6 +1,9 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Admin;
 import com.example.demo.models.User;
+import com.example.demo.repositories.AdminRepository;
+import com.example.demo.services.AdminService;
 import com.example.demo.services.UserService;
 import com.example.demo.repositories.UserRepository;
 import org.springframework.boot.Banner;
@@ -23,6 +26,7 @@ import java.util.List;
 @Controller
 public class LoginController
 {
+    AdminRepository adminRepository = new AdminRepository();
     UserService userServiceToDisplay = new UserService();
     UserRepository userRepository = new UserRepository();
 
@@ -121,36 +125,21 @@ public class LoginController
 
     //Postmapping til login - henter email og password fra html
     @PostMapping("/postLogin")
-    public String userLogin(WebRequest dataFromForm, HttpServletResponse response) throws FileNotFoundException {
-
-        List<User> userFromDB = userServiceToDisplay.getAllUsersLoginInformation();
+    public String userLogin(WebRequest dataFromForm)
+    {
+        List<User> usersFromDB = userServiceToDisplay.getAllUsersLoginInformation();
+        List<Admin> adminsFromDB = adminRepository.selectAllAdminsFromDatabase();
 
         String useremail = dataFromForm.getParameter("email");
         String userpassword = dataFromForm.getParameter("password");
 
-        if(useremail.equals("admin@rednit.dk") && userpassword.equals("admin")){
-            return "redirect:/admin";
-        }
+        for(Admin admin : adminsFromDB)
+            if(admin.getEmail().equals(useremail) && admin.getPassword().equals(userpassword))
+                return "redirect:/admin";
 
-        try{
-			
-
-            for(User user : userFromDB)
-            {
-            	
-                if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
-                {
-					String id = "" + userRepository.selectUserFromDatabaseFromEmail(useremail).getIdUser();
-					Cookie cookie = new Cookie("id", id);
-					response.addCookie(cookie);
-                    return "redirect:/explore";
-                }
-            }
-            
-        }catch(Exception e){
-            System.out.println("fejl: " + e);
-            return "redirect:/login";
-        }
+        for(User user : usersFromDB)
+            if(user.getEmail().equals(useremail) && user.getPassword().equals(userpassword))
+                return "redirect:/explore";
 
         System.out.println("Bruger findes ikke - redirecter til /create");
         return "redirect:/create";
