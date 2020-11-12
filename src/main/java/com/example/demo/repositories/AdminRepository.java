@@ -1,5 +1,6 @@
 package com.example.demo.repositories;
 
+import com.example.demo.models.Admin;
 import com.example.demo.models.User;
 
 import java.sql.PreparedStatement;
@@ -11,6 +12,8 @@ import java.util.List;
 public class AdminRepository {
 
     ConnectionRepository connection = new ConnectionRepository();
+
+    Admin admin = new Admin();
 
     //Implementation
 
@@ -74,5 +77,16 @@ public class AdminRepository {
         }
         return allBlacklistUsers;
     }
+
+    /*public Admin selectAdmin() {
+        String selectAdmin = "SELECT * FROM admins";
+
+        Admin.
+
+        try {
+            PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectAdmin);
+
+        }
+    }*/
 
 }

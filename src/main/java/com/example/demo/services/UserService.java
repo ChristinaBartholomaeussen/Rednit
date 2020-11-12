@@ -101,15 +101,9 @@ public class UserService  extends ProfileService {
         return allUsers;
     }
 
-
-
-
-
-
-
-
-
-
+    public List<User> getAllUsersLoginInformation() {
+        return userRepository.selectAllUsersLoginInformationFromDatabase();
+    }
 
     public User getSingleUser(String email){
         //TODO

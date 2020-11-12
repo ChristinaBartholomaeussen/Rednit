@@ -31,6 +31,11 @@ public class User extends Profile {
         this.idUser = idUser;
         this.idUserMatch = idUserMatch;
     }
+
+    public User(int idUser, String email, String password) {
+        super(email, password);
+        this.idUser = idUser;
+    }
   
 	
     public User(String email, String password,

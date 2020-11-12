@@ -180,6 +180,36 @@ public class UserRepository {
         return allUsers;
     }
 
+    //Test
+
+    public List<User> selectAllUsersLoginInformationFromDatabase() {
+
+        String selectAllUsers = "SELECT * FROM users";
+
+        List<User> allUsersLoginInformation = new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectAllUsers);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                User tmpUser = new User(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3)
+                );
+                allUsersLoginInformation.add(tmpUser);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return allUsersLoginInformation;
+    }
+
+    //Implementation
+
     public void updatePhotoInDatabase(User user) {
         String insertPhotoSQL = "UPDATE users SET photo1 = ? WHERE idUser = ?";
 
