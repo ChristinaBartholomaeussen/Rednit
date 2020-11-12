@@ -5,42 +5,52 @@
     <title>Title</title>
 	<style>
 
+		.headerBox {
+			background-image: linear-gradient(to right, rgb(237,75,119), rgb(254,115,80));
+			height: 135px;
+			margin: -30px;
+		}
+
 		header {
 			margin: auto;
+			padding-top: 10px;
 			text-align: center;
 		}
 		
 		a {
 			text-transform: uppercase;
 			text-decoration: none;
-			font-weight: bold;
-			color: magenta;
+			font-weight: 900;
+			color: white;
+			margin-left: 20px;
+			margin-right: 20px;
+			font-family: "Copperplate Gothic Light", sans-serif;
 		}
 
 		h1 {
-			color: red;
-			font-family: "Century Gothic";
-			font-weight: bolder;
+			color: white;
+			font-family: "Copperplate Gothic Light", sans-serif;
+			text-transform: uppercase;
+			font-weight: 900;
 			font-size: 36px;
+			margin-bottom: 20px;
 		}
 	</style>
 	
 </head>
 <body>
-
+<div class="headerBox">
 	<header th:fragment="header">
 		<nav class="flex">
 			<h1>Rednit</h1>
 			<div class="flex">
-				<a href="./create">Create</a>
-				<a href="./login">Login</a>
-				<a href="./admin">Admin</a>
-				<a href="./myProfile">My Profile</a>
-				<a href="./matches">matches</a>
-				<a href="./explore">Explore</a>
+				<a href="./explore">UDFORSK</a>
+				<a href="./matches">MATCHES</a>
+				<a href="./myProfile">MIN PROFIL</a>
+				<a href="./logout">LOG UD</a>
 			</div>
 		</nav>
 	</header>
-
+</div>
 </body>
 </html>
