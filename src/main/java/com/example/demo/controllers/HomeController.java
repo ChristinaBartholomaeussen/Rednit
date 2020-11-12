@@ -5,10 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController
-{
+public class HomeController {
 
     User userToDisplay = new User();
+
+    @GetMapping("/")
+    public String firstPage() {
+        return "loginPage";
+    }
 
 @GetMapping("/home")
     public String home(){
