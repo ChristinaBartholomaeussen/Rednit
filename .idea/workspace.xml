@@ -19,10 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="admin er tildels færdig - mangler blot at clear form efter brugeren er slettet">
+    <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/TestSQLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/TestSQLController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MatchService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MessageService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -267,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605113452902</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Påbegyndt service metoder">
+      <created>1605178299138</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1605178299138</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +310,8 @@
     <MESSAGE value="Admin kan nu slette bruger fra databasen - den bliver fjernet fra listen" />
     <MESSAGE value="admin er tildels færdig - mangler blot at clear form efter brugeren er slettet" />
     <MESSAGE value="Populater my profil, så længe man har en aktiv cookie." />
-    <option name="LAST_COMMIT_MESSAGE" value="Populater my profil, så længe man har en aktiv cookie." />
+    <MESSAGE value="Påbegyndt service metoder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Påbegyndt service metoder" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604912570029">
@@ -335,10 +342,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605019812899" />
-    <state x="311" y="112" key="CommitChangelistDialog2" timestamp="1605113452694">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="355" y="111" key="CommitChangelistDialog2" timestamp="1605178298532">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="311" y="112" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1605113452694" />
+    <state x="355" y="111" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1605178298532" />
     <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1604911559103">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -427,11 +435,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605015237595" />
-    <state x="395" y="185" key="Vcs.Push.Dialog.v2" timestamp="1605113454659">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1605178302437">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605093500238" />
     <state x="395" y="185" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1605113454659" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605178302437" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604579686163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -444,5 +453,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604584305245" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605178433924">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605178433924" />
   </component>
 </project>

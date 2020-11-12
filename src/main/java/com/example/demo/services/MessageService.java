@@ -18,4 +18,9 @@ public class MessageService {
 
         messageRepository.insertMessageIntoDatabase(userFrom.getIdUser(), userTo.getIdUser(), message.getMessage());
     }
+
+    public List<Message> getMessages(User user) {
+
+        return messageRepository.selectMessagesFromDatabase(user.getIdUser(), user.getIdUser());
+    }
 }
