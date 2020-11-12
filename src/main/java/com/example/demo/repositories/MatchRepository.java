@@ -80,30 +80,22 @@ public class MatchRepository {
         return userMatches;
     }
 
-    public List<User> selectAllMatchesFromDatabase() {
-        String selectUserMatches = "SELECT * FROM matchlists";
+    public List<Match> selectAllMatchesFromDatabase() {
+        String selectAllMatches = "SELECT * FROM matchlists";
 
-        List<User> allMatches = new ArrayList<User>();
+        List<Match> allMatches = new ArrayList<Match>();
 
         try {
-            PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectUserMatches);
+            PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectAllMatches);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                User tmpUsers = new User(
+                Match tmpMatches = new Match(
                         resultSet.getInt(1),
-                        resultSet.getInt(2),
-                        resultSet.getString(4),
-                        resultSet.getString(6),
-                        resultSet.getString(7),
-                        resultSet.getDate(8),
-                        resultSet.getString(9),
-                        resultSet.getInt(10),
-                        resultSet.getInt(11),
-                        resultSet.getString(12)
+                        resultSet.getInt(2)
                 );
-                allMatches.add(tmpUsers);
+                allMatches.add(tmpMatches);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

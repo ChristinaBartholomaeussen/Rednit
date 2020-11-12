@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7640f02d-d2aa-4921-a82c-a0bea8944f73" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Match.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/MatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/MatchService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,7 +307,21 @@
       <option name="project" value="LOCAL" />
       <updated>1605191845673</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="selectAllMatches">
+      <created>1605192672049</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1605192672049</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Fjernet &quot;Connection OK&quot;">
+      <created>1605192760629</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1605192760629</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +364,9 @@
     <MESSAGE value="Retter en masse små ting" />
     <MESSAGE value="Fixer login og sætter en cookieId, som kan hentes fra browseren.&#10;&#10;Redirecter et success login til exlpore.html" />
     <MESSAGE value="designet header.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="designet header.html" />
+    <MESSAGE value="selectAllMatches" />
+    <MESSAGE value="Fjernet &quot;Connection OK&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fjernet &quot;Connection OK&quot;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604912570029">
@@ -382,15 +397,16 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605019812899" />
-    <state x="355" y="111" key="CommitChangelistDialog2" timestamp="1605191845114">
+    <state x="355" y="111" key="CommitChangelistDialog2" timestamp="1605192760169">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="311" y="112" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1605186945907" />
-    <state x="355" y="111" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1605191845114" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1604911559103">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="355" y="111" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1605192760169" />
+    <state x="114" y="99" width="1692" height="842" key="DiffContextDialog" timestamp="1605193507855">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1604911559103" />
+    <state x="114" y="99" width="1692" height="842" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605193507855" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1604524199990">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -483,12 +499,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605015237595" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1605191846679">
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1605192761534">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605183710647" />
     <state x="395" y="185" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1605186948809" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605191846679" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605192761534" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604579686163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
