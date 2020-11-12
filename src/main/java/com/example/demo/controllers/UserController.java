@@ -49,15 +49,29 @@ public class UserController {
 	}
 
     @GetMapping("/matches")
-    public String match(Model userModel)
+    public String match(Model userModel, HttpServletRequest request)
 	{
+		
 		allUsers = userRepository.selectAllUsersFromDatabase();
 
 		userModel.addAttribute("allUsers", allUsers);
 		userModel.addAttribute("selectedUser", selectedUser);
 
 		userModel.addAttribute("listOfMessages", messageList);
+		
+		int activeUserCookieId = UserService.getCookieId(request);
+		
+		User activeUser = null;
+		
+		for (User user : allUsers) {
+			if (user.getIdUser() == activeUserCookieId) {
+				activeUser = user;
+			}
+		}
 
+		System.out.println(matchService.getAllMatch());
+		
+		
 		return "matches";
     }
 

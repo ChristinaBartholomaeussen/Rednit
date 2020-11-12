@@ -186,8 +186,6 @@ public class UserService  extends ProfileService {
 			byte[] imageBytesArray = imageFile.getBytes();
 			Path path = Paths.get(folder, imageFile.getOriginalFilename());
 			Files.write(path, imageBytesArray);
-
-			System.out.println(imgPath);
 			
 			user.setPhoto1(imgPath);
 			userRepository.updatePhotoInDatabase(user);

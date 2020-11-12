@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.models.Match;
 import com.example.demo.models.User;
 import com.example.demo.repositories.MatchRepository;
 import com.example.demo.repositories.UserRepository;
@@ -23,7 +24,7 @@ public class MatchService {
         return matchRepository.selectUserMatchesFromDatabase(user.getIdUser());
     }
 
-    public List<User> getAllMatch() {
+    public List<Match> getAllMatch() {
         return matchRepository.selectAllMatchesFromDatabase();
     }
 }

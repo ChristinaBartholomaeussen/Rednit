@@ -109,7 +109,7 @@ public class LoginController
 		UserService.createDir(activeUserId);
 		
 		UserService.saveImage(imageFile, activeUserId);
-        return "redirect:/create/uploadPhoto";
+        return "redirect:/explore	";
     }
 
 
