@@ -81,28 +81,28 @@ public class AdminRepository {
 
     //Testing
 
-    public Admin selectAdmin(String email) {
+    public List<Admin> selectAllAdminsFromDatabase() {
 
-        Admin adminToReturn = new Admin();
+        String selectAdmin = "SELECT * FROM admins";
 
-        String selectAdmin = "SELECT * FROM admins WHERE email = ?";
+        List<Admin> allAdmins = new ArrayList<>();
 
         try {
             PreparedStatement preparedStatement = connection.establishConnection().prepareStatement(selectAdmin);
-            preparedStatement.setString(1, email);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                adminToReturn= new Admin(
+                Admin tmpAdmin = new Admin(
                         resultSet.getString(1),
                         resultSet.getString(2)
                 );
+                allAdmins.add(tmpAdmin);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return adminToReturn;
+        return allAdmins;
     }
 
 }

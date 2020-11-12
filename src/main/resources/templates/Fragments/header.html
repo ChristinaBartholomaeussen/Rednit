@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
 	<style>
-		.flex {
-			display: flex;
+
+		header {
+			margin: auto;
+			text-align: center;
 		}
 		
 		a {
 			text-transform: uppercase;
 			text-decoration: none;
-			text-align: center;
-			color: #0e0e0e;
+			font-weight: bold;
+			color: magenta;
+		}
+
+		h1 {
+			color: red;
+			font-family: "Century Gothic";
+			font-weight: bolder;
+			font-size: 36px;
 		}
 	</style>
 	
@@ -21,7 +30,7 @@
 
 	<header th:fragment="header">
 		<nav class="flex">
-			<h1 style="color: red; text-align: center;">Rednit</h1>
+			<h1>Rednit</h1>
 			<div class="flex">
 				<a href="./create">Create</a>
 				<a href="./login">Login</a>
