@@ -97,6 +97,7 @@ public class UserRepository {
                 userToReturn = new User(
                         resultSet.getInt(1),
                         resultSet.getString(2),
+                        resultSet.getString(3),
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getDate(6),
@@ -130,6 +131,7 @@ public class UserRepository {
                 userToReturn = new User(
                         resultSet.getInt(1),
                         resultSet.getString(2),
+                        resultSet.getString(3),
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getDate(6),
@@ -162,6 +164,7 @@ public class UserRepository {
                 User tmpUser = new User(
                         resultSet.getInt(1),
                         resultSet.getString(2),
+                        resultSet.getString(3),
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getDate(6),

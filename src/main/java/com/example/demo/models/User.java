@@ -119,8 +119,8 @@ public class User extends Profile {
         this.sexualPreference = sexualPreference;
     }
 
-    public User(int idUser, String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference, String photo1) {
-        super(email);
+    public User(int idUser, String email, String password, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference, String photo1) {
+        super(email, password);
         this.idUser = idUser;
         this.firstName = firstName;
         this.lastName = lastName;
