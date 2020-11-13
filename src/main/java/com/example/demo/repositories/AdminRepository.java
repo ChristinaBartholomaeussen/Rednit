@@ -3,7 +3,6 @@ package com.example.demo.repositories;
 import com.example.demo.models.Admin;
 import com.example.demo.models.User;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -105,5 +104,4 @@ public class AdminRepository {
         }
         return allAdmins;
     }
-
 }

@@ -12,8 +12,6 @@ public class AdminService {
     private final List<User> allUsers;
     public List<User> blacklistedUser;
 
-    Admin admin = new Admin();
-
     AdminRepository adminRepository = new AdminRepository();
 
     public AdminService()
@@ -29,7 +27,6 @@ public class AdminService {
 
     public void restoreUser(int id)
     {
-
         adminRepository.deleteUserFromBlacklistInDatabase(id);
     }
 
@@ -39,17 +36,4 @@ public class AdminService {
 
         return blacklistedUser;
     }
-
-
-    public String getSingleUser(String firstname){
-
-        return "ok";
-    }
-
-    public void getAdmin(String email) {
-        //adminRepository.selectAdmin(email);
-    }
-
-
-
 }
