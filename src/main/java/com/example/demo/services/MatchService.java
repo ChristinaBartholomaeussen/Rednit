@@ -18,8 +18,8 @@ public class MatchService {
         matchRepository.deleteMatchFromMatchlistInDatabase(userFrom.getIdUser(), userTo.getIdUser());
     }
 
-    public void insertPotentialMatch(User userFrom, User userTo) {
-        matchRepository.InsertMatchIntoMatchListInDatabase(userFrom.getIdUser(), userTo.getIdUser());
+    public void insertPotentialMatch(int userFrom, int userTo) {
+        matchRepository.InsertMatchIntoMatchListInDatabase(userFrom, userTo);
     }
 
     public List<User> getMatches(User user) {
@@ -33,7 +33,6 @@ public class MatchService {
     
     public ArrayList<Match> getAllMatches( User activeUser) {
 		MatchService matchService = new MatchService();
-		System.out.println("test");
 
 		//System.out.println(matchService.getAllMatch());
 		for (Match match : matchService.getAllMatch()) {

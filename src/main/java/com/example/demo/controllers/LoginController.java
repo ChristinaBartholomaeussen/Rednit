@@ -127,7 +127,7 @@ public class LoginController
 
     //Postmapping til login - henter email og password fra html
     @PostMapping("/postLogin")
-    public String userLogin(WebRequest dataFromForm)
+    public String userLogin(WebRequest dataFromForm, HttpServletResponse response)
     {
         List<User> blacklistedUsersFromDB = adminRepository.selectAllBlackListUsersFromDatabase();
         List<Admin> adminsFromDB = adminRepository.selectAllAdminsFromDatabase();

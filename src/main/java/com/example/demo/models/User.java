@@ -228,8 +228,7 @@ public class User extends Profile {
         return potentialCandidates;
     }
 
-  
-    @Override
+	@Override
 	public String toString() {
     	return "Id: " + idUser + "\nIdUserMatch: " + idUserMatch + "\nNavn: " + getFirstName() + "\nEmail: " + getEmail() + "\nGender: " + gender + "\nSexual Prefrence: " + sexualPreference + "\nFilsti til foto: " + photo1 + "\nBio: " + bio;
 	}
