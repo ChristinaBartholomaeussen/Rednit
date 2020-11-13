@@ -209,13 +209,8 @@ public class UserService{
 		file.mkdir();
 	}
 
-    public User getUserByID(int idUser) {
-        for (User u : allUsers) {
-            if (idUser == u.getIdUser()) {
-                user = u;
-            }
-        }
-
-        return user;
+    public User getUserByID(int idUser)
+    {
+        return userRepository.selectUserFromDatabase(idUser);
     }
 }
