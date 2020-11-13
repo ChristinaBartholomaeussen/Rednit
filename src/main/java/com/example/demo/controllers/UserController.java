@@ -34,9 +34,6 @@ public class UserController {
 	int cookieId;
 	User activeUser;
 	
-	int counter;
-
-
 	int counterStraightWomen = 0;
 	int counterStraightMen;
 	int counterGayWomen;
@@ -51,7 +48,6 @@ public class UserController {
 	{
 		for(User user : allUsersForExplore)
 		{
-			
 			if (user.getGender() == 0 && user.getSexualPreference() == 1) {
 				
 				straightWomens.add(user);
@@ -70,8 +66,6 @@ public class UserController {
 			}
 		}
 
-		
-
 		counterStraightMen = straightWomens.size() -1;
 		counterStraightWomen = straightMens.size() -1;
 		counterGayMen = gayMens.size() -1;
@@ -81,14 +75,11 @@ public class UserController {
 	@GetMapping("/matches")
 	public String match(Model userModel, HttpServletRequest request)
 	{
-		
-
 		ArrayList<Match> potentialMatch = new ArrayList<>();
 		ArrayList<User> matchList = new ArrayList<>();
 
 		int cookieId = UserService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
-
 
 		MessageService messageService = new MessageService();
 
@@ -118,8 +109,6 @@ public class UserController {
 	{
 		String firstName = String.valueOf(dataFromForm.getParameter("submitBtn"));
 
-		
-
 		for(User u : allUsers)
 		{
 			if(firstName.equals(u.getFirstName()))
@@ -144,7 +133,6 @@ public class UserController {
 		int cookieId = UserService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
 
-
 		model.addAttribute("user", activeUser);
 
         return "myProfile";
@@ -155,7 +143,6 @@ public class UserController {
 
 		int cookieId = UserService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
-
 
 		if (!data.getParameter("name").equals("")) {
     		
@@ -200,9 +187,8 @@ public class UserController {
 		int cookieId = UserService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
 
-		User potentialUser = new User();
+		User potentialUser = null;
 		
-
 		if (activeUser.getGender() == 1 && activeUser.getSexualPreference() == 0)
 		{
 			for (User user : straightWomens)
@@ -266,7 +252,6 @@ public class UserController {
 	{
 		int cookieId = UserService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
-
 
 		User potentialUser = null;
 
