@@ -19,6 +19,11 @@ public class AdminController
     List<User> allUsers;
     List<User> blacklistedUsers;
 
+    /**
+     * Tilføjer 2 lister, allUsers og blackListedUsers, samt admin, så de kan tilgås via Thymeleaf i HTML koden
+     * @param adminModel
+     * @return
+     */
     @GetMapping("/admin")
     public String adminPage(Model adminModel)
     {
@@ -34,6 +39,15 @@ public class AdminController
         return "adminPage";
     }
 
+    /**
+     * Modtager en parameter fra html-forms, som tager et userid og skabes et User objekt ud fra dette.
+     * Derefter itereres der over Blacklisted-listen, og hvis objektets firstName findes i brugerlisten,
+     * så fjernes objektet fra blacklistedUser og fjernes fra Blacklistedre brugere på databasen
+     *
+     * Derefter redirectes tilbage til Admin page.
+     * @param dataFromForm
+     * @return
+     */
     @PostMapping("restoreUserFromBlackList")
     public String restoreUserFromBlackList(WebRequest dataFromForm){
 
@@ -61,8 +75,15 @@ public class AdminController
         return "redirect:/admin";
     }
 
+    /**
+     * Skaber en ny User i userServices. Henter parametren firstname fra HTML-koden. Itererer over allUsers
+     * liste og hvis firstname er lig med den blacklistede User, så populeres den nye Users attributter med data fra den blacklistede
+     * brugers informationer.
+     * @param dataFromForm
+     * @return
+     */
     @PostMapping("/postAdmin")
-    public String adminStart(WebRequest dataFromForm) throws FileNotFoundException {
+    public String adminStart(WebRequest dataFromForm) {
 
         userService.setUserToDefault();
 
@@ -91,6 +112,15 @@ public class AdminController
         return "redirect:/admin";
     }
 
+    /**
+     * Opretter et nyt User objekt i userService. Henter firstname2 fra dataFromForm og itererer over en blackListedUser
+     * liste. Hvis firstname2 er lgi med den itererede bruger, så sættes attributterne i det nye user objekt til
+     * useren fra blacklisteduser.
+     *
+     * Derefter redirectes tilbage til Admin.
+     * @param dataFromForm
+     * @return
+     */
     @PostMapping("/showBlacklist")
     public String showBlack(WebRequest dataFromForm) {
 
@@ -118,7 +148,13 @@ public class AdminController
         return "redirect:/admin";
     }
 
-
+    /**
+     * Henter en Delete-string fra forms i HTML i kode. Itererer over en liste af allUsers og hvis den iterede
+     * bruger i allUsers listen har samme navn som Delete-string, så slettes denne bruger fra allUsers
+     * og databasen. Derefter redirectes til Admin-siden
+     * @param dateFromForm
+     * @return
+     */
    @PostMapping("/adminDeleteUser")
     public String deleteUser(WebRequest dateFromForm){
 
@@ -146,6 +182,12 @@ public class AdminController
         return "redirect:/admin";
     }
 
+    /**
+     * OPretter en blacklist-string og itererer over en allUsers liste. Hvis brugeren i allUsers listen har samme
+     * navn som blacklist-string, så fjernes brugeren fra databasen.
+     * @param dateFromForm
+     * @return
+     */
     @PostMapping("/adminBlacklistUser")
     public String blacklistUser(WebRequest dateFromForm)
     {
@@ -174,6 +216,13 @@ public class AdminController
     }
 
 
+    /**
+     * Modtager en deletePhoto-string fra forms i HTML. Hvis deletePhoto-string er "Slet billede", så itereres
+     * der over en allUsers liste. Hvis den itererede bruger har samme firstName som userToDisplay, så slettes den itererede
+     * brugers billede-lokation fra databasen. Derefter redirectes tilbage til Admin.
+     * @param dataFromForm
+     * @return
+     */
     @PostMapping("/adminDeletePhoto")
     public String deletePhoto(WebRequest dataFromForm){
 
