@@ -1,4 +1,5 @@
 package com.example.demo.services;
+import com.example.demo.models.Admin;
 import com.example.demo.models.User;
 import com.example.demo.repositories.AdminRepository;
 
@@ -34,5 +35,13 @@ public class AdminService {
         blacklistedUser = adminRepository.selectAllBlackListUsersFromDatabase();
 
         return blacklistedUser;
+    }
+
+    public List<User> getBlacklistedUsers() {
+        return adminRepository.selectAllBlackListUsersFromDatabase();
+    }
+
+    public List<Admin> getAllAdmins() {
+        return adminRepository.selectAllAdminsFromDatabase();
     }
 }
