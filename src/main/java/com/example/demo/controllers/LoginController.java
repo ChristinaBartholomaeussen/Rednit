@@ -21,13 +21,24 @@ public class LoginController
     UserService userService = new UserService();
     AdminService adminService = new AdminService();
 
-    @GetMapping("/create")
-    public String index(Model userModel)
+	/**
+	 * Redirecter til createNewPRofile.
+	 * @param userModel
+	 * @return
+	 */
+	@GetMapping("/create")
+    public String create(Model userModel)
     {
         userModel.addAttribute("userModel", userModel);
         return "create/createNewProfile";
     }
 
+	/**
+	 *Laver en user udfra data som bliver sendt fra et html form
+	 * @param dataFromForm
+	 * @param response
+	 * @return
+	 */
     @PostMapping("/postCreate")
     public String postCreate(WebRequest dataFromForm, HttpServletResponse response)
     {
@@ -80,13 +91,26 @@ public class LoginController
         return "create/uploadPhoto";
     }
 
-    @GetMapping("/postCreate")
+	/**
+	 * redirecter til siden hvor du uploader billeder
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@GetMapping("/postCreate")
 	@ResponseBody
     public String uploadPicture(Model model, HttpServletRequest request)
     {
     	return "create/uploadPhoto";
     }
 
+	/**
+	 * Uploader et billede fra html til databasen
+	 * @param imageFile
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
     @PostMapping("/uploadPicture")
     public String uploadPicture(@RequestParam("imageFile") MultipartFile imageFile, HttpServletRequest request) throws Exception {
 
@@ -97,7 +121,11 @@ public class LoginController
         return "redirect:/explore	";
     }
 
-
+	/**
+	 * Viser login siden
+	 * @param userModel
+	 * @return
+	 */
     @GetMapping("/login")
     public String postCreate(Model userModel)
     {
@@ -109,6 +137,12 @@ public class LoginController
         return "loginPage";
     }
 
+	/**
+	 * HEnter data fra login siden og checker databasen igennem, om det matcher en bruger i databasen.
+	 * @param dataFromForm
+	 * @param response
+	 * @return
+	 */
     @PostMapping("/postLogin")
     public String userLogin(WebRequest dataFromForm, HttpServletResponse response)
     {
@@ -143,7 +177,11 @@ public class LoginController
         return "redirect:/create";
     }
 
-    @GetMapping("/blacklist")
+	/**
+	 * Redirecter til en blacklist side
+	 * @return
+	 */
+	@GetMapping("/blacklist")
     public String userBlacklisted(){
 
         return "blacklistPage";
