@@ -176,8 +176,6 @@ public class UserController {
     		String updatedPassword = data.getParameter("password");
     		activeUser.setPassword(updatedPassword);
 		}
-
-		System.out.println(activeUser);
     	
     	userService.updateUser(activeUser);
     	
