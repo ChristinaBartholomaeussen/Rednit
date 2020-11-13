@@ -178,6 +178,11 @@ public class UserController {
     		String updatedName = String.valueOf(data.getParameter("name"));
 			activeUser.setFirstName(updatedName);
 		}
+		
+		if(!data.getParameter("lastName").equals("")) {
+			String updatedLastName = String.valueOf(data.getParameter("lastName"));
+			activeUser.setLastName(updatedLastName);
+		}
     	
     	if (!data.getParameter("bio").equals("")) {
     		String updatedBio = String.valueOf(data.getParameter("bio"));

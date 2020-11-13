@@ -44,6 +44,8 @@
 	<form class="container reverse-flex" action="/myProfilePost" method="post"  >
 		<label for="name">Navn:</label>
 		<input type="text" name="name" id="name" th:value="${user.getFirstName()}">
+		<label for="lastName">Efternavn:</label>
+		<input type="text" name="lastName" id="lastName" th:value="${user.getLastName()}">
 
 		<label for="age">Alder:</label>
 		<input type="text" name="age" id="age" th:value="${user.getDateOfBirth()}">
