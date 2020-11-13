@@ -1,12 +1,8 @@
 package com.example.demo.controllers;
 import com.example.demo.models.Admin;
 import com.example.demo.models.User;
-import com.example.demo.repositories.AdminRepository;
 import com.example.demo.services.AdminService;
 import com.example.demo.services.UserService;
-import com.example.demo.repositories.UserRepository;
-import org.springframework.boot.Banner;
-import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -23,9 +18,7 @@ import java.util.List;
 @Controller
 public class LoginController
 {
-    //AdminRepository adminRepository = new AdminRepository();
-    UserService userServiceToDisplay = new UserService();
-    //UserRepository userRepository = new UserRepository();
+    UserService userService = new UserService();
     AdminService adminService = new AdminService();
 
     @GetMapping("/create")
@@ -70,9 +63,10 @@ public class LoginController
 
             String bio = dataFromForm.getParameter("bio");
 
-            User user = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio,"","", "");
+            User user = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio);
 
-            userRepository.insertUserIntoDatabase(user);
+            userService.insertNewUser(user);
+
         }
         catch(Exception e)
         {
@@ -80,7 +74,7 @@ public class LoginController
             return "redirect:/create";
         }
 
-        String id = "" + userRepository.selectUserFromDatabaseFromEmail(dataFromForm.getParameter("email")).getIdUser();
+        String id = "" + userService.getSingleUser(dataFromForm.getParameter("email")).getIdUser();
         Cookie cookie = new Cookie("id", id);
         response.addCookie(cookie);
         return "create/uploadPhoto";
@@ -118,9 +112,10 @@ public class LoginController
     @PostMapping("/postLogin")
     public String userLogin(WebRequest dataFromForm, HttpServletResponse response)
     {
-        List<User> blacklistedUsersFromDB = adminRepository.selectAllBlackListUsersFromDatabase();
-        List<Admin> adminsFromDB = adminRepository.selectAllAdminsFromDatabase();
-        List<User> usersFromDB = userServiceToDisplay.getAllUsersLoginInformation();
+
+        List<User> blacklistedUsersFromDB = adminService.getBlacklistedUsers();
+        List<Admin> adminsFromDB = adminService.getAllAdmins();
+        List<User> usersFromDB = userService.getAllUsersLoginInformation();
 
         String enteredEmail = dataFromForm.getParameter("email");
         String enteredPassword = dataFromForm.getParameter("password");
@@ -136,9 +131,9 @@ public class LoginController
         for(User user : usersFromDB)
             if(user.getEmail().equals(enteredEmail) && user.getPassword().equals(enteredPassword))
             {
-                user = userServiceToDisplay.loggedInUser(enteredEmail, enteredPassword);
+                user = userService.loggedInUser(enteredEmail, enteredPassword);
 
-				String id = "" + userRepository.selectUserFromDatabaseFromEmail(dataFromForm.getParameter("email")).getIdUser();
+				String id = "" + userService.getSingleUser(dataFromForm.getParameter("email")).getIdUser();
 				Cookie cookie = new Cookie("id", id);
 				response.addCookie(cookie);
 				
