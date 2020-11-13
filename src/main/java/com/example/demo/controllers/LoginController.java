@@ -48,7 +48,6 @@ public class LoginController
 
             if(!password1.equals(password2))
             {
-                System.out.println("Passwords not equal");
                 return "redirect:/create";
             }
 
@@ -140,7 +139,6 @@ public class LoginController
             if(user.getEmail().equals(enteredEmail) && user.getPassword().equals(enteredPassword))
             {
                 user = userServiceToDisplay.loggedInUser(enteredEmail, enteredPassword);
-                System.out.println(user.toString());
 
 				String id = "" + userRepository.selectUserFromDatabaseFromEmail(dataFromForm.getParameter("email")).getIdUser();
 				Cookie cookie = new Cookie("id", id);

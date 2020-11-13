@@ -46,7 +46,6 @@ public class AdminController
                 for (User u : blacklistedUsers) {
                     if (userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())) {
 
-                        System.out.println(u.getIdUser() + " deleted");
                         admin.restoreUser(u.getIdUser());
                         blacklistedUsers.remove(u);
                     }
@@ -132,7 +131,6 @@ public class AdminController
                 for (User u : allUsers) {
                     if (userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())) {
 
-                        System.out.println(u.getIdUser() + " deleted");
                         userService.deleteUser(u.getIdUser());
                         allUsers.remove(u);
                     }
@@ -160,7 +158,6 @@ public class AdminController
                 for(User u : allUsers){
                     if(userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())){
                         admin.addToBlacklist(u);
-                        System.out.println(u.getIdUser() + " Blacklisted");
                     }
                 }
             }
@@ -190,7 +187,6 @@ public class AdminController
                 for(User u : allUsers){
                     if(userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())){
                         userService.deletePhoto(u);
-                        System.out.println(u);
                     }
                 }
             }catch (NullPointerException e){

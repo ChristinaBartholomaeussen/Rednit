@@ -30,7 +30,6 @@ public class MatchService {
 		for (Match match : matchService.getAllMatch()) {
 
 			if (match.getIdUserMatch() == activeUser.getIdUser() && match.getIdUser() == activeUser.getIdUserMatch()) {
-				System.out.println("Burde være et match imellem: " + activeUser.getIdUser() + " og " + match.getIdUser());
 				matchList.add(new Match(activeUser.getIdUser(), match.getIdUser()));
 			}
 		}

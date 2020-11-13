@@ -11,11 +11,6 @@ public class HomeController {
         return "loginPage";
     }
 
-    @GetMapping("/home")
-    public String home(){
-        return "explore";
-    }
-
 }
 
 

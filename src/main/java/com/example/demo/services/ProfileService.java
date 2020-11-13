@@ -16,8 +16,6 @@ public class ProfileService {
 
 		testList.remove(indexOfPhoto);
 
-		System.out.println(testList.toString());
-
 		return testList;
 	}
 }

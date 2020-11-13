@@ -232,7 +232,6 @@ public class UserController {
 		{
 			potentialUser = listOfPotentialCandidates.get(counterStraightMen);
 			matchService.insertPotentialMatch(activeUser.getIdUser(), potentialUser.getIdUser());
-			System.out.println("User I liked: " + potentialUser.getIdUser());
 			listOfPotentialCandidates.remove(counterStraightMen);
 			counterStraightMen--;
 		}
