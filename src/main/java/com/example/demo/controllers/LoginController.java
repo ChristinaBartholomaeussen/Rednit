@@ -22,7 +22,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-
 @Controller
 public class LoginController
 {
@@ -72,14 +71,11 @@ public class LoginController
 
             Date dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(dataFromForm.getParameter("dateOfBirth"));
 
-            //TODO Fil implementering
-
             String bio = dataFromForm.getParameter("bio");
 
             User user = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio,"","", "");
 
             userRepository.insertUserIntoDatabase(user);
-
         }
         catch(Exception e)
         {
@@ -97,10 +93,7 @@ public class LoginController
 	@ResponseBody
     public String uploadPicture(Model model, HttpServletRequest request)
     {
-    	
-    	
-		//model.addAttribute("user", user);
-    	return "create/uploadPhoto"; // HTML side
+    	return "create/uploadPhoto";
     }
 
     @PostMapping("/uploadPicture")
@@ -125,7 +118,6 @@ public class LoginController
         return "loginPage";
     }
 
-    //Postmapping til login - henter email og password fra html
     @PostMapping("/postLogin")
     public String userLogin(WebRequest dataFromForm, HttpServletResponse response)
     {
@@ -145,12 +137,11 @@ public class LoginController
                 return "redirect:/admin";
 
         for(User user : usersFromDB)
-            if(user.getEmail().equals(enteredEmail) && user.getPassword().equals(enteredPassword)){
+            if(user.getEmail().equals(enteredEmail) && user.getPassword().equals(enteredPassword))
+            {
                 user = userServiceToDisplay.loggedInUser(enteredEmail, enteredPassword);
                 System.out.println(user.toString());
-                /* sæt cookie */
-				
-				
+
 				String id = "" + userRepository.selectUserFromDatabaseFromEmail(dataFromForm.getParameter("email")).getIdUser();
 				Cookie cookie = new Cookie("id", id);
 				response.addCookie(cookie);
@@ -158,18 +149,12 @@ public class LoginController
                 return "redirect:/explore";
             }
 
-
-        System.out.println("Bruger findes ikke - redirecter til /create");
         return "redirect:/create";
-
     }
 
     @GetMapping("/blacklist")
     public String userBlacklisted(){
 
         return "blacklistPage";
-
     }
-
-
 }
