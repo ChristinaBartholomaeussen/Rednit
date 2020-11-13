@@ -3,10 +3,11 @@
 	<head>
 	<meta charset="UTF-8">
 	<link href="https://fonts.googleapis.com/css2?family=David+Libre&family=Montserrat&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
 	<title>MyProfil</title>
 	<style>
-		.flex {
+
+		.custom-flex {
 			display: flex;
 		}
 		
@@ -30,21 +31,16 @@
 			height: auto;
 		}
 		
-		.small-placeholder-img {
-			width: 75px;
-			height: 100px;
-			background: #e2e2e2;
-			margin: 15px;
-		}
-		
+
 	</style>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
 <!-- Dette må ikke fjernes, det er fragments til headeren -->
 <div th:insert="Fragments/header :: header"></div>
 
-<div id="wrapper" class="flex">
+<div id="wrapper" class="custom-flex">
 	<form class="container reverse-flex" action="/myProfilePost" method="post"  >
 		<label for="name">Navn:</label>
 		<input type="text" name="name" id="name" th:value="${user.getFirstName()}">

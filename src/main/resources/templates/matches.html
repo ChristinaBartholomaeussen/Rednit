@@ -14,7 +14,7 @@
 			margin: 0 auto;
 		}
 		
-		.flex {
+		.custom-flex {
 			display: flex;
 		}
 		
@@ -103,17 +103,19 @@
 		}
 		
 	</style>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 	<body>
 	
 	<!-- Dette må ikke fjernes, det er fragments til headeren -->
 		<div th:insert="Fragments/header :: header"></div>
 	
-		<div id="wrapper" class="flex">
+		<div id="wrapper" class="custom-flex">
 			<form action="/postMatches" method="post" id="matchList">
 				<div class="match-container">
 					
-					<button class="flex match-item" th:each="user : ${mathces}" type="submit" form="matchList" th:name="submitBtn" th:value="${user.getFirstName()}">
+					<button class="custom-flex match-item" th:each="user : ${mathces}" type="submit" form="matchList" th:name="submitBtn" th:value="${user.getFirstName()}">
 						<p th:text="${user.getFirstName()}"></p>
 						<p th:text="${user.getLastName()}"></p>
 					</button>
@@ -134,7 +136,7 @@
 			
 			<div class="chat-box">
 				<form action="/sendMessage" method="post" class="reverse-flex space-between">
-					<div class="flex">
+					<div class="custom-flex">
 						<input class="send-message" type="text" th:name="send" autofocus placeholder="Skriv besked....">
 						<input class="btn"type="submit" value="Send" >
 					</div>
