@@ -26,7 +26,6 @@ public class User extends Profile {
     private List<User> likedUsers;
     private List<User> dislikedUsers;
     private List<User> potentialCandidates;
-    private int cookie;
 
     public User(int idUser, int idUserMatch) {
         this.idUser = idUser;
@@ -62,11 +61,8 @@ public class User extends Profile {
                 this.likedUsers = new ArrayList<>();
                 this.dislikedUsers = new ArrayList<>();
                 this.potentialCandidates = new ArrayList<>();
-
     }
     
-    /*  Mangler at sætte en liste med billeder.  */
-
     public User(String email, String password, String firstName, String lastName, Date dateOfBirth, int gender, int sexualPreference, String bio)
     {
         super(email, password);
@@ -93,7 +89,6 @@ public class User extends Profile {
     }
 
     public User() {
-       //Default constructor
     }
 
     public User(String email) {
@@ -110,7 +105,6 @@ public class User extends Profile {
         this.gender = gender;
         this.sexualPreference = sexualPreference;
         this.photo1 = photo1;
-
     }
 
     public User(String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference, String photo1)
@@ -180,16 +174,8 @@ public class User extends Profile {
         return gender;
     }
 
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
-
     public int getSexualPreference() {
         return sexualPreference;
-    }
-
-    public void setSexualPreference(int sexualPreference) {
-        this.sexualPreference = sexualPreference;
     }
 
     public String getBio() {
@@ -204,29 +190,9 @@ public class User extends Profile {
         return photo1;
     }
 
-    public String getPhoto2(){
-        return photo2;
-    }
-
-    public String getPhoto3(){
-        return photo3;
-    }
-
    public void setPhoto1(String photo1) {
     	this.photo1 = photo1;
    }
-
-    public List getLikedUsers() {
-        return likedUsers;
-    }
-
-    public List getDislikedUsers() {
-        return dislikedUsers;
-    }
-
-    public List getPotentialCandidates() {
-        return potentialCandidates;
-    }
 
 	@Override
 	public String toString() {

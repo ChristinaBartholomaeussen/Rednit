@@ -35,11 +35,7 @@ public abstract class Profile {
         return profiles;
     }
 
-    public Profile() {
-        //Default constructor
+    public Profile()
+    {
     }
-
-
-
-
 }
