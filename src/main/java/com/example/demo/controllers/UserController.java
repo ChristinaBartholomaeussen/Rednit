@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Match;
 import com.example.demo.models.User;
 import com.example.demo.repositories.MatchRepository;
 import com.example.demo.repositories.UserRepository;
