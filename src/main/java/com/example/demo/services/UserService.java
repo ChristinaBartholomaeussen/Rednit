@@ -32,10 +32,10 @@ public class UserService  extends ProfileService {
     public List<User> allUsers = userRepository.selectAllUsersFromDatabase();
     User user = new User();
 
-    public User loggedInUser(String email, String password){
+    public User getUserByID(int id){
 
         for(User u : allUsers){
-            if(email.equals(u.getEmail()) && password.equals(u.getPassword())){
+            if(id == u.getIdUser()){
                 user = u;
             }
         }
@@ -207,5 +207,17 @@ public class UserService  extends ProfileService {
 		String path = "./src/main/resources/static/photos/fotos" + cookie;
 		File file = new File(path);
 		file.mkdir();
+
+	}
+
+	public User loggedInUser(String enteredEmail, String enteredPassword) {
+
+		for(User u : allUsers){
+			if( enteredEmail == u.getEmail() && enteredPassword == u.getPassword()){
+				user = u;
+			}
+		}
+
+		return user;
 	}
 }

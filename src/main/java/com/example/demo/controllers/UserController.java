@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.User;
+import com.example.demo.repositories.MatchRepository;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.MatchService;
 import com.example.demo.services.UserService;
@@ -73,10 +74,39 @@ public class UserController {
     public String match(Model userModel, HttpServletRequest request)
 	{
 		allUsers = userRepository.selectAllUsersFromDatabase();
+		
+		
+		
+		ArrayList<Integer> matchId = new ArrayList<Integer>();
+		ArrayList<User> matchProfile = new ArrayList<>();
+
+		int cookieId = UserService.getCookieId(request);
+		User activeUser = userRepository.selectUserFromDatabase(cookieId);
+
+		//System.out.println("Active id : " + activeUser.getIdUser() + " active matchId: " + activeUser.getIdUserMatch());
+
+		 for (Match match : matchService.getAllMatch()) {
+			 System.out.println("UserID: " + match.getIdUser() + " uMatchID: " + match.getIdUserMatch());
+		}
+		for (Match match : matchService.getAllMatch()) {
+			
+			matchId.add(match.getIdUserMatch());
+		}
+		
+		for (int matchid : matchId) {
+			matchProfile.add(userService.getUserByID(matchid));
+		}
+		
+		for (User profileWhoHaveLikeActiveUser : matchProfile) {
+			
+		}
+
+		
 
 		userModel.addAttribute("allUsers", allUsers);
 		userModel.addAttribute("selectedUser", selectedUser);
 		userModel.addAttribute("listOfMessages", messageList);
+		userModel.addAttribute("mathces", matchProfile);
 
 		return "matches";
     } 
@@ -259,6 +289,7 @@ public class UserController {
 
 		activeUser.setIdUserMatch(potentialUser.getIdUser());
 
+		
 		return "redirect:/explore";
 	}
 

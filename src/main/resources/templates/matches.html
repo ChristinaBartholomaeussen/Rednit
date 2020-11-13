@@ -113,7 +113,7 @@
 			<form action="/postMatches" method="post" id="matchList">
 				<div class="match-container">
 					
-					<button class="flex match-item" th:each="user : ${allUsers}" type="submit" form="matchList" th:name="submitBtn" th:value="${user.getFirstName()}">
+					<button class="flex match-item" th:each="user : ${mathces}" type="submit" form="matchList" th:name="submitBtn" th:value="${user.getFirstName()}">
 						<p th:text="${user.firstName}"></p>
 						<p th:text="${user.getLastName()}"></p>
 					</button>
