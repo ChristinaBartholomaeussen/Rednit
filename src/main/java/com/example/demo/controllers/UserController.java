@@ -284,7 +284,6 @@ public class UserController {
 			matchService.insertPotentialMatch(activeUser.getIdUser(),potentialUser.getIdUser());
 		}
 
-		System.out.println("Gender: " + activeUser.getGender() + " Sexualpref: " +  activeUser.getSexualPreference());
 		activeUser.setIdUserMatch(potentialUser.getIdUser());
 
 		return "redirect:/explore";
