@@ -148,6 +148,13 @@ public class LoginController
             if(user.getEmail().equals(enteredEmail) && user.getPassword().equals(enteredPassword)){
                 user = userServiceToDisplay.loggedInUser(enteredEmail, enteredPassword);
                 System.out.println(user.toString());
+                /* sæt cookie */
+				
+				
+				String id = "" + userRepository.selectUserFromDatabaseFromEmail(dataFromForm.getParameter("email")).getIdUser();
+				Cookie cookie = new Cookie("id", id);
+				response.addCookie(cookie);
+				
                 return "redirect:/explore";
             }
 
