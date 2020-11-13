@@ -42,6 +42,7 @@ public class UserController {
 	ArrayList<User> gayWomens = new ArrayList<User>();
 	ArrayList<User> straightMens = new ArrayList<User>();
 	ArrayList<User> gayMens = new ArrayList<User>();
+	ArrayList<User> matchList = new ArrayList<>();
 	
 
 	public UserController()
@@ -76,7 +77,7 @@ public class UserController {
 	public String match(Model userModel, HttpServletRequest request)
 	{
 		ArrayList<Match> potentialMatch = new ArrayList<>();
-		ArrayList<User> matchList = new ArrayList<>();
+
 
 		int cookieId = UserService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
@@ -108,8 +109,9 @@ public class UserController {
 	public String matchSelect(WebRequest dataFromForm, Model userModel)
 	{
 		String firstName = String.valueOf(dataFromForm.getParameter("submitBtn"));
+		
 
-		for(User u : allUsers)
+		for(User u : matchList)
 		{
 			if(firstName.equals(u.getFirstName()))
 			{
