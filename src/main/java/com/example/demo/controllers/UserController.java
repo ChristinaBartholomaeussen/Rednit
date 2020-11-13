@@ -30,7 +30,6 @@ public class UserController {
 	int counterGayWomens;
 	int counterGayMens;
 	List<User> listOfPotentialCandidates = new ArrayList<>();
-	int activeUserId;
 	
 	int cookieId;
 	User activeUser;
@@ -177,6 +176,8 @@ public class UserController {
     		String updatedPassword = data.getParameter("password");
     		activeUser.setPassword(updatedPassword);
 		}
+    	
+    	userService.updateUser(activeUser);
     	
 		return "redirect:/myProfile";
 	}

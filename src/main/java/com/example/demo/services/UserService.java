@@ -68,6 +68,34 @@ public class UserService{
         userRepository.updatePhotoInDatabase(user);
     }
 
+    public void saveUserProfileChanges() {
+        //TODO
+        //INDSÆT KODE
+    }
+
+    public void uploadPhoto() {
+        //TODO
+        //INDSÆT KODE
+    }
+
+    public void getUser() {
+        //TODO
+        //INDSÆT KODE
+    }
+
+    public void getNextUser() {
+        //TODO
+        //INDSÆT KODE
+    }
+    
+
+    public boolean likeUser(User user) {
+        //TODO
+        //INDSÆT KODE OBS PÅ MyCandidate
+
+        return true;
+    }
+
     public List<User> getAllUsers() {
 
         UserRepository userRepository = new UserRepository();
@@ -83,6 +111,23 @@ public class UserService{
 
     public User getSingleUser(String email){
         return userRepository.selectUserFromDatabaseFromEmail(email);
+    }
+    public void addToLikedList(User user) {
+
+    }
+
+    public void addToDislikedList(User user) {
+
+    }
+
+    public void addToPotentialCandidates(User user) {
+
+    }
+
+    public boolean checkPassword(String password) {
+
+        //ToDo
+        return password.length() > 4 && password.length() < 20;
     }
 
     public boolean checkEmail(String email) {
