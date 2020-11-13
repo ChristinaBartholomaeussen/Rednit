@@ -24,6 +24,7 @@ public class UserRepository {
 
     /**
      * Inserts a newly created user into the database
+     * @param user
      * */
 
     public void insertUserIntoDatabase(User user) {
@@ -48,6 +49,7 @@ public class UserRepository {
 
     /**
      * Updates a single user in the database
+     * @param user
      * */
 
     public void updateUserInfoInDatabase(User user) {
@@ -72,6 +74,7 @@ public class UserRepository {
 
     /**
      * Deletes a user in the database
+     * @param idUser
      * */
     public void deleteUserFromDatabase(int idUser){
         String deleteUserSQL = "DELETE FROM users WHERE idUser = ?";
@@ -87,6 +90,7 @@ public class UserRepository {
 
     /**
      * Selects a single user in the database from their idUSer and retuns an object of User
+     * @param idUser
      * */
 
     public User selectUserFromDatabase(int idUser) {
@@ -123,6 +127,7 @@ public class UserRepository {
 
     /**
      * Selects a single user in the database from their email and returns an object of User
+     * @param email
      * */
 
     public User selectUserFromDatabaseFromEmail(String email) {
@@ -226,6 +231,7 @@ public class UserRepository {
 
     /**
      * Updates photo1 in the database
+     * @param user
      * */
 
     public void updatePhotoInDatabase(User user) {

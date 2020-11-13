@@ -15,6 +15,8 @@ public class MatchRepository {
 
     /**
      * Deletes a match between two users in the database
+     * @param idUser
+     * @param idUserMatch
      * */
 
     public void deleteMatchFromMatchlistInDatabase(int idUser, int idUserMatch) {
@@ -33,6 +35,8 @@ public class MatchRepository {
 
     /**
      * Inserts a match after a user has 'liked' another user
+     * @param idUser
+     * @param idUserMatch
      * */
 
     public void InsertMatchIntoMatchListInDatabase(int idUser, int idUserMatch) {
@@ -51,6 +55,7 @@ public class MatchRepository {
 
     /**
      * Selects a single users matches and returns it as an ArrayList
+     * @param idUser
      * */
 
     public List<User> selectUserMatchesFromDatabase(int idUser) {
