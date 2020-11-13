@@ -87,6 +87,7 @@ public class UserService{
         //TODO
         //INDSÆT KODE
     }
+    
 
     public boolean likeUser(User user) {
         //TODO
@@ -216,5 +217,9 @@ public class UserService{
     public void insertNewUser(User user)
     {
         userRepository.insertUserIntoDatabase(user);
+    }
+
+    public void updateUser(User user) {
+        userRepository.updateUserInfoInDatabase(user);
     }
 }
