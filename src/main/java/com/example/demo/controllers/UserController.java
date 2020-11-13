@@ -81,11 +81,9 @@ public class UserController {
 	@GetMapping("/matches")
 	public String match(Model userModel, HttpServletRequest request)
 	{
-		allUsers = userService.getAllUsers();
+		
 
-		ArrayList<Integer> matchId = new ArrayList<Integer>();
 		ArrayList<Match> potentialMatch = new ArrayList<>();
-		ArrayList<Match> potentialMatchActiveUser = new ArrayList<>();
 		ArrayList<User> matchList = new ArrayList<>();
 
 		int cookieId = UserService.getCookieId(request);
@@ -107,13 +105,8 @@ public class UserController {
 				}
 
 			}
-
-			if (activeUser.getIdUser() == match.getIdUser() && match.getIdUserMatch() != activeUser.getIdUser() ) {
-
-			}
 		}
-
-		userModel.addAttribute("allUsers", allUsers);
+		
 		userModel.addAttribute("selectedUser", selectedUser);
 		userModel.addAttribute("listOfMessages", messageList);
 		userModel.addAttribute("mathces", matchList);
@@ -125,7 +118,7 @@ public class UserController {
 	{
 		String firstName = String.valueOf(dataFromForm.getParameter("submitBtn"));
 
-		userModel.addAttribute("selectedUser", selectedUser);
+		
 
 		for(User u : allUsers)
 		{
@@ -134,6 +127,7 @@ public class UserController {
 				selectedUser = u;
 			}
 		}
+		userModel.addAttribute("selectedUser", selectedUser);
 		return "redirect:/matches";
 	}
 
