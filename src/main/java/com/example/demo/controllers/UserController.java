@@ -5,6 +5,7 @@ import com.example.demo.models.User;
 import com.example.demo.repositories.MatchRepository;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.MatchService;
+import com.example.demo.services.MessageService;
 import com.example.demo.services.UserService;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
@@ -99,32 +100,50 @@ public class UserController {
 	{
 		
 		allUsers = userRepository.selectAllUsersFromDatabase();
-		
-		
+
+		Match matcha = null;
 		
 		ArrayList<Integer> matchId = new ArrayList<Integer>();
-		ArrayList<User> matchProfile = new ArrayList<>();
+		ArrayList<Match> potentialMatch = new ArrayList<>();
+		ArrayList<Match> potentialMatchActiveUser = new ArrayList<>();
+		ArrayList<User> matchList = new ArrayList<>();
 
 		int cookieId = UserService.getCookieId(request);
 		User activeUser = userRepository.selectUserFromDatabase(cookieId);
 
 		//System.out.println("Active id : " + activeUser.getIdUser() + " active matchId: " + activeUser.getIdUserMatch());
 
+		MessageService messageService = new MessageService();
+		
 		 for (Match match : matchService.getAllMatch()) {
-			 System.out.println("UserID: " + match.getIdUser() + " uMatchID: " + match.getIdUserMatch());
-		}
-		for (Match match : matchService.getAllMatch()) {
-			
-			matchId.add(match.getIdUserMatch());
+
+			 //System.out.println("matchID: " + match.getIdUser() + " matchUserID: " + match.getIdUserMatch());
+			 //System.out.println(activeUser.getIdUser());
+		 	if (activeUser.getIdUser() != match.getIdUser() && match.getIdUserMatch() == activeUser.getIdUser() ) {
+				//System.out.println("activeID: " + activeUser.getIdUser() + " matchUderID: " + match.getIdUser());
+				
+				potentialMatch.add(match);
+				for (Match potential : matchService.getAllMatch()) {
+					
+					if (activeUser.getIdUser() == potential.getIdUser() && match.getIdUserMatch() == potential.getIdUserMatch() ) {
+						matchList.add(userService.getUserByID(match.getIdUser()));
+					}
+				}
+				
+			}
+
+			 if (activeUser.getIdUser() == match.getIdUser() && match.getIdUserMatch() != activeUser.getIdUser() ) {
+	
+			 }
+		 
+
+	
+			 
 		}
 		
-		for (int matchid : matchId) {
-			matchProfile.add(userService.getUserByID(matchid));
-		}
 		
-		for (User profileWhoHaveLikeActiveUser : matchProfile) {
-			
-		}
+		 
+	
 
 		
 
@@ -132,7 +151,7 @@ public class UserController {
 		userModel.addAttribute("selectedUser", selectedUser);
 
 		userModel.addAttribute("listOfMessages", messageList);
-		userModel.addAttribute("mathces", matchProfile);
+		userModel.addAttribute("mathces", matchList);
 
 		
 		
