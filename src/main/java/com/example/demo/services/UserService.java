@@ -109,8 +109,7 @@ public class UserService{
     }
 
     public User getSingleUser(String email){
-        //TODO
-        return null;
+        return userRepository.selectUserFromDatabaseFromEmail(email);
     }
     public void addToLikedList(User user) {
 
@@ -212,5 +211,10 @@ public class UserService{
     public User getUserByID(int idUser)
     {
         return userRepository.selectUserFromDatabase(idUser);
+    }
+
+    public void insertNewUser(User user)
+    {
+        userRepository.insertUserIntoDatabase(user);
     }
 }
