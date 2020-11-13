@@ -6,8 +6,4 @@ public class Admin extends Profile {
         super(email, password);
 
     }
-
-    public Admin() {
-
-    }
 }
