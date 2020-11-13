@@ -217,4 +217,8 @@ public class UserService{
     {
         userRepository.insertUserIntoDatabase(user);
     }
+
+    public void updateUser(User user) {
+        userRepository.updateUserInfoInDatabase(user);
+    }
 }
