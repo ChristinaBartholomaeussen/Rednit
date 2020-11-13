@@ -15,6 +15,9 @@ public class MessageRepository {
 
     /**
      * Inserts an idUser, idUserMatch and message into the database
+     * @param idUser
+     * @param idUserMatch
+     * @param message
      * */
 
     public void insertMessageIntoDatabase(int idUser, int idUserMatch, String message) {
@@ -34,6 +37,8 @@ public class MessageRepository {
 
     /**
      * Selects a single users matches and returns them as an ArrayList
+     * @param idUserMatch
+     * @param idUser
      * */
 
     public List<Message> selectMessagesFromDatabase(int idUserMatch, int idUser) {

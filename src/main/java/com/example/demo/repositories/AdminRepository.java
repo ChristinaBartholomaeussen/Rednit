@@ -15,8 +15,8 @@ public class AdminRepository {
 
     /**
      * Inserts the users idUser attribute into the blacklist table, in the database
+     * @param user
      */
-
 
     public void insertUserIntoBlacklistInDatabase(User user) {
         String insertUserIntoBlackList = "INSERT INTO blacklists (idUser) VALUES (?)";
@@ -33,6 +33,7 @@ public class AdminRepository {
 
     /**
      * Deletes a users idUser attribute from the blacklist table, in the database
+     * @param idUser
      * */
 
     public void deleteUserFromBlacklistInDatabase(int idUser) {
