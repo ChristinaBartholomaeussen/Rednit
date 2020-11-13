@@ -13,7 +13,9 @@ public class MessageRepository {
 
     ConnectionRepository connection = new ConnectionRepository();
 
-    /**Inserts an idUser, idUserMatch and message into the database*/
+    /**
+     * Inserts an idUser, idUserMatch and message into the database
+     * */
 
     public void insertMessageIntoDatabase(int idUser, int idUserMatch, String message) {
         String insertMessageSQL = "INSERT INTO messages (idUser, idUserMatch, message) VALUES (?, ?, ?)";
@@ -30,7 +32,9 @@ public class MessageRepository {
         }
     }
 
-    /**Selects a single users matches and returns them as an ArrayList*/
+    /**
+     * Selects a single users matches and returns them as an ArrayList
+     * */
 
     public List<Message> selectMessagesFromDatabase(int idUserMatch, int idUser) {
 
