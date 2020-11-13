@@ -36,6 +36,12 @@ public class UserService{
     public List<User> allUsers = userRepository.selectAllUsersFromDatabase();
     User user = new User();
 
+	/**
+	 * Tjekker om brugens login kredintialer matcher en bruger.
+	 * @param email
+	 * @param password
+	 * @return
+	 */
     public User loggedInUser(String email, String password){
 
         for(User u : allUsers){
@@ -47,60 +53,44 @@ public class UserService{
         return user;
     }
 
-
+	/**
+	 * Sender en user tilbage.
+	 * @return
+	 */
     public User userToDisplay(){
        return user;
     }
 
+	/**
+	 * Sender en ny blank bruger tilbage.
+	 */
     public void setUserToDefault(){
         user = new User();
     }
 
-
-    public void createUser() {
-        //TODO
-        //INDSÆT KODE
-    }
-
+	/**
+	 * Sletter en bruger fra databasen
+	 * @param id
+	 */
     public void deleteUser(int id) {
 
         userRepository.deleteUserFromDatabase(id);
     }
 
-    public void deletePhoto(User user){
+	/**
+	 * Sletter et photo fra databasen
+	 * @param user
+	 */
+	public void deletePhoto(User user){
         user.setPhoto1(null);
         userRepository.updatePhotoInDatabase(user);
     }
 
-    public void saveUserProfileChanges() {
-        //TODO
-        //INDSÆT KODE
-    }
-
-    public void uploadPhoto() {
-        //TODO
-        //INDSÆT KODE
-    }
-
-    public void getUser() {
-        //TODO
-        //INDSÆT KODE
-    }
-
-    public void getNextUser() {
-        //TODO
-        //INDSÆT KODE
-    }
-    
-
-    public boolean likeUser(User user) {
-        //TODO
-        //INDSÆT KODE OBS PÅ MyCandidate
-
-        return true;
-    }
-
-    public List<User> getAllUsers() {
+	/**
+	 * Sender en liste med alle bruger
+	 * @return
+	 */
+	public List<User> getAllUsers() {
 
         UserRepository userRepository = new UserRepository();
 
@@ -109,69 +99,29 @@ public class UserService{
         return allUsers;
     }
 
+	/**
+	 * Sender alle user login info tilbage i en liste.
+	 * @return
+	 */
     public List<User> getAllUsersLoginInformation() {
         return userRepository.selectAllUsersLoginInformationFromDatabase();
     }
 
-    public User getSingleUser(String email){
+	/**
+	 * Sender en enkelt bruger tilbage, som bliver hentet fra databasen med en email.
+	 * @param email
+	 * @return
+	 */
+	public User getSingleUser(String email){
         return userRepository.selectUserFromDatabaseFromEmail(email);
     }
-    public void addToLikedList(User user) {
 
-    }
-
-    public void addToDislikedList(User user) {
-
-    }
-
-    public void addToPotentialCandidates(User user) {
-
-    }
-
-    public boolean checkPassword(String password) {
-
-        //ToDo
-        return password.length() > 4 && password.length() < 20;
-    }
-
-    public boolean checkEmail(String email) {
-        //INDSÆT kode, der laver op til vores email krav og om den allerede er i brug.
-
-        if (email == null || email.isBlank()) {
-
-            return false;
-        } else return email.length() > 4 && email.indexOf('@') > 0 && email.indexOf('.') > email.indexOf('@');
-    }
-
-    //Tjekker om vores email og password passer til det i vores database
-    public boolean doesEmailMatchPassword(String email, String password) throws FileNotFoundException {
-
-        List<User> usersFromDatabase = userRepository.selectAllUsersFromDatabase(); //Gemmer oplysningerne fra databasen i listen
-
-            for (User u : usersFromDatabase) {
-                if (email.equalsIgnoreCase(u.getPassword()) && password.equals(u.getPassword())) {
-                    return true;
-                }
-            }
-
-        return false;
-    }
-
-    public User isLoggedIn(String email, String password, int idUser) throws FileNotFoundException {
-
-        UserRepository userRepository = new UserRepository();
-
-        User user = new User();
-
-        if(doesEmailMatchPassword(email, password))
-        {
-            user = userRepository.selectUserFromDatabase(idUser);
-        }
-
-        return user;
-    }
-
-
+	/**
+	 * Gemmer et fil stien til brugersn profil billede i databasen, og gemmer billedet på computerens storage.
+	 * @param imageFile
+	 * @param cookie
+	 * @throws Exception
+	 */
 	public void saveImage(MultipartFile imageFile, int cookie) throws Exception {
 		try {
             User user = userRepository.selectUserFromDatabase(cookie);
@@ -191,7 +141,12 @@ public class UserService{
 			System.out.println(e);
 		}
 	}
-	
+
+	/**
+	 * Henter en cookie fra browseren som har brugerens id.
+	 * @param request
+	 * @return
+	 */
 	public int getCookieId(HttpServletRequest request) {
 
 		Cookie cookie[] = request.getCookies();
@@ -207,22 +162,39 @@ public class UserService{
 		return Integer.parseInt(cookieId.getValue());
 	}
 
+	/**
+	 * Laver en mapper hvor billederne kan gemmes.
+	 * @param cookie
+	 */
 	public  void createDir(int cookie) {
 		String path = "./src/main/resources/static/photos/fotos" + cookie;
 		File file = new File(path);
 		file.mkdir();
 	}
 
+	/**
+	 * Henter en user med id'et
+	 * @param idUser
+	 * @return
+	 */
     public User getUserByID(int idUser)
     {
         return userRepository.selectUserFromDatabase(idUser);
     }
 
-    public void insertNewUser(User user)
+	/**
+	 * Gemmer en user i databasen.
+	 * @param user
+	 */
+	public void insertNewUser(User user)
     {
         userRepository.insertUserIntoDatabase(user);
     }
 
+	/**
+	 * Updatere den aktive brugers data.
+	 * @param user
+	 */
     public void updateUser(User user) {
         userRepository.updateUserInfoInDatabase(user);
     }
