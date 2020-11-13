@@ -70,6 +70,8 @@ public class UserController {
 			}
 		}
 
+		
+
 		counterStraightMen = straightWomens.size() -1;
 		counterStraightWomen = straightMens.size() -1;
 		counterGayMen = gayMens.size() -1;
@@ -176,8 +178,6 @@ public class UserController {
     		String updatedPassword = data.getParameter("password");
     		activeUser.setPassword(updatedPassword);
 		}
-
-		System.out.println(activeUser);
     	
     	userService.updateUser(activeUser);
     	
@@ -207,7 +207,7 @@ public class UserController {
 		User activeUser = userService.getUserByID(cookieId);
 
 		User potentialUser = new User();
-		model.addAttribute("user",potentialUser);
+		
 
 		if (activeUser.getGender() == 1 && activeUser.getSexualPreference() == 0)
 		{
@@ -262,6 +262,8 @@ public class UserController {
 			model.addAttribute("user",potentialUser);
 		}
 
+		model.addAttribute("user",potentialUser);
+
 		return "/explore/explore";
     }
 
@@ -272,7 +274,7 @@ public class UserController {
 		User activeUser = userService.getUserByID(cookieId);
 
 
-		User potentialUser = new User();
+		User potentialUser = null;
 
 		if (activeUser.getGender() == 1 && activeUser.getSexualPreference() == 0)
 		{
