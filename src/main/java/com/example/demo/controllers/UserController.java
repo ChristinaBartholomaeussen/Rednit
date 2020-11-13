@@ -63,6 +63,19 @@ public class UserController {
 		counterGayWomen = gayWomens.size() -1;
 	}
 
+	/**
+	 * Methoden tager to parameter ind. Model og HttpServeltRequest.
+	 * Model bruges til at sende bruger data til thymeleaf, som genere de rigtige html elementer.
+	 * HttpServeltRequest bruges til at hente en cookie ned med.
+	 * Inde i methoden, bliver er iteraret over alle de bruger der har liket nogen. 
+	 * Og derefter sortes i en ny liste, som inden holder alle dem som den aktive bruger har liket og alle dem som har liket den aktive bruger.
+	 * 
+	 * @param userModel
+	 * @param request
+	 * @return 
+	 * 
+	 */
+	
 	@GetMapping("/matches")
 	public String match(Model userModel, HttpServletRequest request)
 	{
@@ -91,6 +104,16 @@ public class UserController {
 		return "matches";
 	}
 
+	/**
+	 * Den tager to parameter ind. WebRequest og Model.
+	 * WebRequest henter data som er indsendt i html form. 
+	 * Model sender data fra formen til thymeleaf 
+	 * Der er et loop der løber over alle mathces, og viser den valgte bruger.
+	 * @param dataFromForm
+	 * @param userModel
+	 * @return
+	 */
+
     @PostMapping("/postMatches")
 	public String matchSelect(WebRequest dataFromForm, Model userModel)
 	{
@@ -107,13 +130,26 @@ public class UserController {
 		return "redirect:/matches";
 	}
 
+	/**
+	 * Sender en besked til messageList.
+	 * @param data
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/sendMessage", method={RequestMethod.GET, RequestMethod.POST})
 	public String sendMessage(WebRequest data, Model model) {
     	messageList.add(data.getParameter("send"));
 		
     	return "redirect:/matches";	
 	}
-	
+
+	/**
+	 * henter den aktive bruger ind via en cookie, og derefter sender alle user data til en model
+	 * som Thymeleaf genere 
+	 * @param model
+	 * @param request
+	 * @return
+	 */
     @GetMapping("/myProfile")
     public String myProfile(Model model, HttpServletRequest request){
 		
@@ -124,8 +160,14 @@ public class UserController {
 
         return "myProfile";
     }
-     
-    @PostMapping("/myProfilePost") 
+
+	/**
+	 * Tager data ind fra en form, og sender den til det til databasen, som så retter på den aktive bruges user data.
+	 * @param data
+	 * @param request
+	 * @return
+	 */
+	@PostMapping("/myProfilePost") 
 	public String myProfilePost(WebRequest data, HttpServletRequest request) {
 
 		int cookieId = userService.getCookieId(request);
@@ -152,6 +194,12 @@ public class UserController {
 		return "redirect:/myProfile";
 	}
 
+	/**
+	 * Loader et billede fil ind, fra en hmtl form, og sender det til databasen. 
+	 * @param imageFile
+	 * @param request
+	 * @return
+	 */
 	@PostMapping("/imageFile")
 	public String imageFile(@RequestParam("imageFile") MultipartFile imageFile, HttpServletRequest request) {
 
@@ -168,6 +216,12 @@ public class UserController {
 		return "redirect:/myProfile";
 	}
 
+	/**
+	 * Tager alle bruger ind der har liket nogen, og derefter sorter dem efter deres sexual preference. og sender dem til explore siden.
+	 * @param model
+	 * @param request
+	 * @return
+	 */
     @GetMapping("/explore")
     public String explore(Model model, HttpServletRequest request)
     {
@@ -234,6 +288,13 @@ public class UserController {
 		return "/explore/explore";
     }
 
+	/**
+	 * Her har du liket brugern, og sender liket til databasen, og redirecter tilbage til explore siden.
+	 * @param data
+	 * @param request
+	 * @return
+	 */
+    
     @PostMapping("/postExploreLiked")
 	public String postExploreLiked(WebRequest data, HttpServletRequest request)
 	{
@@ -275,6 +336,13 @@ public class UserController {
 
 		return "redirect:/explore";
 	}
+
+	/**
+	 * Her har du ikke liket brugeren og brugeren bliver fjernet fra di explore liste.
+	 * @param data
+	 * @param request
+	 * @return
+	 */
 
 	@PostMapping("/postExploreSkipped")
 	public String postExploreSkipped(WebRequest data, HttpServletRequest request)
