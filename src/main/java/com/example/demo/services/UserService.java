@@ -227,4 +227,13 @@ public class UserService  extends ProfileService {
 
 	}
 
+	public User getUserByID(int idUser) {
+    	for (User u : allUsers) {
+    		if (idUser == u.getIdUser()) {
+    			user = u;
+			}
+		}
+    	
+    	return user;
+	}
 }
