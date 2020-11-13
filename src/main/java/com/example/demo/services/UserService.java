@@ -30,8 +30,6 @@ public class UserService  extends ProfileService {
 
     UserRepository userRepository = new UserRepository();
     public List<User> allUsers = userRepository.selectAllUsersFromDatabase();
-
-
     User user = new User();
 
     public User loggedInUser(String email, String password){
@@ -60,21 +58,15 @@ public class UserService  extends ProfileService {
         //INDSÆT KODE
     }
 
-    /*public void addToAllUsers(User user) {
-        allUsers.add(user); //Vi adder user til den fulde liste
-    }*/
-
     public void deleteUser(int id) {
 
         userRepository.deleteUserFromDatabase(id);
-
     }
 
     public void deletePhoto(User user){
         user.setPhoto1(null);
         userRepository.updatePhotoInDatabase(user);
     }
-
 
     public void saveUserProfileChanges() {
         //TODO
@@ -135,10 +127,6 @@ public class UserService  extends ProfileService {
     public boolean checkPassword(String password) {
 
         //ToDo
-        /*
-         *  Tilføj password securities.
-         *  */
-
         return password.length() > 4 && password.length() < 20;
     }
 
@@ -151,11 +139,8 @@ public class UserService  extends ProfileService {
         } else return email.length() > 4 && email.indexOf('@') > 0 && email.indexOf('.') > email.indexOf('@');
     }
 
-
-
     //Tjekker om vores email og password passer til det i vores database
     public boolean doesEmailMatchPassword(String email, String password) throws FileNotFoundException {
-
 
         List<User> usersFromDatabase = userRepository.selectAllUsersFromDatabase(); //Gemmer oplysningerne fra databasen i listen
 
@@ -168,12 +153,11 @@ public class UserService  extends ProfileService {
         return false;
     }
 
-    //Skal returnere den bruger fra databasen, som har det matchende password + email.
     public User isLoggedIn(String email, String password, int idUser) throws FileNotFoundException {
 
         UserRepository userRepository = new UserRepository();
 
-        User user = null;
+        User user = new User();
 
         if(doesEmailMatchPassword(email, password))
         {
@@ -190,8 +174,7 @@ public class UserService  extends ProfileService {
 			String imgPath = "./photos/fotos" + cookie+ "/" + imageFile.getOriginalFilename();
 
 			UserRepository userRepository = new UserRepository();
-			
-			 
+
 			User user = userRepository.selectUserFromDatabase(cookie);
 
 			byte[] imageBytesArray = imageFile.getBytes();
@@ -224,7 +207,5 @@ public class UserService  extends ProfileService {
 		String path = "./src/main/resources/static/photos/fotos" + cookie;
 		File file = new File(path);
 		file.mkdir();
-
 	}
-
 }

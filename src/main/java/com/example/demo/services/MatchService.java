@@ -5,18 +5,12 @@ import com.example.demo.models.User;
 import com.example.demo.repositories.MatchRepository;
 import com.example.demo.repositories.UserRepository;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MatchService {
 	ArrayList<Match> matchList = new ArrayList<Match>();
     MatchRepository matchRepository = new MatchRepository();
-    UserRepository userRepository = new UserRepository();
-
-    public void deleteMatch(User userFrom, User userTo) {
-        matchRepository.deleteMatchFromMatchlistInDatabase(userFrom.getIdUser(), userTo.getIdUser());
-    }
 
     public void insertPotentialMatch(int userFrom, int userTo) {
         matchRepository.InsertMatchIntoMatchListInDatabase(userFrom, userTo);
@@ -30,11 +24,9 @@ public class MatchService {
         return matchRepository.selectAllMatchesFromDatabase();
     }
     
-    
     public ArrayList<Match> getAllMatches( User activeUser) {
 		MatchService matchService = new MatchService();
 
-		//System.out.println(matchService.getAllMatch());
 		for (Match match : matchService.getAllMatch()) {
 
 			if (match.getIdUserMatch() == activeUser.getIdUser() && match.getIdUser() == activeUser.getIdUserMatch()) {

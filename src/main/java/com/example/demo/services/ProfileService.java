@@ -1,16 +1,10 @@
 package com.example.demo.services;
 
-import com.example.demo.models.User;
-import com.example.demo.repositories.AdminRepository;
-import com.example.demo.repositories.UserRepository;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProfileService {
 
 	public ArrayList<String> testList = new ArrayList<>();
-
 
 	public ArrayList<String> deletePhoto(int indexOfPhoto) {
 
@@ -26,7 +20,5 @@ public class ProfileService {
 
 		return testList;
 	}
-
-
 }
 
