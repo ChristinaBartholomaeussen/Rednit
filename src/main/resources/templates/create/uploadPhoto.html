@@ -6,17 +6,12 @@
 </head>
 <body>
 
-<!-- Dette må ikke fjernes, det er fragments til headeren -->
-<div th:insert="Fragments/header :: header"></div>
-
 <br><br><br><br><br>
 
 <form action="/uploadPicture" enctype="multipart/form-data" method="post">
     <input type="file" name="imageFile"><br><br>
     <input type="submit" value="Upload photo">
 </form>
-
-
 
 </body>
 </html>
