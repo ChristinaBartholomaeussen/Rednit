@@ -33,7 +33,9 @@ public class AdminRepository {
         }
     }
 
-    /**Deletes a users idUser attribute from the blacklist table, in the database*/
+    /**
+     * Deletes a users idUser attribute from the blacklist table, in the database
+     * */
 
     public void deleteUserFromBlacklistInDatabase(int idUser) {
         String deleteUserFromBlackList = "DELETE FROM blacklists WHERE idUser = ?";
@@ -48,7 +50,9 @@ public class AdminRepository {
         }
     }
 
-    /**Selects all blacklisted users in the database and returns it as an ArrayList*/
+    /**
+     * Selects all blacklisted users in the database and returns it as an ArrayList
+     * */
 
     public List<User> selectAllBlackListUsersFromDatabase() {
         String selectAllBlacklistedUsers = "SELECT * FROM users INNER JOIN blacklists ON users.idUser=blacklists.idUser";
@@ -82,7 +86,9 @@ public class AdminRepository {
         return allBlacklistUsers;
     }
 
-    /**Selects all admins in the database and returns it as an ArrayList*/
+    /**
+     * Selects all admins in the database and returns it as an ArrayList
+     * */
 
     public List<Admin> selectAllAdminsFromDatabase() {
 
