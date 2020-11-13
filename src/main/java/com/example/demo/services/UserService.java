@@ -172,20 +172,18 @@ public class UserService{
     }
 
 
-	public static void saveImage(MultipartFile imageFile, int cookie) throws Exception {
+	public void saveImage(MultipartFile imageFile, int cookie) throws Exception {
 		try {
-			String folder = "./src/main/resources/static/photos/fotos" + cookie;
+            User user = userRepository.selectUserFromDatabase(cookie);
+
+		    String folder = "./src/main/resources/static/photos/fotos" + cookie;
 			String imgPath = "./photos/fotos" + cookie+ "/" + imageFile.getOriginalFilename();
 
-			UserRepository userRepository = new UserRepository();
 
-			User user = userRepository.selectUserFromDatabase(cookie);
 
 			byte[] imageBytesArray = imageFile.getBytes();
 			Path path = Paths.get(folder, imageFile.getOriginalFilename());
 			Files.write(path, imageBytesArray);
-
-
 
 			user.setPhoto1(imgPath);
 			userRepository.updatePhotoInDatabase(user);
@@ -194,7 +192,7 @@ public class UserService{
 		}
 	}
 	
-	public static int getCookieId(HttpServletRequest request) {
+	public int getCookieId(HttpServletRequest request) {
 
 		Cookie cookie[] = request.getCookies();
 
@@ -209,7 +207,7 @@ public class UserService{
 		return Integer.parseInt(cookieId.getValue());
 	}
 
-	public static void createDir(int cookie) {
+	public  void createDir(int cookie) {
 		String path = "./src/main/resources/static/photos/fotos" + cookie;
 		File file = new File(path);
 		file.mkdir();

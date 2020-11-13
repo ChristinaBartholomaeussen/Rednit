@@ -90,10 +90,10 @@ public class LoginController
     @PostMapping("/uploadPicture")
     public String uploadPicture(@RequestParam("imageFile") MultipartFile imageFile, HttpServletRequest request) throws Exception {
 
-		int activeUserId = UserService.getCookieId(request);
-		UserService.createDir(activeUserId);
-		
-		UserService.saveImage(imageFile, activeUserId);
+		int activeUserId = userService.getCookieId(request);
+        userService.createDir(activeUserId);
+
+        userService.saveImage(imageFile, activeUserId);
         return "redirect:/explore	";
     }
 

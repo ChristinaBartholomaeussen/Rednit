@@ -9,15 +9,5 @@ public class Message extends User {
         this.message = message;
     }
 
-    public Message() {
-
-    }
-
-
-    public String getMessage() {
-        return message;
-    }
-
-
 
 }

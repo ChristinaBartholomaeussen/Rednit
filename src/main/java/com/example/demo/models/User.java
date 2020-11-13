@@ -1,26 +1,17 @@
 package com.example.demo.models;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class User extends Profile {
 
     private int idUser;
     private int idUserMatch;
+    private int gender;
+    private int sexualPreference;
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
-    private int gender;
-    private int sexualPreference;
     private String bio;
     private String photo1;
 
@@ -169,11 +160,5 @@ public class User extends Profile {
    public void setPhoto1(String photo1) {
     	this.photo1 = photo1;
    }
-
-	@Override
-	public String toString() {
-    	return "Id: " + idUser + "\nIdUserMatch: " + idUserMatch + "\nNavn: " + getFirstName() + "\nEmail: " + getEmail() + "\nGender: " + gender + "\nSexual Prefrence: " + sexualPreference + "\nFilsti til foto: " + photo1 + "\nBio: " + bio;
-	}
-
 
 }

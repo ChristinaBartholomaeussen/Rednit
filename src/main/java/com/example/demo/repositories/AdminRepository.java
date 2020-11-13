@@ -13,8 +13,6 @@ public class AdminRepository {
 
     ConnectionRepository connection = new ConnectionRepository();
 
-    Admin admin = new Admin();
-
     /**
      * Inserts the users idUser attribute into the blacklist table, in the database
      */

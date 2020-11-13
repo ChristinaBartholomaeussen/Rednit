@@ -2,9 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Match;
 import com.example.demo.models.User;
-import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.MatchService;
-import com.example.demo.services.MessageService;
 import com.example.demo.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 @Controller
@@ -22,31 +18,22 @@ public class UserController {
 
 	MatchService matchService = new MatchService();
 	UserService userService = new UserService();
-	List<User> allUsers = new ArrayList<>();
 	User selectedUser = new User();
-
-	ArrayList<String> messageList = new ArrayList();
-
-	List<User> allUsersForExplore = userService.allUsers;
-	int counterStraightWomnes = 0;
-	int counterStraightMens;
-	int counterGayWomens;
-	int counterGayMens;
-	List<User> listOfPotentialCandidates = new ArrayList<>();
-	
-	int cookieId;
 	User activeUser;
-	
+	List<String> messageList = new ArrayList();
+	List<User> allUsers = new ArrayList<>();
+	List<User> allUsersForExplore = userService.allUsers;
+	List<User> listOfPotentialCandidates = new ArrayList<>();
+	List<User> straightWomens = new ArrayList<User>();
+	List<User> gayWomens = new ArrayList<User>();
+	List<User> straightMens = new ArrayList<User>();
+	List<User> gayMens = new ArrayList<User>();
+	List<User> matchList = new ArrayList<>();
+	int cookieId;
 	int counterStraightWomen = 0;
 	int counterStraightMen;
 	int counterGayWomen;
 	int counterGayMen;
-	ArrayList<User> straightWomens = new ArrayList<User>();
-	ArrayList<User> gayWomens = new ArrayList<User>();
-	ArrayList<User> straightMens = new ArrayList<User>();
-	ArrayList<User> gayMens = new ArrayList<User>();
-	ArrayList<User> matchList = new ArrayList<>();
-	
 
 	public UserController()
 	{
@@ -81,11 +68,8 @@ public class UserController {
 	{
 		ArrayList<Match> potentialMatch = new ArrayList<>();
 
-
-		int cookieId = UserService.getCookieId(request);
+		int cookieId = userService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
-
-		MessageService messageService = new MessageService();
 
 		for (Match match : matchService.getAllMatch()) {
 			
@@ -98,7 +82,6 @@ public class UserController {
 						matchList.add(userService.getUserByID(match.getIdUser()));
 					}
 				}
-
 			}
 		}
 		
@@ -112,7 +95,6 @@ public class UserController {
 	public String matchSelect(WebRequest dataFromForm, Model userModel)
 	{
 		String firstName = String.valueOf(dataFromForm.getParameter("submitBtn"));
-		
 
 		for(User u : matchList)
 		{
@@ -135,7 +117,7 @@ public class UserController {
     @GetMapping("/myProfile")
     public String myProfile(Model model, HttpServletRequest request){
 		
-		int cookieId = UserService.getCookieId(request);
+		int cookieId = userService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
 
 		model.addAttribute("user", activeUser);
@@ -146,7 +128,7 @@ public class UserController {
     @PostMapping("/myProfilePost") 
 	public String myProfilePost(WebRequest data, HttpServletRequest request) {
 
-		int cookieId = UserService.getCookieId(request);
+		int cookieId = userService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
 
 		if (!data.getParameter("name").equals("")) {
@@ -173,25 +155,23 @@ public class UserController {
 	@PostMapping("/imageFile")
 	public String imageFile(@RequestParam("imageFile") MultipartFile imageFile, HttpServletRequest request) {
 
-    	int cookieId = UserService.getCookieId(request);
+    	int cookieId = userService.getCookieId(request);
     	
 				try {
-					UserService.saveImage(imageFile, cookieId);
+					userService.saveImage(imageFile, cookieId);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
 					System.out.println(e);
 				}
 				
-		
 		return "redirect:/myProfile";
-		
 	}
 
     @GetMapping("/explore")
     public String explore(Model model, HttpServletRequest request)
     {
-		int cookieId = UserService.getCookieId(request);
+		int cookieId = userService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
 
 		User potentialUser = null;
@@ -257,7 +237,7 @@ public class UserController {
     @PostMapping("/postExploreLiked")
 	public String postExploreLiked(WebRequest data, HttpServletRequest request)
 	{
-		int cookieId = UserService.getCookieId(request);
+		int cookieId = userService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
 
 		User potentialUser = null;
@@ -299,7 +279,7 @@ public class UserController {
 	@PostMapping("/postExploreSkipped")
 	public String postExploreSkipped(WebRequest data, HttpServletRequest request)
 	{
-		int cookieId = UserService.getCookieId(request);
+		int cookieId = userService.getCookieId(request);
 		User activeUser = userService.getUserByID(cookieId);
 
 		User potentialUser = new User();

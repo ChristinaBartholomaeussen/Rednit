@@ -28,8 +28,6 @@ public abstract class Profile {
         this.email = email;
     }
 
-
-
     public Profile()
     {
     }

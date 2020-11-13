@@ -7,6 +7,5 @@ public class Admin extends Profile {
     }
     public Admin()
     {
-
     }
 }
