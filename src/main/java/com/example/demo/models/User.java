@@ -37,6 +37,10 @@ public class User extends Profile {
         super(email, password);
         this.idUser = idUser;
     }
+
+    public User(int idUser) {
+        this.idUser = idUser;
+    }
   
 	
     public User(String email, String password,

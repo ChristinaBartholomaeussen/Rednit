@@ -10,4 +10,7 @@ public class Match extends User {
         super(idUser, idUserMatch);
     }
 
+    public Match() {
+
+    }
 }

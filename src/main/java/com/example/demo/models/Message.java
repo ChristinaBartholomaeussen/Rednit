@@ -16,8 +16,6 @@ public class Message extends User {
 
     }
 
-
-
     public Message(String string, String string1) {
 
     }
