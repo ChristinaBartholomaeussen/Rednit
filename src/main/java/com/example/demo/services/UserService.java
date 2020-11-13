@@ -11,8 +11,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.AsyncContext;
+import javax.servlet.Servlet;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Files;
@@ -180,7 +184,9 @@ public class UserService{
 			byte[] imageBytesArray = imageFile.getBytes();
 			Path path = Paths.get(folder, imageFile.getOriginalFilename());
 			Files.write(path, imageBytesArray);
-			
+
+
+
 			user.setPhoto1(imgPath);
 			userRepository.updatePhotoInDatabase(user);
 		} catch (Exception e) {
