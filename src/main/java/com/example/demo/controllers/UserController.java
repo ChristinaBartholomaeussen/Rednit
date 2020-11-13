@@ -23,7 +23,6 @@ public class UserController {
 	User selectedUser = new User();
 
 	ArrayList<String> messageList = new ArrayList();
-	//String message = "";
 
 	List<User> allUsersForExplore = userService.allUsers;
 	int counterStraightWomnes = 0;
@@ -47,10 +46,7 @@ public class UserController {
 	ArrayList<User> gayWomens = new ArrayList<User>();
 	ArrayList<User> straightMens = new ArrayList<User>();
 	ArrayList<User> gayMens = new ArrayList<User>();
-	List<User> listOfPotentialCandidates = new ArrayList<>();
-	List<User> allUsersForExplore = userService.allUsers;
 	
-	//User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 0, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
 
 	public UserController()
 	{
@@ -84,9 +80,7 @@ public class UserController {
 	@GetMapping("/matches")
 	public String match(Model userModel, HttpServletRequest request)
 	{
-		allUsers = userRepository.selectAllUsersFromDatabase();
-
-		Match matcha = null;
+		allUsers = userService.getAllUsers();
 
 		ArrayList<Integer> matchId = new ArrayList<Integer>();
 		ArrayList<Match> potentialMatch = new ArrayList<>();
@@ -94,18 +88,14 @@ public class UserController {
 		ArrayList<User> matchList = new ArrayList<>();
 
 		int cookieId = UserService.getCookieId(request);
-		User activeUser = userRepository.selectUserFromDatabase(cookieId);
+		User activeUser = userService.getUserByID(cookieId);
 
-		//System.out.println("Active id : " + activeUser.getIdUser() + " active matchId: " + activeUser.getIdUserMatch());
 
 		MessageService messageService = new MessageService();
 
 		for (Match match : matchService.getAllMatch()) {
-
-			//System.out.println("matchID: " + match.getIdUser() + " matchUserID: " + match.getIdUserMatch());
-			//System.out.println(activeUser.getIdUser());
+			
 			if (activeUser.getIdUser() != match.getIdUser() && match.getIdUserMatch() == activeUser.getIdUser() ) {
-				//System.out.println("activeID: " + activeUser.getIdUser() + " matchUderID: " + match.getIdUser());
 
 				potentialMatch.add(match);
 				for (Match potential : matchService.getAllMatch()) {
@@ -120,13 +110,7 @@ public class UserController {
 			if (activeUser.getIdUser() == match.getIdUser() && match.getIdUserMatch() != activeUser.getIdUser() ) {
 
 			}
-
-
-
-
 		}
-
-
 
 		userModel.addAttribute("allUsers", allUsers);
 		userModel.addAttribute("selectedUser", selectedUser);
@@ -161,34 +145,37 @@ public class UserController {
 	
     @GetMapping("/myProfile")
     public String myProfile(Model model, HttpServletRequest request){
-    	
-    	UserRepository userRepository = new UserRepository();
-    	
-    	int cookieId = UserService.getCookieId(request);
-    	User user = userRepository.selectUserFromDatabase(cookieId);
+		
+		int cookieId = UserService.getCookieId(request);
+		User activeUser = userService.getUserByID(cookieId);
 
-    	model.addAttribute("user", user);
+
+		model.addAttribute("user", activeUser);
 
         return "myProfile";
     }
      
     @PostMapping("/myProfilePost") 
-	public String myProfilePost(WebRequest data) {
-    	
-    	if (!data.getParameter("name").equals("")) {
+	public String myProfilePost(WebRequest data, HttpServletRequest request) {
+
+		int cookieId = UserService.getCookieId(request);
+		User activeUser = userService.getUserByID(cookieId);
+
+
+		if (!data.getParameter("name").equals("")) {
     		
     		String updatedName = String.valueOf(data.getParameter("name"));
-			user.setFirstName(updatedName);
+			activeUser.setFirstName(updatedName);
 		}
     	
     	if (!data.getParameter("bio").equals("")) {
     		String updatedBio = String.valueOf(data.getParameter("bio"));
-    		user.setBio(updatedBio);
+    		activeUser.setBio(updatedBio);
 		}
     	
-    	if (!data.getParameter("password").equals("") && !data.getParameter("password").equals(user.getPassword()) && data.getParameter("password").equals(data.getParameter("passwordTwo"))) {
+    	if (!data.getParameter("password").equals("") && !data.getParameter("password").equals(activeUser.getPassword()) && data.getParameter("password").equals(data.getParameter("passwordTwo"))) {
     		String updatedPassword = data.getParameter("password");
-    		user.setPassword(updatedPassword);
+    		activeUser.setPassword(updatedPassword);
 		}
     	
 		return "redirect:/myProfile";
@@ -214,7 +201,8 @@ public class UserController {
     public String explore(Model model, HttpServletRequest request)
     {
 		int cookieId = UserService.getCookieId(request);
-		User activeUser = userRepository.selectUserFromDatabase(cookieId);
+		User activeUser = userService.getUserByID(cookieId);
+
 		User potentialUser = new User();
 		model.addAttribute("user",potentialUser);
 
@@ -276,9 +264,10 @@ public class UserController {
 
     @PostMapping("/postExploreLiked")
 	public String postExploreLiked(WebRequest data, HttpServletRequest request)
-	{ 
+	{
 		int cookieId = UserService.getCookieId(request);
-		User activeUser = userRepository.selectUserFromDatabase(cookieId);
+		User activeUser = userService.getUserByID(cookieId);
+
 
 		User potentialUser = new User();
 
@@ -321,7 +310,7 @@ public class UserController {
 	public String postExploreSkipped(WebRequest data, HttpServletRequest request)
 	{
 		int cookieId = UserService.getCookieId(request);
-		User activeUser = userRepository.selectUserFromDatabase(cookieId);
+		User activeUser = userService.getUserByID(cookieId);
 
 		User potentialUser = new User();
 
