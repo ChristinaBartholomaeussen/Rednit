@@ -87,6 +87,7 @@ public class UserService{
         //TODO
         //INDSÆT KODE
     }
+    
 
     public boolean likeUser(User user) {
         //TODO
