@@ -113,8 +113,8 @@
 			<form action="/postMatches" method="post" id="matchList">
 				<div class="match-container">
 					
-					<button class="flex match-item" th:each="user : ${allUsers}" type="submit" form="matchList" th:name="submitBtn" th:value="${user.getFirstName()}">
-						<p th:text="${user.firstName}"></p>
+					<button class="flex match-item" th:each="user : ${mathces}" type="submit" form="matchList" th:name="submitBtn" th:value="${user.getFirstName()}">
+						<p th:text="${user.getFirstName()}"></p>
 						<p th:text="${user.getLastName()}"></p>
 					</button>
 					
@@ -152,24 +152,3 @@
 	</body>
 </html>
 
-
-
-
-<!--
- 
- 
- 
- 
- <form action="/postMatches" method="post">
-    <select name="selected">
-        <option value="0">Vælg Match</option>
-        <option
-                th:each="user : ${allUsers}"
-                th:text="${user.firstName}"
-                th:value="${user.firstName}">
-        </option>
-    </select>
-    <input type="submit" value="Se match">
-</form>
- 
- -->
