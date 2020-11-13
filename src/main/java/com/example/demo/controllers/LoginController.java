@@ -1,5 +1,4 @@
 package com.example.demo.controllers;
-
 import com.example.demo.models.Admin;
 import com.example.demo.models.User;
 import com.example.demo.repositories.AdminRepository;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,13 +20,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-
 @Controller
 public class LoginController
 {
-    AdminRepository adminRepository = new AdminRepository();
+    //AdminRepository adminRepository = new AdminRepository();
     UserService userServiceToDisplay = new UserService();
-    UserRepository userRepository = new UserRepository();
+    //UserRepository userRepository = new UserRepository();
     AdminService adminService = new AdminService();
 
     @GetMapping("/create")
@@ -49,7 +46,6 @@ public class LoginController
 
             if(!password1.equals(password2))
             {
-                System.out.println("Passwords not equal");
                 return "redirect:/create";
             }
 
@@ -72,14 +68,11 @@ public class LoginController
 
             Date dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(dataFromForm.getParameter("dateOfBirth"));
 
-            //TODO Fil implementering
-
             String bio = dataFromForm.getParameter("bio");
 
             User user = new User(email,password1,firstName,lastName,dateOfBirth,gender,sexualPreference,bio,"","", "");
 
             userRepository.insertUserIntoDatabase(user);
-
         }
         catch(Exception e)
         {
@@ -97,10 +90,7 @@ public class LoginController
 	@ResponseBody
     public String uploadPicture(Model model, HttpServletRequest request)
     {
-    	
-    	
-		//model.addAttribute("user", user);
-    	return "create/uploadPhoto"; // HTML side
+    	return "create/uploadPhoto";
     }
 
     @PostMapping("/uploadPicture")
@@ -125,7 +115,6 @@ public class LoginController
         return "loginPage";
     }
 
-    //Postmapping til login - henter email og password fra html
     @PostMapping("/postLogin")
     public String userLogin(WebRequest dataFromForm, HttpServletResponse response)
     {
@@ -145,12 +134,10 @@ public class LoginController
                 return "redirect:/admin";
 
         for(User user : usersFromDB)
-            if(user.getEmail().equals(enteredEmail) && user.getPassword().equals(enteredPassword)){
+            if(user.getEmail().equals(enteredEmail) && user.getPassword().equals(enteredPassword))
+            {
                 user = userServiceToDisplay.loggedInUser(enteredEmail, enteredPassword);
-                System.out.println(user.toString());
-                /* sæt cookie */
-				
-				
+
 				String id = "" + userRepository.selectUserFromDatabaseFromEmail(dataFromForm.getParameter("email")).getIdUser();
 				Cookie cookie = new Cookie("id", id);
 				response.addCookie(cookie);
@@ -158,18 +145,12 @@ public class LoginController
                 return "redirect:/explore";
             }
 
-
-        System.out.println("Bruger findes ikke - redirecter til /create");
         return "redirect:/create";
-
     }
 
     @GetMapping("/blacklist")
     public String userBlacklisted(){
 
         return "blacklistPage";
-
     }
-
-
 }

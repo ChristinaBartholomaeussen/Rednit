@@ -34,7 +34,7 @@ public class TestController {
 
     List<User> allUsersList = new ArrayList<>();
 
-    Match match = new Match();
+    Match match = new Match(123,1234);
 
     @GetMapping("/test")
     public String test() {

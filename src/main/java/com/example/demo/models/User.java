@@ -22,11 +22,7 @@ public class User extends Profile {
     private int gender;
     private int sexualPreference;
     private String bio;
-    private String photo1, photo2, photo3;
-    private List<User> likedUsers;
-    private List<User> dislikedUsers;
-    private List<User> potentialCandidates;
-    private int cookie;
+    private String photo1;
 
     public User(int idUser, int idUserMatch) {
         this.idUser = idUser;
@@ -47,7 +43,7 @@ public class User extends Profile {
                 String firstName, String lastName,
                 Date dateOfBirth, int gender,
                 int sexualPrefrerence, String bio,
-                String photo1, String photo2, String photo3, List likedUsers, List dislikedUsers, List potentialCandidates)
+                String photo1)
     {
         super(email, password);
                 this.firstName = firstName;
@@ -57,16 +53,8 @@ public class User extends Profile {
                 this.sexualPreference = sexualPrefrerence;
                 this.bio = bio;
                 this.photo1 = photo1;
-                this.photo2 = photo2;
-                this.photo3 = photo3;
-                this.likedUsers = new ArrayList<>();
-                this.dislikedUsers = new ArrayList<>();
-                this.potentialCandidates = new ArrayList<>();
-
     }
     
-    /*  Mangler at sætte en liste med billeder.  */
-
     public User(String email, String password, String firstName, String lastName, Date dateOfBirth, int gender, int sexualPreference, String bio)
     {
         super(email, password);
@@ -78,26 +66,9 @@ public class User extends Profile {
         this.sexualPreference = sexualPreference;
     }
 
-    public User(String email, String password, String firstName, String lastName, Date dateOfBirth, int gender, int sexualPreference, String bio, String photo1, String photo2, String photo3)
-    {
-        super(email, password);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.sexualPreference = sexualPreference;
-        this.bio = bio;
-        this.photo1 = photo1;
-        this.photo2 = photo2;
-        this.photo3 = photo3;
-    }
-
     public User() {
-       //Default constructor
     }
 
-    public User(String email) {
-    }
 
     public User(int idUser, int idUserMatch, String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference, String photo1) {
         super(email);
@@ -110,10 +81,9 @@ public class User extends Profile {
         this.gender = gender;
         this.sexualPreference = sexualPreference;
         this.photo1 = photo1;
-
     }
 
-    public User(String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference, String photo1)
+    public User(String email, String firstName, String lastName, Date dateOfBirth, String bio, int gender, int sexualPreference)
     {
         super(email);
         this.firstName = firstName;
@@ -180,16 +150,8 @@ public class User extends Profile {
         return gender;
     }
 
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
-
     public int getSexualPreference() {
         return sexualPreference;
-    }
-
-    public void setSexualPreference(int sexualPreference) {
-        this.sexualPreference = sexualPreference;
     }
 
     public String getBio() {
@@ -204,29 +166,9 @@ public class User extends Profile {
         return photo1;
     }
 
-    public String getPhoto2(){
-        return photo2;
-    }
-
-    public String getPhoto3(){
-        return photo3;
-    }
-
    public void setPhoto1(String photo1) {
     	this.photo1 = photo1;
    }
-
-    public List getLikedUsers() {
-        return likedUsers;
-    }
-
-    public List getDislikedUsers() {
-        return dislikedUsers;
-    }
-
-    public List getPotentialCandidates() {
-        return potentialCandidates;
-    }
 
 	@Override
 	public String toString() {

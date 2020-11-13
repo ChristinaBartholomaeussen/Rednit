@@ -1,5 +1,4 @@
 package com.example.demo.services;
-import com.example.demo.models.Admin;
 import com.example.demo.models.User;
 import com.example.demo.repositories.AdminRepository;
 
@@ -9,10 +8,8 @@ import java.util.List;
 
 public class AdminService {
 
-    private final List<User> allUsers;
+    private List<User> allUsers;
     public List<User> blacklistedUser;
-
-    Admin admin = new Admin();
 
     AdminRepository adminRepository = new AdminRepository();
 
@@ -29,7 +26,6 @@ public class AdminService {
 
     public void restoreUser(int id)
     {
-
         adminRepository.deleteUserFromBlacklistInDatabase(id);
     }
 
@@ -39,17 +35,4 @@ public class AdminService {
 
         return blacklistedUser;
     }
-
-
-    public String getSingleUser(String firstname){
-
-        return "ok";
-    }
-
-    public void getAdmin(String email) {
-        //adminRepository.selectAdmin(email);
-    }
-
-
-
 }

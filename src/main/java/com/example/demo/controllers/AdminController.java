@@ -1,5 +1,4 @@
 package com.example.demo.controllers;
-
 import com.example.demo.models.User;
 import com.example.demo.services.AdminService;
 import com.example.demo.services.UserService;
@@ -8,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
-
 import java.io.FileNotFoundException;
 import java.util.ConcurrentModificationException;
 import java.util.List;
@@ -16,16 +14,10 @@ import java.util.List;
 @Controller
 public class AdminController
 {
-
-
     UserService userService = new UserService();
     AdminService admin = new AdminService();
     List<User> allUsers;
     List<User> blacklistedUsers;
-
-
-
-
 
     @GetMapping("/admin")
     public String adminPage(Model adminModel)
@@ -52,7 +44,6 @@ public class AdminController
                 for (User u : blacklistedUsers) {
                     if (userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())) {
 
-                        System.out.println(u.getIdUser() + " deleted");
                         admin.restoreUser(u.getIdUser());
                         blacklistedUsers.remove(u);
                     }
@@ -69,8 +60,6 @@ public class AdminController
         userService.setUserToDefault();
         return "redirect:/admin";
     }
-
-
 
     @PostMapping("/postAdmin")
     public String adminStart(WebRequest dataFromForm) throws FileNotFoundException {
@@ -89,7 +78,6 @@ public class AdminController
                         userService.userToDisplay().setDateOfBirth(u.getDateOfBirth());
                         userService.userToDisplay().setBio(u.getBio());
                         userService.userToDisplay().setPhoto1(u.getPhoto1());
-
                     }
                 }
 
@@ -127,7 +115,6 @@ public class AdminController
             userService.setUserToDefault();
             return "redirect:/admin";
         }
-
         return "redirect:/admin";
     }
 
@@ -142,7 +129,6 @@ public class AdminController
                 for (User u : allUsers) {
                     if (userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())) {
 
-                        System.out.println(u.getIdUser() + " deleted");
                         userService.deleteUser(u.getIdUser());
                         allUsers.remove(u);
                     }
@@ -163,7 +149,6 @@ public class AdminController
     @PostMapping("/adminBlacklistUser")
     public String blacklistUser(WebRequest dateFromForm)
     {
-
         String blacklist = String.valueOf(dateFromForm.getParameter("blacklistUser"));
 
         try{
@@ -171,7 +156,6 @@ public class AdminController
                 for(User u : allUsers){
                     if(userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())){
                         admin.addToBlacklist(u);
-                        System.out.println(u.getIdUser() + " Blacklisted");
                     }
                 }
             }
@@ -201,7 +185,6 @@ public class AdminController
                 for(User u : allUsers){
                     if(userService.userToDisplay().getFirstName().equals(u.getFirstName()) && userService.userToDisplay().getEmail().equals(u.getEmail())){
                         userService.deletePhoto(u);
-                        System.out.println(u);
                     }
                 }
             }catch (NullPointerException e){
@@ -214,10 +197,4 @@ public class AdminController
         userService.setUserToDefault();
         return "redirect:/admin";
     }
-
-
-
-
-
-
-    }
+}

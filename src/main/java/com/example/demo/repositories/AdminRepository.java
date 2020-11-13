@@ -3,7 +3,6 @@ package com.example.demo.repositories;
 import com.example.demo.models.Admin;
 import com.example.demo.models.User;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +15,10 @@ public class AdminRepository {
 
     Admin admin = new Admin();
 
-    /**Inserts the users idUser attribute into the blacklist table, in the database */
+    /**
+     * Inserts the users idUser attribute into the blacklist table, in the database
+     */
+
 
     public void insertUserIntoBlacklistInDatabase(User user) {
         String insertUserIntoBlackList = "INSERT INTO blacklists (idUser) VALUES (?)";
@@ -105,5 +107,4 @@ public class AdminRepository {
         }
         return allAdmins;
     }
-
 }
