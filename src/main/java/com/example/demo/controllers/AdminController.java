@@ -16,16 +16,10 @@ import java.util.List;
 @Controller
 public class AdminController
 {
-
-
     UserService userService = new UserService();
     AdminService admin = new AdminService();
     List<User> allUsers;
     List<User> blacklistedUsers;
-
-
-
-
 
     @GetMapping("/admin")
     public String adminPage(Model adminModel)
@@ -70,8 +64,6 @@ public class AdminController
         return "redirect:/admin";
     }
 
-
-
     @PostMapping("/postAdmin")
     public String adminStart(WebRequest dataFromForm) throws FileNotFoundException {
 
@@ -89,7 +81,6 @@ public class AdminController
                         userService.userToDisplay().setDateOfBirth(u.getDateOfBirth());
                         userService.userToDisplay().setBio(u.getBio());
                         userService.userToDisplay().setPhoto1(u.getPhoto1());
-
                     }
                 }
 
@@ -127,7 +118,6 @@ public class AdminController
             userService.setUserToDefault();
             return "redirect:/admin";
         }
-
         return "redirect:/admin";
     }
 
@@ -163,7 +153,6 @@ public class AdminController
     @PostMapping("/adminBlacklistUser")
     public String blacklistUser(WebRequest dateFromForm)
     {
-
         String blacklist = String.valueOf(dateFromForm.getParameter("blacklistUser"));
 
         try{
@@ -214,10 +203,4 @@ public class AdminController
         userService.setUserToDefault();
         return "redirect:/admin";
     }
-
-
-
-
-
-
-    }
+}
