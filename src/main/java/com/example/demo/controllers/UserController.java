@@ -1,5 +1,4 @@
 package com.example.demo.controllers;
-
 import com.example.demo.models.Match;
 import com.example.demo.models.User;
 import com.example.demo.repositories.UserRepository;
@@ -11,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
@@ -24,11 +22,11 @@ public class UserController {
 	User selectedUser = new User();
 
 	ArrayList<String> messageList = new ArrayList();
-	String message = "";
+	//String message = "";
 
-	UserRepository userRepository = new UserRepository();
+	//UserRepository userRepository = new UserRepository();
 
-	List<User> allUsersForExplore = userService.allUsers;
+
 	int counterStraightWomen = 0;
 	int counterStraightMen;
 	int counterGayWomen;
@@ -37,11 +35,10 @@ public class UserController {
 	ArrayList<User> gayWomens = new ArrayList<User>();
 	ArrayList<User> straightMens = new ArrayList<User>();
 	ArrayList<User> gayMens = new ArrayList<User>();
-
 	List<User> listOfPotentialCandidates = new ArrayList<>();
-	int activeUserId;
+	List<User> allUsersForExplore = userService.allUsers;
 	
-	User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 0, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
+	//User user = new User("oscar.vinther@gmail.com", "password1234", "Oscar", "Otterstad", new Date(), 1, 0, "Det her er min bio :)! \nHvad sagde Jesus til taxachaufføren langfredag?");
 
 	public UserController()
 	{

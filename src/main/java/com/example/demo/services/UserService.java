@@ -26,7 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class UserService  extends ProfileService {
+public class UserService{
 
     UserRepository userRepository = new UserRepository();
     public List<User> allUsers = userRepository.selectAllUsersFromDatabase();

@@ -1,5 +1,4 @@
 package com.example.demo.controllers;
-
 import com.example.demo.models.Admin;
 import com.example.demo.models.User;
 import com.example.demo.repositories.AdminRepository;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,9 +23,9 @@ import java.util.List;
 @Controller
 public class LoginController
 {
-    AdminRepository adminRepository = new AdminRepository();
+    //AdminRepository adminRepository = new AdminRepository();
     UserService userServiceToDisplay = new UserService();
-    UserRepository userRepository = new UserRepository();
+    //UserRepository userRepository = new UserRepository();
     AdminService adminService = new AdminService();
 
     @GetMapping("/create")

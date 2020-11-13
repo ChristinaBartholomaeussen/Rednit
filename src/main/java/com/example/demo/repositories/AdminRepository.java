@@ -15,7 +15,10 @@ public class AdminRepository {
 
     Admin admin = new Admin();
 
-    /**Inserts the users idUser attribute into the blacklist table, in the database */
+    /**
+     * Inserts the users idUser attribute into the blacklist table, in the database
+     */
+
 
     public void insertUserIntoBlacklistInDatabase(User user) {
         String insertUserIntoBlackList = "INSERT INTO blacklists (idUser) VALUES (?)";

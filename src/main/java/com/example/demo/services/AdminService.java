@@ -1,5 +1,4 @@
 package com.example.demo.services;
-import com.example.demo.models.Admin;
 import com.example.demo.models.User;
 import com.example.demo.repositories.AdminRepository;
 
@@ -9,7 +8,7 @@ import java.util.List;
 
 public class AdminService {
 
-    private final List<User> allUsers;
+    private List<User> allUsers;
     public List<User> blacklistedUser;
 
     AdminRepository adminRepository = new AdminRepository();

@@ -1,5 +1,4 @@
 package com.example.demo.controllers;
-
 import com.example.demo.models.User;
 import com.example.demo.services.AdminService;
 import com.example.demo.services.UserService;
@@ -8,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
-
 import java.io.FileNotFoundException;
 import java.util.ConcurrentModificationException;
 import java.util.List;

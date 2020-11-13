@@ -16,23 +16,23 @@ public class MatchService {
         matchRepository.InsertMatchIntoMatchListInDatabase(userFrom, userTo);
     }
 
-    public List<User> getMatches(User user) {
-        return matchRepository.selectUserMatchesFromDatabase(user.getIdUser());
-    }
+    //public List<User> getMatches(User user) {
+        //return matchRepository.selectUserMatchesFromDatabase(user.getIdUser());
+    //}
 
     public List<Match> getAllMatch() {
         return matchRepository.selectAllMatchesFromDatabase();
     }
     
-    public ArrayList<Match> getAllMatches( User activeUser) {
-		MatchService matchService = new MatchService();
-
-		for (Match match : matchService.getAllMatch()) {
-
-			if (match.getIdUserMatch() == activeUser.getIdUser() && match.getIdUser() == activeUser.getIdUserMatch()) {
-				matchList.add(new Match(activeUser.getIdUser(), match.getIdUser()));
-			}
-		}
-		return matchList;
-	}
+//    public ArrayList<Match> getAllMatches( User activeUser) {
+//		MatchService matchService = new MatchService();
+//
+//		for (Match match : matchService.getAllMatch()) {
+//
+//			if (match.getIdUserMatch() == activeUser.getIdUser() && match.getIdUser() == activeUser.getIdUserMatch()) {
+//				matchList.add(new Match(activeUser.getIdUser(), match.getIdUser()));
+//			}
+//		}
+//		return matchList;
+//	}
 }

@@ -12,15 +12,15 @@ public class MessageService {
 
     MessageRepository messageRepository = new MessageRepository();
 
-    public void sendMessage(User userFrom, User userTo, Message message) {
+//    public void sendMessage(User userFrom, User userTo, Message message) {
+//
+//        messageRepository.insertMessageIntoDatabase(userFrom.getIdUser(), userTo.getIdUser(), message.getMessage());
+//    }
 
-        messageRepository.insertMessageIntoDatabase(userFrom.getIdUser(), userTo.getIdUser(), message.getMessage());
-    }
-
-    public List<Message> getMessages(User user) {
-
-        return messageRepository.selectMessagesFromDatabase(user.getIdUser(), user.getIdUser());
-    }
+//    public List<Message> getMessages(User user) {
+//
+//        return messageRepository.selectMessagesFromDatabase(user.getIdUser(), user.getIdUser());
+//    }
 
     public Match getMatch(User user1, User user2)
     {
